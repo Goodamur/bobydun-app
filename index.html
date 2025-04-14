@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bob Dun</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="screen">
+    <img src="media/logo.png" alt="Bob Dun Logo" class="logo">
+    <p class="loading-text">Загрузка...</p>
+  </div>
+
+  <!-- Test Screen -->
+  <div id="test-screen" class="screen hidden">
+    <img src="media/character.png" alt="Boby Dun" class="character">
+    <div id="question-box" class="question-box">
+      <p id="question-text" class="question-text"></p>
+      <div id="answers" class="answers"></div>
+    </div>
+  </div>
+
+ <!-- Result Screen -->
+<div id="result-screen" class="screen hidden">
+  <img src="media/character_happy.png" alt="Happy Boby" class="character">
+  <div id="result-box" class="result-box">
+    <p id="result-text" class="result-text"></p>
+    <div id="dialog-box" class="dialog-box"></div>
+    <button id="nextButton">Поехали</button>
+  </div> <!-- ← закрытие result-box -->
+</div> <!-- ← закрытие result-screen -->
+
+<!-- Фоновая музыка -->
+<audio autoplay loop>
+  <source src="media/music.mp3" type="audio/mpeg">
+</audio>
+
