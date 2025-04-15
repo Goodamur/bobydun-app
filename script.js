@@ -43,10 +43,9 @@ function showDialog() {
 
 nextDialog.onclick = () => {
   index++;
-  if (index < dialogMessages.length) {
-    showDialog();
-  }
+  showDialog();
 };
+
 
 function showQuestion() {
   const q = questions[index];
@@ -110,9 +109,6 @@ function showResult() {
   dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
 }
 
-const welcomeScreen = document.getElementById('welcome-screen');
-const startTestButton = document.getElementById('start-test');
-
 startTestButton.onclick = () => {
   welcomeScreen.classList.add('hidden');
   testScreen.classList.remove('hidden');
@@ -128,7 +124,4 @@ setTimeout(() => {
 startCourseButton.onclick = () => {
   alert('Переход к обучению...');
 };
-
-function showQuestion() {}
-function showResult() {}
 
