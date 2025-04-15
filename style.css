@@ -95,6 +95,7 @@ body {
   line-height: 1.4;
   border-radius: 10px;
   max-width: 300px;
+  transition: opacity 0.4s ease;
 }
 
 .nav-button {
