@@ -19,7 +19,7 @@ body {
 }
 
 .logo {
-  width: 150px;
+  width: 400px;
 }
 
 .loading-text {
@@ -35,17 +35,13 @@ body {
 }
 
 .character {
-  width: 100px;
+  width: 300px;
   animation: float 2s infinite ease-in-out;
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .question-box, .result-box {
@@ -90,7 +86,7 @@ body {
 }
 
 .dialog-bubble {
-  background: url('media/dialogue-bubble-down.png') no-repeat center top;
+  background: url('media/dialogue-bubble.png') no-repeat center top;
   background-size: contain;
   padding: 40px 20px;
   margin: 10px auto;
@@ -99,4 +95,15 @@ body {
   line-height: 1.4;
   border-radius: 10px;
   max-width: 300px;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 1em;
+  background-color: #ff9900;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
