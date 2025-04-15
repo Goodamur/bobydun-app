@@ -110,11 +110,12 @@ function showResult() {
 }
 
 startTestButton.onclick = () => {
+  welcomeScreen.classList.add('hidden');
+  testScreen.classList.remove('hidden');
   index = 0;
-  startTestButton.classList.add('hidden');
-  nextDialog.classList.add('hidden');
   showQuestion();
 };
+
 
 setTimeout(() => {
   loadingScreen.classList.add('hidden');
