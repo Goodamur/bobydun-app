@@ -41,11 +41,19 @@ function showDialog() {
   }
 }
 
-nextDialog.onclick = () => {
-  index++;
-  showDialog();
-};
+const bgMusic = new Audio('media/music.mp3');
+bgMusic.loop = true;
 
+nextDialog.onclick = () => {
+  if (bgMusic.paused) {
+    bgMusic.play().catch(e => console.log("⛔️ Музыка не запущена автоматически"));
+  }
+
+  index++;
+  if (index < dialogMessages.length) {
+    showDialog();
+  }
+};
 
 function showQuestion() {
   const q = questions[index];
