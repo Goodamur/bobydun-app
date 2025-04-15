@@ -78,19 +78,19 @@ function showResult() {
   dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
 }
 
+const welcomeScreen = document.getElementById('welcome-screen');
+const startTestButton = document.getElementById('start-test');
+
 setTimeout(() => {
   loadingScreen.classList.add('hidden');
-  <!-- Welcome Screen -->
-<div id="welcome-screen" class="screen hidden">
-  <img src="media/character.png" alt="Boby Dun" class="character">
-  <div class="dialog-box">
-    <p class="dialog-bubble">Привет! Я BobyDun</p>
-  </div>
-  <button id="start-test">Пройти тест</button>
-</div>
+  welcomeScreen.classList.remove('hidden');
+}, 4000);
+
+startTestButton.onclick = () => {
+  welcomeScreen.classList.add('hidden');
   testScreen.classList.remove('hidden');
   showQuestion();
-}, 4000);
+};
 
 startCourseButton.onclick = () => {
   alert('Переход к обучению...');
