@@ -1,9 +1,7 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: url('media/background.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
+  }
 
 .screen {
   display: flex;
@@ -12,6 +10,8 @@ body {
   justify-content: center;
   height: 100vh;
   text-align: center;
+  background: url('media/background.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .hidden {
