@@ -2,18 +2,50 @@ let index = 0;
 let score = 0;
 
 const loadingScreen = document.getElementById('loading-screen');
+const welcomeScreen = document.getElementById('welcome-screen');
 const testScreen = document.getElementById('test-screen');
 const resultScreen = document.getElementById('result-screen');
+const dialogText = document.getElementById('dialog-text');
+const nextDialog = document.getElementById('next-dialog');
+const startTestButton = document.getElementById('start-test');
 const questionText = document.getElementById('question-text');
 const answersDiv = document.getElementById('answers');
 const resultText = document.getElementById('result-text');
 const dialogBox = document.getElementById('dialog-box');
 const startCourseButton = document.getElementById('start-course');
 
+const dialogMessages = [
+  "Привет! Рад видеть тебя здесь.",
+  "Меня зовут BobyDun, но можно просто Boby 😉",
+  "Я тут для того, чтобы быть твоим помощником и гидом в мире криптовалют.",
+  "Со мной ты научишься безопасно инвестировать и торговать 😎",
+  "Тыцни кнопку 'Поехали', если готов — и погнали 🚀",
+  "КРУТО! Ты молодец 💥",
+  "Рад, что ты готов к исследованиям!",
+  "А сейчас я задам тебе пару вопросов, чтобы понять твой уровень.",
+  "Всего будет несколько тестовых вопросов — не бойся ошибаться 😉",
+  "Готов? Жми 'Пройти тест'!"
+];
+
 const resultDialogs = {
   low: ["Ты только начинаешь.\nЭто отлично!", "Рекомендую начать\nс курса «Основы крипты».", "Но ты можешь\nвыбрать любую тему!"],
   mid: ["Уже кое-что знаешь!", "Советую пройти\nкурс по безопасности.", "Но ты можешь\nвыбрать любой сам!"],
   high: ["Ты явно в теме! 🔥", "Советую сразу идти\nв технический анализ!", "Но ты волен\nвыбрать любой курс!"]
+};
+
+function showDialog() {
+  dialogText.textContent = dialogMessages[index];
+  if (index === dialogMessages.length - 1) {
+    nextDialog.classList.add('hidden');
+    startTestButton.classList.remove('hidden');
+  }
+}
+
+nextDialog.onclick = () => {
+  index++;
+  if (index < dialogMessages.length) {
+    showDialog();
+  }
 };
 
 function showQuestion() {
@@ -81,17 +113,22 @@ function showResult() {
 const welcomeScreen = document.getElementById('welcome-screen');
 const startTestButton = document.getElementById('start-test');
 
-setTimeout(() => {
-  loadingScreen.classList.add('hidden');
-  welcomeScreen.classList.remove('hidden');
-}, 4000);
-
 startTestButton.onclick = () => {
   welcomeScreen.classList.add('hidden');
   testScreen.classList.remove('hidden');
   showQuestion();
 };
 
+setTimeout(() => {
+  loadingScreen.classList.add('hidden');
+  welcomeScreen.classList.remove('hidden');
+  showDialog();
+}, 4000);
+
 startCourseButton.onclick = () => {
   alert('Переход к обучению...');
 };
+
+function showQuestion() {}
+function showResult() {}
+
