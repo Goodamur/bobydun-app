@@ -111,8 +111,8 @@ function showResult() {
 
 startTestButton.onclick = () => {
   index = 0;
-  welcomeScreen.classList.add('hidden');
-  testScreen.classList.remove('hidden');
+  startTestButton.classList.add('hidden');
+  nextDialog.classList.add('hidden');
   showQuestion();
 };
 
