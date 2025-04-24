@@ -25,6 +25,7 @@ setTimeout(() => {
 }, 3000);
   
  startButton.onclick = () => {
+   console.log("▶ Нажата кнопка START");
     startButton.disabled = true; // блокируем повторное нажатие
 
   // Визуальный эффект
