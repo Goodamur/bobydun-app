@@ -18,7 +18,7 @@ const startCourseButton = document.getElementById('start-course');
 
   // 🔸 Показ кнопки "Начать" через 3 секунды
   setTimeout(() => {
-    startButton.classList.remove('hidden');
+    startButton.classList.remove('invisible');
   }, 3000);
   
  startButton.onclick = () => {
