@@ -16,7 +16,7 @@ const answersDiv = document.getElementById('answers');
 const resultText = document.getElementById('result-text');
 const dialogBox = document.getElementById('dialog-box');
 const startCourseButton = document.getElementById('start-course');
-
+  
   // Обработчик кнопки "Начать"
   startButton.onclick = () => {
     // Скрыть экран загрузки и показать экран приветствия
@@ -29,7 +29,7 @@ const startCourseButton = document.getElementById('start-course');
       console.error("Ошибка воспроизведения музыки:", err);
     });
   };
-
+  
 const dialogMessages = [
   "Привет! Рад видеть тебя здесь.",
   "Меня зовут BobyDun, но можно просто Boby 😉",
