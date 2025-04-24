@@ -14,9 +14,16 @@ body {
   background-size: cover;
 }
 
-.invisible {
-  visibility: hidden;
+.nav-button {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
 }
+
+.nav-button.hidden-button {
+  opacity: 0;
+  pointer-events: none;
+}
+
 
 .hidden {
   display: none;
