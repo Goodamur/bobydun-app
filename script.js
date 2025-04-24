@@ -16,19 +16,20 @@ const resultText = document.getElementById('result-text');
 const dialogBox = document.getElementById('dialog-box');
 const startCourseButton = document.getElementById('start-course');
   
-  // Обработчик кнопки "Начать"
-startButton.onclick = () => {
-    // Скрыть экран загрузки и показать экран приветствия
+ startButton.onclick = () => {
+  // Запуск музыки
   bgMusic.play().catch((err) => {
-  console.error("Ошибка воспроизведения музыки:", err);
-}); 
+    console.error("Ошибка воспроизведения музыки:", err);
+  });
+
+  // Переключение экранов
+  loadingScreen.classList.add('hidden');
+  welcomeScreen.classList.remove('hidden');
+
+  // Запуск первого диалога
+  showDialog();
 };
 
-    // Воспроизведение музыки
-    music.loop = true;
-    music.play().catch((err) => {
-      console.error("Ошибка воспроизведения музыки:", err);
-    });
   
 const dialogMessages = [
   "Привет! Рад видеть тебя здесь.",
@@ -132,11 +133,6 @@ function showResult() {
   // Отображение тучки (bubble) с диалогами
   dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
 }
-
-  loadingScreen.classList.add('hidden');
-  welcomeScreen.classList.remove('hidden');
-  showDialog(); // запуск первого диалога
-};
 
 startTestButton.onclick = () => {
   welcomeScreen.classList.add('hidden');
