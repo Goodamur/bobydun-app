@@ -55,26 +55,44 @@ const resultDialogs = {
   mid: ["Уже кое-что знаешь!", "Советую пройти\nкурс по безопасности.", "Но ты можешь\nвыбрать любой сам!"],
   high: ["Ты явно в теме! 🔥", "Советую сразу идти\nв технический анализ!", "Но ты волен\nвыбрать любой курс!"]
 };
-  function showDialog() {
-  const text = dialogMessages[index];
+  
+ function showDialog() {
+  const fullText = dialogMessages[index];
+  const words = fullText.split(' '); // делим на слова
+  const lines = [];
+
+  for (let i = 0; i < words.length; i += 3) {
+    lines.push(words.slice(i, i + 3).join(' '));
+  }
+
   const target = document.getElementById('dialog-text');
-  target.textContent = ''; // очищаем текст перед выводом
+  target.innerHTML = ''; // очищаем перед выводом
+
+  let lineIndex = 0;
   let charIndex = 0;
+  let currentLine = lines[lineIndex];
 
   const interval = setInterval(() => {
-    if (charIndex < text.length) {
-      target.textContent += text[charIndex];
+    if (charIndex < currentLine.length) {
+      target.innerHTML += currentLine[charIndex];
       charIndex++;
     } else {
-      clearInterval(interval);
+      target.innerHTML += '<br>'; // переход на новую строку
+      lineIndex++;
+      if (lineIndex < lines.length) {
+        currentLine = lines[lineIndex];
+        charIndex = 0;
+      } else {
+        clearInterval(interval);
 
-      // Показываем кнопки после последнего текста
-      if (index === dialogMessages.length - 1) {
-        nextDialog.classList.add('hidden');
-        startTestButton.classList.remove('hidden');
+        // Показ кнопки "Поехали" только в последней фразе
+        if (index === dialogMessages.length - 1) {
+          nextDialog.classList.add('hidden');
+          startTestButton.classList.remove('hidden');
+        }
       }
     }
-  }, 50); // скорость печати (мс)
+  }, 50);
 }
 
   // Анимация появления каждой строки диалога с задержкой в 0.8 секунды.
