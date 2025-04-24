@@ -24,6 +24,13 @@ body {
   pointer-events: none;
 }
 
+.loading-text {
+  transition: opacity 0.5s ease;
+}
+
+.loading-text.hidden {
+  opacity: 0;
+}
 
 .hidden {
   display: none;
