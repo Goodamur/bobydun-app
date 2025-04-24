@@ -113,13 +113,32 @@ function showDialog() {
         clearInterval(interval);
 
         if (showCarButton) {
-          nextDialog.classList.add('hidden');
-          carButton.classList.remove('hidden');
-        } else if (index === dialogMessages.length - 1) {
-          startTestButton.classList.remove('hidden');
-        }
-      }
-    }
+          if (showCarButton) {
+  nextDialog.classList.add('hidden');
+  carButton.classList.remove('hidden');
+
+  // Назначаем один раз событие, чтобы не дублировалось при повторных вызовах showDialog
+  if (!carButton.dataset.bound) {
+    carButton.dataset.bound = 'true'; // чтобы не переназначать
+    carButton.onclick = () => {
+      carButton.classList.add('hidden');
+
+      // Создаём машинку
+      const carImage = document.createElement('img');
+      carImage.src = 'media/car.png';
+      carImage.className = 'car-image';
+
+      // Добавляем на welcome-screen
+      welcomeScreen.appendChild(carImage);
+
+      // После анимации переходим к тесту
+      carImage.addEventListener('animationend', () => {
+        welcomeScreen.classList.add('hidden');
+        testScreen.classList.remove('hidden');
+        index = 0;
+        showQuestion();
+      });
+    };
   }, 50);
 }
 
