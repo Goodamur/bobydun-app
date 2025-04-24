@@ -15,6 +15,11 @@ const answersDiv = document.getElementById('answers');
 const resultText = document.getElementById('result-text');
 const dialogBox = document.getElementById('dialog-box');
 const startCourseButton = document.getElementById('start-course');
+
+  // 🔸 Показ кнопки "Начать" через 3 секунды
+  setTimeout(() => {
+    startButton.classList.remove('hidden');
+  }, 3000);
   
  startButton.onclick = () => {
   // Запуск музыки
