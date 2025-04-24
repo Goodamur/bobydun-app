@@ -100,20 +100,19 @@ function showDialog() {
   const showCarButton = index === dialogMessages.length - 1 && fullText.includes("Жми 'Поехали'");
 
   const interval = setInterval(() => {
-    if (charIndex < currentLine.length) {
-      target.innerHTML += currentLine[charIndex];
-      charIndex++;
+  if (charIndex < currentLine.length) {
+    target.innerHTML += currentLine[charIndex];
+    charIndex++;
+  } else {
+    target.innerHTML += '<br>';
+    lineIndex++;
+    if (lineIndex < lines.length) {
+      currentLine = lines[lineIndex];
+      charIndex = 0;
     } else {
-      target.innerHTML += '<br>';
-      lineIndex++;
-      if (lineIndex < lines.length) {
-        currentLine = lines[lineIndex];
-        charIndex = 0;
-      } else {
-        clearInterval(interval);
-
-        if (showCarButton) {
-          if (showCarButton) {
+      clearInterval(interval);
+  
+if (showCarButton) {
   nextDialog.classList.add('hidden');
   carButton.classList.remove('hidden');
 
@@ -137,11 +136,16 @@ function showDialog() {
         testScreen.classList.remove('hidden');
         index = 0;
         showQuestion();
-      });
-    };
-  }, 50);
-}
-
+     });
+          };
+        }
+      } else if (index === dialogMessages.length - 1) {
+        startTestButton.classList.remove('hidden');
+      }
+    }
+  }
+}, 50);
+  
   // Анимация появления каждой строки диалога с задержкой в 0.8 секунды.
   // function showDialog() {
   // const text = dialogMessages[index];
