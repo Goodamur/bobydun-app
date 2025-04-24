@@ -28,7 +28,6 @@ startButton.onclick = () => {
     music.play().catch((err) => {
       console.error("Ошибка воспроизведения музыки:", err);
     });
-  };
   
 const dialogMessages = [
   "Привет! Рад видеть тебя здесь.",
@@ -154,5 +153,7 @@ startTestButton.onclick = () => {
 
 startCourseButton.onclick = () => {
   alert('Переход к обучению...');
+  
+// Закрытие функции DOMContentLoaded
 });
 
