@@ -13,6 +13,9 @@ const answersDiv = document.getElementById('answers');
 const resultText = document.getElementById('result-text');
 const dialogBox = document.getElementById('dialog-box');
 const startCourseButton = document.getElementById('start-course');
+const startButton = document.getElementById('start-button');
+const bgMusic = new Audio('media/music.mp3');
+bgMusic.loop = true;
 
 const dialogMessages = [
   "Привет! Рад видеть тебя здесь.",
@@ -117,6 +120,14 @@ function showResult() {
   dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
 }
 
+startButton.onclick = () => {
+  bgMusic.play().catch(e => console.warn("Telegram запретил автозапуск музыки"));
+
+  loadingScreen.classList.add('hidden');
+  welcomeScreen.classList.remove('hidden');
+  showDialog(); // запуск первого диалога
+};
+
 startTestButton.onclick = () => {
   welcomeScreen.classList.add('hidden');
   testScreen.classList.remove('hidden');
@@ -124,12 +135,12 @@ startTestButton.onclick = () => {
   showQuestion();
 };
 
+// setTimeout(() => {
+//   loadingScreen.classList.add('hidden');
+//   welcomeScreen.classList.remove('hidden');
+//   showDialog();
+// }, 4000);
 
-setTimeout(() => {
-  loadingScreen.classList.add('hidden');
-  welcomeScreen.classList.remove('hidden');
-  showDialog();
-}, 4000);
 
 startCourseButton.onclick = () => {
   alert('Переход к обучению...');
