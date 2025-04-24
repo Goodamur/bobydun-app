@@ -86,28 +86,34 @@ body {
 }
 
 .fancy-button {
-  padding: 12px 28px;
+  padding: 14px 32px;
   font-size: 18px;
-  font-weight: bold;
-  color: #2c2c2c;
-  background: linear-gradient(to bottom, #ffe5b4, #fbbf55);
-  border: 2px solid #d9993b; /* яркий контур */
+  background: linear-gradient(to bottom, #ffdf8c, #e4a535); /* золотистый градиент */
+  color: #4b2e17; /* тёмно-коричневый текст */
+  border: 3px solid #b87b10; /* насыщенный золотой контур */
   border-radius: 14px;
-  box-shadow:
-    0 6px 0 #c87c23,         /* глубокая тень кнопки */
-    0 10px 20px rgba(0,0,0,0.2);  /* мягкое внешнее свечение */
+  box-shadow: 
+    inset 0 2px 3px rgba(255,255,255,0.6),  /* внутренняя подсветка */
+    0 8px 0 #b87b10,                        /* тень-контур кнопки */
+    0 12px 18px rgba(0,0,0,0.3);            /* внешний объём */
+  font-weight: bold;
   font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 1px 1px 0 #fff5ce, 0 2px 2px rgba(0,0,0,0.4); /* объёмный текст */
+  transition: all 0.15s ease;
   cursor: pointer;
-  transition: all 0.15s ease-in-out;
-  outline: none;
+  position: relative;
+  top: 0;
 }
 
 .fancy-button:active {
-  transform: translateY(4px); /* эффект нажатия глубже */
-  box-shadow:
-    0 2px 0 #c87c23,
-    0 4px 8px rgba(0,0,0,0.15); /* уменьшение глубины тени при нажатии */
+  top: 4px; /* заметное нажатие */
+  box-shadow: 
+    inset 0 2px 3px rgba(255,255,255,0.6),
+    0 3px 0 #b87b10,
+    0 6px 10px rgba(0,0,0,0.2);
+  transition: all 0.07s ease; /* быстрее при нажатии — создаёт эффект инерции */
 }
+
 
 .loading-text {
   font-size: 24px;
