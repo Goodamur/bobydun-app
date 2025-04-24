@@ -2,8 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
 let index = 0;
 let score = 0;
 
+const startButton = document.getElementById('start-button');
 const loadingScreen = document.getElementById('loading-screen');
 const welcomeScreen = document.getElementById('welcome-screen');
+const music = new Audio('media/music.mp3');
 const testScreen = document.getElementById('test-screen');
 const resultScreen = document.getElementById('result-screen');
 const dialogText = document.getElementById('dialog-text');
@@ -14,17 +16,19 @@ const answersDiv = document.getElementById('answers');
 const resultText = document.getElementById('result-text');
 const dialogBox = document.getElementById('dialog-box');
 const startCourseButton = document.getElementById('start-course');
-const startButton = document.getElementById('start-button');
-const music = new Audio('media/music.mp3');
 
-startButton.onclick = () => {
-  loadingScreen.classList.add('hidden');
-  welcomeScreen.classList.remove('hidden');
-  music.loop = true;
-  music.play().catch(err => console.log("Ошибка воспроизведения:", err));
-  index = 0;
-  showDialog();
-};
+  // Обработчик кнопки "Начать"
+  startButton.onclick = () => {
+    // Скрыть экран загрузки и показать экран приветствия
+    loadingScreen.classList.add('hidden');
+    welcomeScreen.classList.remove('hidden');
+
+    // Воспроизведение музыки
+    music.loop = true;
+    music.play().catch((err) => {
+      console.error("Ошибка воспроизведения музыки:", err);
+    });
+  };
 
 const dialogMessages = [
   "Привет! Рад видеть тебя здесь.",
