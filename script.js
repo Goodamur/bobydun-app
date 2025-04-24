@@ -20,7 +20,8 @@ const loadingText = document.getElementById('loading-text');
   // 🔸 Показ кнопки "Начать" через 3 секунды
 setTimeout(() => {
   startButton.classList.remove('hidden-button');
-  loadingText.classList.add('hidden'); // 🔥 Убираем текст
+  startButton.classList.add('show-button');
+  loadingText.classList.add('hidden');
 }, 3000);
   
  startButton.onclick = () => {
