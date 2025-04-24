@@ -28,6 +28,10 @@ startButton.onclick = () => {
     music.play().catch((err) => {
       console.error("Ошибка воспроизведения музыки:", err);
     });
+
+    // Запускаем диалог только после перехода на экран
+  showDialog();
+};
   
 const dialogMessages = [
   "Привет! Рад видеть тебя здесь.",
