@@ -18,7 +18,7 @@ const dialogBox = document.getElementById('dialog-box');
 const startCourseButton = document.getElementById('start-course');
   
   // Обработчик кнопки "Начать"
-  startButton.onclick = () => {
+startButton.onclick = () => {
     // Скрыть экран загрузки и показать экран приветствия
     loadingScreen.classList.add('hidden');
     welcomeScreen.classList.remove('hidden');
