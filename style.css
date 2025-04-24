@@ -85,77 +85,79 @@ body {
   pointer-events: none;
 }
 
+/* Объёмная кнопка с градиентом */
 .fancy-button {
-  padding: 12px 28px;
+  position: relative;
+  padding: 14px 30px;
   font-size: 18px;
   font-weight: bold;
-  border: 1px solid black;
-  color: #3e1f00; /* тёмно-коричневый */
-  background: linear-gradient(to bottom, #fff689, #ffa500);
-  border-radius: 12px;
-  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.8),
-              inset 0 -2px 2px rgba(0, 0, 0, 0.2),
-              0 4px 6px rgba(0, 0, 0, 0.3);
-  text-shadow: 1px 1px 0 #fff7d1;
+  color: #3e1f00;
+  background: linear-gradient(to bottom, #fff689, #ffa500); /* Жёлтый сверху, оранжевый снизу */
+  border: 2px solid black;
+  border-radius: 14px;
+  text-shadow: 1px 1px 0 #fff3d1;
+  box-shadow: inset 0 2px 3px rgba(255,255,255,0.6),
+              inset 0 -2px 2px rgba(0,0,0,0.2),
+              0 4px 6px rgba(0,0,0,0.3);
   animation: pulse 2s infinite;
   cursor: pointer;
   transition: transform 0.1s;
 }
 
+/* Анимация нажатия */
 .fancy-button:active {
   transform: scale(0.97);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.3);
   animation: none;
 }
 
+/* Пульсация */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* Угловые псевдоэлементы */
 .fancy-button::before,
-.fancy-button::after {
+.fancy-button::after,
+.fancy-button span::before,
+.fancy-button span::after {
   content: "";
   position: absolute;
   width: 10px;
   height: 10px;
-  z-index: 1;
+  border-radius: 3px;
 }
 
+/* Верхние уголки (оранжевые) */
 .fancy-button::before {
-  top: 4px;
-  left: 4px;
-  border-top: 2px solid #ffa500; /* оранжевый */
+  top: 6px;
+  left: 6px;
+  border-top: 2px solid #ffa500;
   border-left: 2px solid #ffa500;
 }
 
 .fancy-button::after {
-  bottom: 4px;
-  right: 4px;
-  border-bottom: 2px solid #fff689; /* жёлтый */
+  top: 6px;
+  right: 6px;
+  border-top: 2px solid #ffa500;
+  border-right: 2px solid #ffa500;
+}
+
+/* Нижние уголки (жёлтые) */
+.fancy-button span::before {
+  bottom: 6px;
+  left: 6px;
+  border-bottom: 2px solid #fff689;
+  border-left: 2px solid #fff689;
+}
+
+.fancy-button span::after {
+  bottom: 6px;
+  right: 6px;
+  border-bottom: 2px solid #fff689;
   border-right: 2px solid #fff689;
-}
-
-.fancy-button {
-  position: relative;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.6);
-  }
-  70% {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px 10px rgba(255, 165, 0, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
-  }
-}
-
-.fancy-button {
-  /* твои предыдущие стили */
-  animation: pulse 2s infinite;
-}
-
-.fancy-button:active {
-  animation: none !important; /* отключаем пульсацию при нажатии */
 }
 
 .loading-text {
@@ -165,6 +167,7 @@ body {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+/* Скрытие кнопки при загрузке */
 .hidden-button {
   opacity: 0;
   pointer-events: none;
