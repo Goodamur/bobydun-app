@@ -160,6 +160,33 @@ body {
   border-right: 2px solid #fff689;
 }
 
+.car-button {
+  position: relative;
+  padding: 15px 20px;
+  font-size: 18px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #bfffce, #79e294);
+  border: 2px solid black;
+  color: #222;
+  font-weight: bold;
+  box-shadow: 0 6px 0 #444;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+  transition: transform 0.2s ease;
+  margin-top: 20px;
+}
+
+.car-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 0 #444;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 .loading-text {
   font-size: 24px;
   color: #333;
