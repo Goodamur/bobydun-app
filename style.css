@@ -14,6 +14,13 @@ body {
   background-size: cover;
 }
 
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-button {
   opacity: 1;
   transition: opacity 0.5s ease-in;
