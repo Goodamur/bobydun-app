@@ -15,10 +15,12 @@ const answersDiv = document.getElementById('answers');
 const resultText = document.getElementById('result-text');
 const dialogBox = document.getElementById('dialog-box');
 const startCourseButton = document.getElementById('start-course');
+const loadingText = document.getElementById('loading-text');
 
   // 🔸 Показ кнопки "Начать" через 3 секунды
 setTimeout(() => {
   startButton.classList.remove('hidden-button');
+  loadingText.textContent = ''; // 🔥 Убираем текст
 }, 3000);
   
  startButton.onclick = () => {
@@ -34,7 +36,6 @@ setTimeout(() => {
   // Запуск первого диалога
   showDialog();
 };
-
   
 const dialogMessages = [
   "Привет! Рад видеть тебя здесь.",
