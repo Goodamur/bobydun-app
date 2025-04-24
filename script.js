@@ -118,7 +118,34 @@ function showDialog() {
 
         if (showCarButton) {
           nextDialog.classList.add('hidden');
-          carButton.classList.remove('hidden');
+         if (showCarButton) {
+  nextDialog.classList.add('hidden');
+
+  // Показываем кнопку машинки
+  carButton.classList.remove('hidden');
+
+  // Назначаем анимацию при нажатии
+  carButton.onclick = () => {
+    // Прячем кнопку
+    carButton.classList.add('hidden');
+
+    // Создаём машинку
+    const carImage = document.createElement('img');
+    carImage.src = 'media/car.png';
+    carImage.className = 'car-image';
+
+    // Помещаем в то же место, где была кнопка
+    carButton.parentElement.appendChild(carImage);
+
+    // После завершения анимации — переход к следующему экрану
+    carImage.addEventListener('animationend', () => {
+      document.getElementById('welcome-screen').classList.add('hidden');
+      document.getElementById('test-screen').classList.remove('hidden');
+      index = 0;
+      showQuestion();
+    });
+  };
+}
         } else if (index === dialogMessages.length - 1) {
           // Альтернатива: если это просто финал
           startTestButton.classList.remove('hidden');
