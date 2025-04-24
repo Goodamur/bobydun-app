@@ -87,21 +87,17 @@ function showDialog() {
   let charIndex = 0;
   let currentLine = lines[lineIndex];
 
-  // Расчёт времени показа "Далее"
   const totalDuration = lines.reduce((sum, line) => sum + line.length * 50 + 300, 0);
   const safeDelay = Math.max(totalDuration - 1000, 0);
 
-  // Показываем кнопку "Далее", если это не последний диалог
+  // Кнопка "Далее"
   if (index !== dialogMessages.length - 1) {
     setTimeout(() => {
       nextDialog.classList.add('show');
     }, safeDelay);
   }
 
-  // Показ кнопки машинки, если это финальная фраза
-  const showCarButton =
-    index === dialogMessages.length - 1 &&
-    fullText.includes("Жми 'Поехали'");
+  const showCarButton = index === dialogMessages.length - 1 && fullText.includes("Жми 'Поехали'");
 
   const interval = setInterval(() => {
     if (charIndex < currentLine.length) {
@@ -118,36 +114,8 @@ function showDialog() {
 
         if (showCarButton) {
           nextDialog.classList.add('hidden');
-         if (showCarButton) {
-  nextDialog.classList.add('hidden');
-
-  // Показываем кнопку машинки
-  carButton.classList.remove('hidden');
-
-  // Назначаем анимацию при нажатии
-  carButton.onclick = () => {
-    // Прячем кнопку
-    carButton.classList.add('hidden');
-
-    // Создаём машинку
-    const carImage = document.createElement('img');
-    carImage.src = 'media/car.png';
-    carImage.className = 'car-image';
-
-    // Помещаем в то же место, где была кнопка
-    carButton.parentElement.appendChild(carImage);
-
-    // После завершения анимации — переход к следующему экрану
-    carImage.addEventListener('animationend', () => {
-      document.getElementById('welcome-screen').classList.add('hidden');
-      document.getElementById('test-screen').classList.remove('hidden');
-      index = 0;
-      showQuestion();
-    });
-  };
-}
+          carButton.classList.remove('hidden');
         } else if (index === dialogMessages.length - 1) {
-          // Альтернатива: если это просто финал
           startTestButton.classList.remove('hidden');
         }
       }
@@ -275,6 +243,23 @@ startCourseButton.onclick = () => {
   alert('Переход к обучению...');
 };
   
+const carButton = document.getElementById('car-button');
+carButton.onclick = () => {
+  carButton.classList.add('hidden');
+
+  const carImage = document.createElement('img');
+  carImage.src = 'media/car.png';
+  carImage.className = 'car-image';
+
+  carButton.parentElement.appendChild(carImage);
+
+  carImage.addEventListener('animationend', () => {
+    document.getElementById('welcome-screen').classList.add('hidden');
+    document.getElementById('test-screen').classList.remove('hidden');
+    index = 0;
+    showQuestion();
+  });
+};  
 // Закрытие функции DOMContentLoaded
 });
 
