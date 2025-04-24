@@ -85,6 +85,25 @@ body {
   pointer-events: none;
 }
 
+.fancy-button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background: linear-gradient(to bottom, #fdd9a0, #fbbf55);
+  color: #2c2c2c;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 0 #d9993b, 0 7px 15px rgba(0,0,0,0.2);
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.fancy-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #d9993b;
+}
+
 .loading-text {
   font-size: 24px;
   color: #333;
