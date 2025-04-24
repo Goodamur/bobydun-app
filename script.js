@@ -64,7 +64,7 @@ const resultDialogs = {
   high: ["Ты явно в теме! 🔥", "Советую сразу идти\nв технический анализ!", "Но ты волен\nвыбрать любой курс!"]
 };
   
- function showDialog() {
+function showDialog() {
   const fullText = dialogMessages[index];
   const words = fullText.split(' '); // делим на слова
   const lines = [];
@@ -79,6 +79,21 @@ const resultDialogs = {
   let lineIndex = 0;
   let charIndex = 0;
   let currentLine = lines[lineIndex];
+
+  // Скрываем кнопку "Далее" перед новым выводом
+  nextDialog.classList.remove('show');
+  startTestButton.classList.add('hidden');
+
+  // Расчёт времени полного вывода
+  const totalDuration = lines.reduce((sum, line) => sum + line.length * 50 + 200, 0); // 50ms на букву + небольшой отступ между строками
+
+  // Автоматическое появление кнопки "Далее" за 1 секунду до окончания вывода текста
+  const safeDelay = Math.max(totalDuration - 1000, 0);
+  setTimeout(() => {
+    if (index !== dialogMessages.length - 1) {
+      nextDialog.classList.add('show');
+    }
+  }, safeDelay);
 
   const interval = setInterval(() => {
     if (charIndex < currentLine.length) {
@@ -102,6 +117,7 @@ const resultDialogs = {
     }
   }, 50);
 }
+
 
   // Анимация появления каждой строки диалога с задержкой в 0.8 секунды.
   // function showDialog() {
