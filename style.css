@@ -86,32 +86,52 @@ body {
 }
 
 .fancy-button {
-  padding: 14px 32px;
+  padding: 12px 28px;
   font-size: 18px;
-  background: linear-gradient(to bottom, #FFA500, #FFFF00); /* ярко-оранжевый к жёлтому */
-  color: #3b230d; /* тёмно-коричневый текст */
-  border: 2px solid #000; /* чёрный контур */
-  border-radius: 14px;
-  box-shadow: 
-    inset 0 2px 4px rgba(255,255,255,0.4),
-    0 6px 0 #000,
-    0 10px 15px rgba(0,0,0,0.2);
   font-weight: bold;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  text-shadow: 1px 1px 0 #fff8c6, 0 2px 2px rgba(0,0,0,0.4);
-  transition: all 0.2s ease;
+  border: 1px solid black;
+  color: #3e1f00; /* тёмно-коричневый */
+  background: linear-gradient(to bottom, #fff689, #ffa500);
+  border-radius: 12px;
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.8),
+              inset 0 -2px 2px rgba(0, 0, 0, 0.2),
+              0 4px 6px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 0 #fff7d1;
+  animation: pulse 2s infinite;
   cursor: pointer;
-  position: relative;
-  top: 0;
+  transition: transform 0.1s;
 }
 
 .fancy-button:active {
+  transform: scale(0.97);
+  animation: none;
+}
+
+.fancy-button::before,
+.fancy-button::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  z-index: 1;
+}
+
+.fancy-button::before {
   top: 4px;
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.4),
-    0 2px 0 #000,
-    0 4px 6px rgba(0,0,0,0.2);
-  transition: all 0.05s ease;
+  left: 4px;
+  border-top: 2px solid #ffa500; /* оранжевый */
+  border-left: 2px solid #ffa500;
+}
+
+.fancy-button::after {
+  bottom: 4px;
+  right: 4px;
+  border-bottom: 2px solid #fff689; /* жёлтый */
+  border-right: 2px solid #fff689;
+}
+
+.fancy-button {
+  position: relative;
 }
 
 @keyframes pulse {
