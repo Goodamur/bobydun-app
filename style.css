@@ -145,6 +145,16 @@ body {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+.hidden-button {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.show-button {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s ease;
+}
 
 .loading-text.hidden {
   opacity: 0;
