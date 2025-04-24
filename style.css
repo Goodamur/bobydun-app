@@ -35,15 +35,16 @@ body {
 }
 
 .soft-outline-text {
-  color: #fff8dc; /* кремовый (blanched almond / cornsilk) */
+  font-family: 'Comfortaa', cursive;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 600;
+  color: #fff8dc;
   text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000,
-    0 2px 5px rgba(0, 0, 0, 0.3); /* лёгкая тень вниз */
+    0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .nav-button {
