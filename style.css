@@ -86,22 +86,27 @@ body {
 }
 
 .fancy-button {
-  padding: 12px 24px;
+  padding: 12px 28px;
   font-size: 18px;
-  background: linear-gradient(to bottom, #fdd9a0, #fbbf55);
-  color: #2c2c2c;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 5px 0 #d9993b, 0 7px 15px rgba(0,0,0,0.2);
   font-weight: bold;
+  color: #2c2c2c;
+  background: linear-gradient(to bottom, #ffe5b4, #fbbf55);
+  border: 2px solid #d9993b; /* яркий контур */
+  border-radius: 14px;
+  box-shadow:
+    0 6px 0 #c87c23,         /* глубокая тень кнопки */
+    0 10px 20px rgba(0,0,0,0.2);  /* мягкое внешнее свечение */
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  transition: all 0.15s ease-in-out;
   cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  outline: none;
 }
 
 .fancy-button:active {
-  transform: translateY(2px);
-  box-shadow: 0 3px 0 #d9993b;
+  transform: translateY(4px); /* эффект нажатия глубже */
+  box-shadow:
+    0 2px 0 #c87c23,
+    0 4px 8px rgba(0,0,0,0.15); /* уменьшение глубины тени при нажатии */
 }
 
 .loading-text {
