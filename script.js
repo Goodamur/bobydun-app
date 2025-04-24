@@ -66,7 +66,7 @@ const resultDialogs = {
   
 function showDialog() {
   const fullText = dialogMessages[index];
-  const words = fullText.split(' '); // делим на слова
+  const words = fullText.split(' ');
   const lines = [];
 
   for (let i = 0; i < words.length; i += 3) {
@@ -74,33 +74,41 @@ function showDialog() {
   }
 
   const target = document.getElementById('dialog-text');
-  target.innerHTML = ''; // очищаем перед выводом
+  const nextDialog = document.getElementById('next-dialog');
+  const startTestButton = document.getElementById('start-test');
+  const carButton = document.getElementById('car-button');
+
+  target.innerHTML = '';
+  nextDialog.classList.remove('show');
+  startTestButton.classList.add('hidden');
+  carButton.classList.add('hidden');
 
   let lineIndex = 0;
   let charIndex = 0;
   let currentLine = lines[lineIndex];
 
-  // Скрываем кнопку "Далее" перед новым выводом
-  nextDialog.classList.remove('show');
-  startTestButton.classList.add('hidden');
-
-  // Расчёт времени полного вывода
-  const totalDuration = lines.reduce((sum, line) => sum + line.length * 50 + 200, 0); // 50ms на букву + небольшой отступ между строками
-
-  // Автоматическое появление кнопки "Далее" за 1 секунду до окончания вывода текста
+  // Расчёт времени показа "Далее"
+  const totalDuration = lines.reduce((sum, line) => sum + line.length * 50 + 300, 0);
   const safeDelay = Math.max(totalDuration - 1000, 0);
-  setTimeout(() => {
-    if (index !== dialogMessages.length - 1) {
+
+  // Показываем кнопку "Далее", если это не последний диалог
+  if (index !== dialogMessages.length - 1) {
+    setTimeout(() => {
       nextDialog.classList.add('show');
-    }
-  }, safeDelay);
+    }, safeDelay);
+  }
+
+  // Показ кнопки машинки, если это финальная фраза
+  const showCarButton =
+    index === dialogMessages.length - 1 &&
+    fullText.includes("Жми 'Поехали'");
 
   const interval = setInterval(() => {
     if (charIndex < currentLine.length) {
       target.innerHTML += currentLine[charIndex];
       charIndex++;
     } else {
-      target.innerHTML += '<br>'; // переход на новую строку
+      target.innerHTML += '<br>';
       lineIndex++;
       if (lineIndex < lines.length) {
         currentLine = lines[lineIndex];
@@ -108,16 +116,17 @@ function showDialog() {
       } else {
         clearInterval(interval);
 
-        // Показ кнопки "Поехали" только в последней фразе
-        if (index === dialogMessages.length - 1) {
+        if (showCarButton) {
           nextDialog.classList.add('hidden');
+          carButton.classList.remove('hidden');
+        } else if (index === dialogMessages.length - 1) {
+          // Альтернатива: если это просто финал
           startTestButton.classList.remove('hidden');
         }
       }
     }
   }, 50);
 }
-
 
   // Анимация появления каждой строки диалога с задержкой в 0.8 секунды.
   // function showDialog() {
