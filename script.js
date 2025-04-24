@@ -71,7 +71,7 @@ function showDialog() {
     const span = document.createElement("span");
     span.textContent = line;
     span.className = "dialog-line";
-    span.style.animationDelay = `${i * 0.4}s`;
+    span.style.animationDelay = `${i * 0.8}s`;
     dialogText.appendChild(span);
   });
 
