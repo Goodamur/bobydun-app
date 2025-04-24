@@ -9,9 +9,14 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 100vw;
   text-align: center;
   background: url('media/background.jpg') no-repeat center center fixed;
   background-size: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .loading-container {
