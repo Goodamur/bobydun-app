@@ -24,7 +24,13 @@ setTimeout(() => {
 }, 3000);
   
  startButton.onclick = () => {
+    startButton.disabled = true; // блокируем повторное нажатие
+
+  // Визуальный эффект
+  startButton.classList.add('pressed');
+   
   // Запуск музыки
+setTimeout(() => {
   bgMusic.play().catch((err) => {
     console.error("Ошибка воспроизведения музыки:", err);
   });
@@ -35,6 +41,7 @@ setTimeout(() => {
 
   // Запуск первого диалога
   showDialog();
+  }, 150); // Задержка 150 мс
 };
   
 const dialogMessages = [
