@@ -64,6 +64,17 @@ body {
   }
 }
 
+#dialog-text::after {
+  content: '|';
+  animation: blink-caret 1s step-start infinite;
+}
+
+@keyframes blink-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
 .nav-button {
   opacity: 1;
   transition: opacity 0.5s ease-in;
