@@ -16,14 +16,6 @@ const startCourseButton = document.getElementById('start-course');
 const startButton = document.getElementById('start-button');
 const music = new Audio('media/music.mp3');
 
-startButton.onclick = () => {
-  loadingScreen.classList.add('hidden');
-  welcomeScreen.classList.remove('hidden');
-  music.loop = true;
-  music.play().catch(err => console.log("Ошибка воспроизведения:", err));
-  showDialog();
-};
-
 const dialogMessages = [
   "Привет! Рад видеть тебя здесь.",
   "Меня зовут BobyDun, но можно просто Boby 😉",
@@ -130,6 +122,14 @@ function showResult() {
   loadingScreen.classList.add('hidden');
   welcomeScreen.classList.remove('hidden');
   showDialog(); // запуск первого диалога
+};
+
+startButton.onclick = () => {
+  loadingScreen.classList.add('hidden');
+  welcomeScreen.classList.remove('hidden');
+  music.loop = true;
+  music.play().catch(err => console.log("Ошибка воспроизведения:", err));
+  showDialog();
 };
 
 startTestButton.onclick = () => {
