@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function () {
 let index = 0;
 let score = 0;
 
@@ -149,5 +150,5 @@ startTestButton.onclick = () => {
 
 startCourseButton.onclick = () => {
   alert('Переход к обучению...');
-};
+});
 
