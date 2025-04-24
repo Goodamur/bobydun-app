@@ -129,7 +129,7 @@ body {
   margin-top: 20px;
 }
 
-.dialog-bubble {
+/* .dialog-bubble {
   background: url('media/dialogue-bubble.png') no-repeat center top;
   background-size: contain;
   padding: 40px 20px;
@@ -139,8 +139,8 @@ body {
   line-height: 1.4;
   border-radius: 10px;
   max-width: 300px;
-  transition: opacity 0.4s ease;
-}
+} */
+
 
 .nav-button {
   padding: 10px 20px;
