@@ -57,7 +57,24 @@ const resultDialogs = {
 };
 
 function showDialog() {
-  dialogText.textContent = dialogMessages[index];
+  const text = dialogMessages[index];
+  const words = text.split(" ");
+  const lines = [];
+
+  for (let i = 0; i < words.length; i += 3) {
+    lines.push(words.slice(i, i + 3).join(" "));
+  }
+
+  dialogText.innerHTML = ''; // очистка
+
+  lines.forEach((line, i) => {
+    const span = document.createElement("span");
+    span.textContent = line;
+    span.className = "dialog-line";
+    span.style.animationDelay = `${i * 0.4}s`;
+    dialogText.appendChild(span);
+  });
+
   if (index === dialogMessages.length - 1) {
     nextDialog.classList.add('hidden');
     startTestButton.classList.remove('hidden');
