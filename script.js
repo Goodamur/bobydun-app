@@ -5,7 +5,6 @@ let score = 0;
 const startButton = document.getElementById('start-button');
 const loadingScreen = document.getElementById('loading-screen');
 const welcomeScreen = document.getElementById('welcome-screen');
-const music = new Audio('media/music.mp3');
 const testScreen = document.getElementById('test-screen');
 const resultScreen = document.getElementById('result-screen');
 const dialogText = document.getElementById('dialog-text');
@@ -20,18 +19,16 @@ const startCourseButton = document.getElementById('start-course');
   // Обработчик кнопки "Начать"
 startButton.onclick = () => {
     // Скрыть экран загрузки и показать экран приветствия
-    loadingScreen.classList.add('hidden');
-    welcomeScreen.classList.remove('hidden');
+  bgMusic.play().catch((err) => {
+  console.error("Ошибка воспроизведения музыки:", err);
+}); 
+};
 
     // Воспроизведение музыки
     music.loop = true;
     music.play().catch((err) => {
       console.error("Ошибка воспроизведения музыки:", err);
     });
-
-    // Запускаем диалог только после перехода на экран
-  showDialog();
-};
   
 const dialogMessages = [
   "Привет! Рад видеть тебя здесь.",
