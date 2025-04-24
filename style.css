@@ -180,6 +180,7 @@ body {
 
 .car-button:not(.hidden) {
   opacity: 1;
+  visibility: visible;
 }
 
 .car-image {
