@@ -265,24 +265,7 @@ startTestButton.onclick = () => {
 startCourseButton.onclick = () => {
   alert('Переход к обучению...');
 };
-  
-const carButton = document.getElementById('car-button');
-carButton.onclick = () => {
-  carButton.classList.add('hidden');
-
-  const carImage = document.createElement('img');
-  carImage.src = 'media/car.png';
-  carImage.className = 'car-image';
-
-  carButton.parentElement.appendChild(carImage);
-
-  carImage.addEventListener('animationend', () => {
-    document.getElementById('welcome-screen').classList.add('hidden');
-    document.getElementById('test-screen').classList.remove('hidden');
-    index = 0;
-    showQuestion();
-  });
-};  
+ 
 // Закрытие функции DOMContentLoaded
 });
 
