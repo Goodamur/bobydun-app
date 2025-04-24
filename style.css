@@ -114,7 +114,29 @@ body {
   transition: all 0.05s ease;
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.6);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px 10px rgba(255, 165, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
+  }
+}
 
+.fancy-button {
+  /* твои предыдущие стили */
+  animation: pulse 2s infinite;
+}
+
+.fancy-button:active {
+  animation: none !important; /* отключаем пульсацию при нажатии */
+}
 
 .loading-text {
   font-size: 24px;
