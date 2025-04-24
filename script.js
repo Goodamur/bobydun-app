@@ -119,58 +119,13 @@ if (showCarButton) {
   // Назначаем один раз событие, чтобы не дублировалось при повторных вызовах showDialog
   if (!carButton.dataset.bound) {
     carButton.dataset.bound = 'true'; // чтобы не переназначать
-    carButton.onclick = () => {
-      carButton.classList.add('hidden');
-
-      // Создаём машинку
-      const carImage = document.createElement('img');
-      carImage.src = 'media/car.png';
-      carImage.className = 'car-image';
-
-      // Добавляем на welcome-screen
-      welcomeScreen.appendChild(carImage);
-
-      // После анимации переходим к тесту
-      carImage.addEventListener('animationend', () => {
-        welcomeScreen.classList.add('hidden');
-        testScreen.classList.remove('hidden');
-        index = 0;
-        showQuestion();
-     });
-          };
-        }
+}
       } else if (index === dialogMessages.length - 1) {
         startTestButton.classList.remove('hidden');
       }
     }
   }
 }, 50);
-  
-  // Анимация появления каждой строки диалога с задержкой в 0.8 секунды.
-  // function showDialog() {
-  // const text = dialogMessages[index];
-  // const words = text.split(" ");
-  // const lines = [];
-
-  // for (let i = 0; i < words.length; i += 3) {
-  // lines.push(words.slice(i, i + 3).join(" "));
-  // }
-
-  // dialogText.innerHTML = ''; // очистка
-
-  // lines.forEach((line, i) => {
-  // const span = document.createElement("span");
-  // span.textContent = line;
-  // span.className = "dialog-line";
-  // span.style.animationDelay = `${i * 0.8}s`;
-  // dialogText.appendChild(span);
-  // });
-
-  // if (index === dialogMessages.length - 1) {
-  // nextDialog.classList.add('hidden');
-  // startTestButton.classList.remove('hidden');
-  // }
-  // }
 
 const bgMusic = new Audio('media/music.mp3');
 bgMusic.loop = true;
