@@ -34,16 +34,16 @@ body {
   visibility: hidden;
 }
 
-.neon-text {
-  color: #fff; /* Основной цвет текста */
-  font-weight: bold;
+.soft-outline-text {
+  color: #fff8dc; /* кремовый (blanched almond / cornsilk) */
   font-size: 22px;
+  font-weight: bold;
   text-shadow:
-    0 0 5px #0f0,
-    0 0 10px #0f0,
-    0 0 20px #0f0,
-    0 0 40px #0f0,
-    0 0 80px #0f0;
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 2px 5px rgba(0, 0, 0, 0.3); /* лёгкая тень вниз */
 }
 
 .nav-button {
