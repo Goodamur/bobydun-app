@@ -21,6 +21,11 @@ body {
   justify-content: center;
 }
 
+.loading-text.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .nav-button {
   opacity: 1;
   transition: opacity 0.5s ease-in;
@@ -35,7 +40,7 @@ body {
   font-size: 24px;
   color: #333;
   margin-top: 20px;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 
@@ -44,7 +49,9 @@ body {
 }
 
 .hidden {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .logo {
