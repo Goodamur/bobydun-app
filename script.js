@@ -55,31 +55,53 @@ const resultDialogs = {
   mid: ["Уже кое-что знаешь!", "Советую пройти\nкурс по безопасности.", "Но ты можешь\nвыбрать любой сам!"],
   high: ["Ты явно в теме! 🔥", "Советую сразу идти\nв технический анализ!", "Но ты волен\nвыбрать любой курс!"]
 };
-
-function showDialog() {
+  function showDialog() {
   const text = dialogMessages[index];
-  const words = text.split(" ");
-  const lines = [];
+  const target = document.getElementById('dialog-text');
+  target.textContent = ''; // очищаем текст перед выводом
+  let charIndex = 0;
 
-  for (let i = 0; i < words.length; i += 3) {
-    lines.push(words.slice(i, i + 3).join(" "));
-  }
+  const interval = setInterval(() => {
+    if (charIndex < text.length) {
+      target.textContent += text[charIndex];
+      charIndex++;
+    } else {
+      clearInterval(interval);
 
-  dialogText.innerHTML = ''; // очистка
-
-  lines.forEach((line, i) => {
-    const span = document.createElement("span");
-    span.textContent = line;
-    span.className = "dialog-line";
-    span.style.animationDelay = `${i * 0.8}s`;
-    dialogText.appendChild(span);
-  });
-
-  if (index === dialogMessages.length - 1) {
-    nextDialog.classList.add('hidden');
-    startTestButton.classList.remove('hidden');
-  }
+      // Показываем кнопки после последнего текста
+      if (index === dialogMessages.length - 1) {
+        nextDialog.classList.add('hidden');
+        startTestButton.classList.remove('hidden');
+      }
+    }
+  }, 50); // скорость печати (мс)
 }
+
+  // Анимация появления каждой строки диалога с задержкой в 0.8 секунды.
+  // function showDialog() {
+  // const text = dialogMessages[index];
+  // const words = text.split(" ");
+  // const lines = [];
+
+  // for (let i = 0; i < words.length; i += 3) {
+  // lines.push(words.slice(i, i + 3).join(" "));
+  // }
+
+  // dialogText.innerHTML = ''; // очистка
+
+  // lines.forEach((line, i) => {
+  // const span = document.createElement("span");
+  // span.textContent = line;
+  // span.className = "dialog-line";
+  // span.style.animationDelay = `${i * 0.8}s`;
+  // dialogText.appendChild(span);
+  // });
+
+  // if (index === dialogMessages.length - 1) {
+  // nextDialog.classList.add('hidden');
+  // startTestButton.classList.remove('hidden');
+  // }
+  // }
 
 const bgMusic = new Audio('media/music.mp3');
 bgMusic.loop = true;
