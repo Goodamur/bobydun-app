@@ -72,6 +72,17 @@ body {
   animation: blink 1s infinite;
 }
 
+.styled-text {
+  color: #fff; /* Светлый цвет текста */
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* Чёрный контур вокруг текста */
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
