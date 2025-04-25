@@ -20,7 +20,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const bgMusic = new Audio('media/music.mp3');
   bgMusic.loop = true;
   bgMusic.volume = 0.2;
+  
+const muteButton = document.getElementById('mute-button');
 
+muteButton.onclick = () => {
+  if (bgMusic.muted) {
+    bgMusic.muted = false;
+    muteButton.textContent = '🔈';
+  } else {
+    bgMusic.muted = true;
+    muteButton.textContent = '🔇';
+  }
+};
 
   const dialogMessages = [
     "Привет! Рад тебя видеть.",
