@@ -105,21 +105,27 @@ muteButton.onclick = () => {
           // Показать кнопку "Поехали"
           carButton.classList.remove('hidden');
          carButton.onclick = () => {
-  // Скрываем кнопку "Поехали"
-  carButton.classList.add('hidden');
+  // Скрываем текст кнопки
+  carButton.innerHTML = '';
+  carButton.style.background = 'none'; // Убираем фон кнопки
+  carButton.style.border = 'none'; // Убираем рамку кнопки
 
   // Добавляем изображение машины
-  carButton.innerHTML = `<img src="media/car.png" alt="car" id="car-image" class="car-animation">`;
-
-  // Получаем элемент изображения машины
-  const carImage = document.getElementById('car-image');
+  const carImage = document.createElement('img');
+  carImage.src = 'media/car.png';
+  carImage.alt = 'car';
+  carImage.className = 'car-animation';
+  carButton.appendChild(carImage);
 
   // Добавляем обработчик окончания анимации
   carImage.addEventListener('animationend', () => {
-    carButton.classList.add('hidden'); // Скрываем кнопку полностью
-    index++; // Переходим к следующему диалогу
+    // Удаляем машину и кнопку
+    carButton.style.display = 'none';
+
+    // Переходим к следующему диалогу
+    index++;
     if (index < dialogMessages.length) {
-      showDialog(); // Показываем следующий диалог
+      showDialog();
     }
   }, { once: true });
 };
