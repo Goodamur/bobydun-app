@@ -98,27 +98,27 @@ muteButton.onclick = () => {
       } else {
         clearInterval(interval);
 
-        // Проверка на текст "Нажми кнопку 'Поехали', если хочешь узнать все секреты"
+        // Если текущий диалог включает текст для показа кнопки "Поехали"
         if (fullText.includes("Нажми кнопку 'Поехали', если хочешь узнать все секреты")) {
           carButton.classList.remove('hidden');
           carButton.onclick = () => {
             carButton.classList.add('animate');
+            // После нажатия на "Поехали" продолжаем диалог
             carButton.addEventListener('animationend', () => {
               carButton.classList.add('hidden');
-              welcomeScreen.classList.add('hidden');
-              testScreen.classList.remove('hidden');
-              index = 0;
-              showQuestion();
+              nextDialog.classList.add('show'); // Включаем кнопку "Далее"
             }, { once: true });
           };
         } else if (index === dialogMessages.length - 1) {
-          nextDialog.classList.add('show');
+          // Если это последний диалог, показываем кнопку "Начать тест"
+          startTestButton.classList.remove('hidden');
         } else {
-          nextDialog.classList.add('show');
+          nextDialog.classList.add('show'); // Показываем кнопку "Далее" для продолжения
         }
       }
     }
   }, 50);
+
   nextDialog.onclick = () => {
     index++;
     if (index < dialogMessages.length) {
