@@ -262,10 +262,16 @@ function changeBackgroundAndCharacter() {
   }
 
   startTestButton.onclick = () => {
+  // Проверяем, виден ли экран приветствия
+  if (welcomeScreen.classList.contains('hidden')) {
+    console.error('Экран приветствия уже скрыт. Анимация не будет выполнена.');
+    return;
+  }
+
   // Добавляем анимацию размытия для экрана приветствия
   welcomeScreen.classList.add('blur-out');
 
-  // Ждём завершения анимации
+  // Ждём завершения анимации размытия
   welcomeScreen.addEventListener(
     'animationend',
     () => {
