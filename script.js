@@ -138,18 +138,21 @@ function showDialog() {
   }, 50);
 
   // Смена фона и персонажа после экрана с кнопкой "Поехали"
-  if (index === 5) { // Индекс следующего диалога после "Поехали"
-    const screen = document.querySelector('.screen'); // Получаем элемент экрана
-    if (screen) {
-      screen.style.backgroundImage = "url('media/background2.png')"; // Меняем фон
-    }
-
-    const character = document.querySelector('.character'); // Получаем элемент персонажа
-    if (character) {
-      character.src = 'media/character_class.png'; // Меняем изображение персонажа
-    }
+if (index === 5) { // Индекс следующего диалога после "Поехали"
+  const screen = document.querySelector('.screen'); // Получаем элемент экрана
+  if (screen) {
+    screen.style.backgroundImage = "url('media/background2.jpg')"; // Меняем фон
+    screen.style.backgroundSize = "cover"; // Убеждаемся, что фон растянут
+    screen.style.backgroundPosition = "center"; // Центрируем фон
+  } else {
+    console.error("Элемент '.screen' не найден!");
   }
 
+  const character = document.querySelector('.character'); // Получаем элемент персонажа
+  if (character) {
+    character.src = 'media/character_class.png'; // Меняем изображение персонажа
+  }
+}
   nextDialog.onclick = () => {
     index++;
     if (index < dialogMessages.length) {
