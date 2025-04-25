@@ -123,21 +123,23 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!carButton.dataset.bound) {
               carButton.dataset.bound = 'true';
 
-              carButton.onclick = () => {
-                carButton.classList.add('hidden');
+            carButton.onclick = () => {
+            // Добавляем класс для анимации кнопки
+            carButton.classList.add('animate');
 
-                const carImage = document.createElement('img');
-                carImage.src = 'media/car.png';
-                carImage.className = 'car-image';
+              // Событие после окончания анимации
+            carButton.addEventListener('animationend', () => {
+              // Скрываем кнопку после завершения анимации
+              carButton.classList.add('hidden');
 
-                welcomeScreen.appendChild(carImage);
-
-                carImage.addEventListener('animationend', () => {
-                  welcomeScreen.classList.add('hidden');
-                  testScreen.classList.remove('hidden');
-                  index = 0;
-                  showQuestion();
-                });
+              // Переход на следующий экран
+            welcomeScreen.classList.add('hidden');
+            testScreen.classList.remove('hidden');
+    
+                // Начинаем следующий этап (например, вопросы)
+                index = 0;
+                showQuestion();
+                }, { once: true }); // Обработчик срабатывает только один раз
               };
             }
           } else if (index === dialogMessages.length - 1) {
