@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }, safeDelay);
     }
 
-    const showCarButton = index === dialogMessages.length - 1 && fullText.includes("Жми 'Поехали'");
+    const showCarButton = index === dialogMessages.length - 1 && fullText.includes("Нажми кнопку 'Поехали', если хочешь узнать все секреты");
 
     const interval = setInterval(() => {
       if (charIndex < currentLine.length) {
