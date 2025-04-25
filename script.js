@@ -17,21 +17,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const startCourseButton = document.getElementById('start-course');
   const loadingText = document.getElementById('loading-text');
   const carButton = document.getElementById('car-button');
+  const muteButton = document.getElementById('mute-button');
   const bgMusic = new Audio('media/music.mp3');
   bgMusic.loop = true;
   bgMusic.volume = 0.2;
-  
-const muteButton = document.getElementById('mute-button');
 
-muteButton.onclick = () => {
-  if (bgMusic.muted) {
-    bgMusic.muted = false;
-    muteButton.textContent = '🔈';
-  } else {
-    bgMusic.muted = true;
-    muteButton.textContent = '🔇';
+  // Проверка наличия кнопки muteButton
+  if (muteButton) {
+    muteButton.onclick = () => {
+      if (bgMusic.muted) {
+        bgMusic.muted = false;
+        muteButton.textContent = '🔈';
+      } else {
+        bgMusic.muted = true;
+        muteButton.textContent = '🔇';
+      }
+    };
   }
-};
 
   const dialogMessages = [
     "Привет! Рад тебя видеть.",
@@ -52,7 +54,25 @@ muteButton.onclick = () => {
     high: ["Ты явно в теме! 🔥", "Советую сразу идти\nв технический анализ!", "Но ты волен\nвыбрать любой курс!"]
   };
 
-  // 🔸 Показ кнопки "Начать" через 3 секунды
+  const questions = [
+    {
+      text: "Что такое криптовалюта?",
+      answers: [
+        { text: "Электронные деньги", correct: true, score: 3 },
+        { text: "Физическая валюта", correct: false, score: 0 },
+        { text: "Ценные бумаги", correct: false, score: 0 }
+      ]
+    },
+    {
+      text: "Какая валюта считается первой криптовалютой?",
+      answers: [
+        { text: "Ethereum", correct: false, score: 0 },
+        { text: "Bitcoin", correct: true, score: 3 },
+        { text: "Litecoin", correct: false, score: 0 }
+      ]
+    }
+  ];
+
   setTimeout(() => {
     startButton.classList.remove('hidden-button');
     startButton.classList.add('show-button');
@@ -60,113 +80,61 @@ muteButton.onclick = () => {
   }, 3000);
 
   startButton.onclick = () => {
-    startButton.disabled = true; // блокируем повторное нажатие
-
-    // Визуальный эффект
+    startButton.disabled = true;
     startButton.classList.add('pressed');
-
-    // Запуск музыки
     setTimeout(() => {
-      bgMusic.play().catch((err) => {
-        console.error("Ошибка воспроизведения музыки:", err);
-      });
-
-      // Переключение экранов
+      bgMusic.play().catch((err) => console.error("Ошибка воспроизведения музыки:", err));
       loadingScreen.classList.add('hidden');
       welcomeScreen.classList.remove('hidden');
-
-      // Запуск первого диалога
       showDialog();
-    }, 150); // Задержка 150 мс
+    }, 150);
   };
 
   function showDialog() {
     const fullText = dialogMessages[index];
     const words = fullText.split(' ');
     const lines = [];
-
     for (let i = 0; i < words.length; i += 3) {
       lines.push(words.slice(i, i + 3).join(' '));
     }
-
-    const target = document.getElementById('dialog-text');
-    const nextDialog = document.getElementById('next-dialog');
-    const startTestButton = document.getElementById('start-test');
-    const carButton = document.getElementById('car-button');
-
-    target.innerHTML = '';
+    dialogText.innerHTML = '';
     nextDialog.classList.remove('show');
     startTestButton.classList.add('hidden');
     carButton.classList.add('hidden');
-
     let lineIndex = 0;
     let charIndex = 0;
     let currentLine = lines[lineIndex];
-
-    const totalDuration = lines.reduce((sum, line) => sum + line.length * 50 + 300, 0);
-    const safeDelay = Math.max(totalDuration - 1000, 0);
-
-    // Кнопка "Далее"
-    if (index !== dialogMessages.length - 1) {
-      setTimeout(() => {
-        nextDialog.classList.add('show');
-      }, safeDelay);
-    }
-
-    const showCarButton = index === dialogMessages.length - 1 && fullText.includes("Нажми кнопку 'Поехали', если хочешь узнать все секреты");
-
     const interval = setInterval(() => {
       if (charIndex < currentLine.length) {
-        target.innerHTML += currentLine[charIndex];
+        dialogText.innerHTML += currentLine[charIndex];
         charIndex++;
       } else {
-        target.innerHTML += '<br>';
+        dialogText.innerHTML += '<br>';
         lineIndex++;
         if (lineIndex < lines.length) {
           currentLine = lines[lineIndex];
           charIndex = 0;
         } else {
           clearInterval(interval);
-
-          if (showCarButton) {
-            nextDialog.classList.add('hidden');
+          if (index === dialogMessages.length - 1) {
             carButton.classList.remove('hidden');
-
-            // Назначаем событие только один раз
-            if (!carButton.dataset.bound) {
-              carButton.dataset.bound = 'true';
-
             carButton.onclick = () => {
-            // Добавляем класс для анимации кнопки
-            carButton.classList.add('animate');
-
-              // Событие после окончания анимации
-            carButton.addEventListener('animationend', () => {
-              // Скрываем кнопку после завершения анимации
-              carButton.classList.add('hidden');
-
-              // Переход на следующий экран
-            welcomeScreen.classList.add('hidden');
-            testScreen.classList.remove('hidden');
-    
-                // Начинаем следующий этап (например, вопросы)
+              carButton.classList.add('animate');
+              carButton.addEventListener('animationend', () => {
+                carButton.classList.add('hidden');
+                welcomeScreen.classList.add('hidden');
+                testScreen.classList.remove('hidden');
                 index = 0;
                 showQuestion();
-                }, { once: true }); // Обработчик срабатывает только один раз
-              };
-            }
-          } else if (index === dialogMessages.length - 1) {
-            startTestButton.classList.remove('hidden');
+              }, { once: true });
+            };
+          } else {
+            nextDialog.classList.add('show');
           }
         }
       }
     }, 50);
-
     nextDialog.onclick = () => {
-      if (bgMusic.paused) {
-        bgMusic.play().catch(e => console.log("⛔️ Музыка не запущена автоматически"));
-      }
-
       index++;
       if (index < dialogMessages.length) {
         showDialog();
@@ -178,23 +146,15 @@ muteButton.onclick = () => {
     const q = questions[index];
     questionText.textContent = q.text;
     answersDiv.innerHTML = '';
-
     q.answers.forEach(answer => {
       const btn = document.createElement('button');
       btn.textContent = answer.text;
       btn.className = 'answer';
       btn.onclick = () => {
-        // Добавление аудио-эффектов
         const sound = new Audio(answer.correct ? 'media/correct.mp3' : 'media/wrong.mp3');
         sound.play();
-
-        const feedback = document.createElement('span');
-        feedback.textContent = answer.correct ? '✅' : '❌';
-        btn.appendChild(feedback);
-
         score += answer.score;
         document.querySelectorAll('.answer').forEach(b => b.disabled = true);
-
         setTimeout(() => {
           index++;
           if (index >= questions.length) {
@@ -204,7 +164,6 @@ muteButton.onclick = () => {
           }
         }, 1200);
       };
-
       answersDiv.appendChild(btn);
     });
   }
@@ -212,13 +171,8 @@ muteButton.onclick = () => {
   function showResult() {
     testScreen.classList.add('hidden');
     resultScreen.classList.remove('hidden');
-
-    // Смена фона на экране результатов
-    resultScreen.style.backgroundImage = "url('media/congrats-bg.jpg')";
-
     let level = '';
     let dialogBlock = [];
-
     if (score <= 7) {
       level = "Новичок";
       dialogBlock = resultDialogs.low;
@@ -229,10 +183,7 @@ muteButton.onclick = () => {
       level = "Гений крипты";
       dialogBlock = resultDialogs.high;
     }
-
     resultText.textContent = `Ты набрал ${score} баллов. ${level}`;
-    
-    // Отображение тучки (bubble) с диалогами
     dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
   }
 
