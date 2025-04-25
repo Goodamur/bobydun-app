@@ -210,7 +210,7 @@ body {
 }
 
 .car-button.animate {
-  animation: driveAway 1.2s ease-out forwards;
+  animation: driveAway 3.2s ease-out forwards;
 }
 
 @keyframes driveAway {
