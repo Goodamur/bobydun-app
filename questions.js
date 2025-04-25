@@ -2,91 +2,155 @@ const questions = [
   {
     text: "Что такое криптовалюта?",
     answers: [
-      { text: "Цифровая валюта", score: 1, correct: true },
+      { text: "Игровая валюта", score: 0, correct: false },
       { text: "Бумажные деньги", score: 0, correct: false },
-      { text: "Подарочная карта", score: 0, correct: false },
+      { text: "Цыфровая валюта", score: 1, correct: true },
       { text: "Ценные бумаги", score: 0, correct: false }
     ]
   },
   {
     text: "Кто создатель Ethereum?",
     answers: [
-      { text: "Виталик Бутерин", score: 1, correct: true },
       { text: "Илон Маск", score: 0, correct: false },
+      { text: "Виталик Бутерин", score: 1, correct: true },
       { text: "Джонни Синс", score: 0, correct: false },
       { text: "CZ Binance", score: 0, correct: false }
     ]
   },
   {
-    text: "Что помогает избежать слива депозита?",
+    {
+    text: "Что правильно написанно про децентрализованную систему?",
     answers: [
-      { text: "Стоп-лосс", score: 1, correct: true },
-      { text: "Удача", score: 0, correct: false },
-      { text: "Интуиция", score: 0, correct: false },
-      { text: "Холд на всю", score: 0, correct: false }
+      { text: "Система управления одним органом", score: 0, correct: false },
+      { text: "Система быстрых фиатных переводов", score: 0, correct: false },
+      { text: "Система работающая без интернета", score: 0, correct: false },
+      { text: "Система управления сетью пользователей", score: 1, correct: true }
+    ]
+  },
+  {
+    text: "Что такое блокчейн?",
+    answers: [
+      { text: "Журнал записей про движение цены активов", score: 0, correct: false },
+      { text: "База данных биржи, с открытым доступом", score: 0, correct: false },
+      { text: "График роста курса", score: 0, correct: false },
+      { text: "Способ хранения и передачи данных в виде цепочки блоков", score: 1, correct: true }
     ]
   },
   {
     text: "Что такое FOMO?",
     answers: [
       { text: "Страх упустить выгоду", score: 1, correct: true },
-      { text: "Новый альткоин", score: 0, correct: false },
+      { text: "Альткоин", score: 0, correct: false },
       { text: "Тип блокчейна", score: 0, correct: false },
-      { text: "Формула майнинга", score: 0, correct: false }
+      { text: "Стратегия торговли", score: 0, correct: false }
     ]
   },
   {
-    text: "Когда лучше покупать?",
+    text: "Что такое сид-фраза?",
     answers: [
-      { text: "На панике", score: 1, correct: true },
-      { text: "Когда растёт", score: 0, correct: false },
-      { text: "Когда твитнул Маск", score: 0, correct: false },
-      { text: "На хаях", score: 0, correct: false }
+      { text: "Кодовое слово для покупки", score: 0, correct: false },
+      { text: "Кодовые цыфры, для восстановления аккаунта на бирже", score: 0, correct: false },
+      { text: "Набор слов, для восстановления кошелька", score: 1, correct: true },
+      { text: "Код токена", score: 0, correct: false }
     ]
   },
   {
     text: "Что главное в трейдинге?",
     answers: [
       { text: "Дисциплина", score: 1, correct: true },
-      { text: "Адреналин", score: 0, correct: false },
-      { text: "Удача", score: 0, correct: false },
-      { text: "Мемы", score: 0, correct: false }
+      { text: "Знания", score: 0, correct: false },
+      { text: "Стратегия", score: 0, correct: false },
+      { text: "Отслеживать новости", score: 0, correct: false }
     ]
   },
   {
     text: "Что такое холодное хранение?",
     answers: [
-      { text: "Оффлайн-кошелёк", score: 1, correct: true },
-      { text: "Биржа", score: 0, correct: false },
-      { text: "Трейдинг в шортах", score: 0, correct: false },
-      { text: "Хранение на YouTube", score: 0, correct: false }
+      { text: "Онлайн-кошелёк", score: 0, correct: false },
+      { text: "Кошелек внутри биржы", score: 0, correct: false },
+      { text: "Структурное накоплениен активов", score: 0, correct: false },
+      { text: "Оффлайн-кошелёк", score: 1, correct: true }
     ]
   },
   {
     text: "Что НЕ является биржей?",
     answers: [
       { text: "Binance", score: 0, correct: false },
-      { text: "KuCoin", score: 0, correct: false },
+      { text: "ByBitBoks", score: 1, correct: true },
       { text: "PancakeSwap", score: 0, correct: false },
-      { text: "CryptoShaurma", score: 1, correct: true }
+      { text: "KuCoin", score: 0, correct: false }
     ]
   },
   {
     text: "Сколько процентов от депозита стоит рисковать в одной сделке?",
     answers: [
       { text: "1-2%", score: 1, correct: true },
-      { text: "10-20%", score: 0, correct: false },
-      { text: "50%", score: 0, correct: false },
-      { text: "Всё сразу", score: 0, correct: false }
+      { text: "4-6%", score: 0, correct: false },
+      { text: "5-10%", score: 0, correct: false },
+      { text: "10-20%", score: 0, correct: false }
+    ]
+  },
+   {
+    text: "Что такое свечной график?",
+    answers: [
+      { text: "Тренд цены", score: 0, correct: false },
+      { text: "Открытие, закрытие, максимум, минимум", score: 1, correct: true },
+      { text: "Анимация стоимости", score: 0, correct: false },
+      { text: "График установки свечей в церкви", score: 0, correct: false }
     ]
   },
   {
-    text: "Сколько ты уже в крипте?",
+    text: "Какие существуют типы ордеров на бирже?",
     answers: [
-      { text: "Только начал", score: 0, correct: false },
-      { text: "До 6 мес", score: 0, correct: false },
-      { text: "1-2 года", score: 1, correct: false },
-      { text: "Больше 2 лет", score: 2, correct: true }
+      { text: "Limit, Market, Stop", score: 1, correct: true },
+      { text: "Stop, Buy, Sell", score: 0, correct: false },
+      { text: "Market, Block, Deferred", score: 0, correct: false },
+      { text: "Limit, Market", score: 0, correct: false }
+    ]
+ },
+   {
+    text: "Что такое токеномика?",
+    answers: [
+      { text: "Наука про токены", score: 0, correct: false },
+      { text: "Число NFT", score: 0, correct: false },
+      { text: "Способ майнинга", score: 0, correct: false },
+      { text: "Экономика токена", score: 1, correct: true }
+    ]
+  },
+  {
+    text: "Что такое стейкинг, фарминг и лаунчпулы?",
+    answers: [
+      { text: "Виды блокчейнов", score: 0, correct: false },
+      { text: "Типы торговых терминалов", score: 0, correct: false },
+      { text: "Способы пассивного дохода в криптовалюте", score: 1, correct: true },
+      { text: "Стили торговли", score: 0, correct: false }
+    ]
+  },
+   {
+    text: "Что такое Proof-of-Stake (PoS)?",
+    answers: [
+      { text: "Программное сопровождение торговли", score: 0, correct: false },
+      { text: "Стейкинг новых токенов", score: 0, correct: false },
+      { text: "Стейкинг для валидации блоков", score: 1, correct: true },
+      { text: "GPU майнинг альткоинов", score: 0, correct: false }
+    ]
+  },
+   {
+    text: "Как анализировать ликвидность на бирже?",
+    answers: [
+      { text: "Смотреть курс BTC", score: 0, correct: false },
+      { text: "Смотреть объемы, спреды и глубину стакана", score: 1, correct: true },
+      { text: "Следить за резкими разворотами цены", score: 0, correct: false },
+      { text: "По отзывам в Google", score: 0, correct: false }
+    ]
+  },
+   {
+    text: "Сколько ты изучаешь/торгуе на крипторынке?",
+    answers: [
+      { text: "Только начал", score: 1, correct: true },
+      { text: "До года", score: 2, correct: true },
+      { text: "Больше года", score: 3, correct: true },
+      { text: "больше 2х лет", score: 4, correct: true }
     ]
   }
 ];
