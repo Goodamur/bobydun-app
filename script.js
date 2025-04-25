@@ -150,17 +150,17 @@ function showDialog() {
 
 // Функция для смены фона и персонажа
 function changeBackgroundAndCharacter() {
-  console.log("Смена фона и персонажа (размытие)"); // Для отладки
+  console.log("Смена фона и персонажа (сдвиг)"); // Для отладки
 
   const screen = document.getElementById('welcome-screen'); // Выбираем конкретный экран
   const character = document.querySelector('.character'); // Находим персонажа
 
   if (screen && character) {
-    // Добавляем класс для размытия и исчезновения
-    screen.classList.add('blur-out');
-    character.classList.add('blur-out');
+    // Добавляем класс для сдвига и исчезновения
+    screen.classList.add('slide-out');
+    character.classList.add('slide-out');
 
-    // Ждём завершения анимации размытия
+    // Ждём завершения анимации сдвига
     setTimeout(() => {
       // Меняем фон
       screen.style.backgroundImage = "url('media/background2.jpg')";
@@ -170,12 +170,12 @@ function changeBackgroundAndCharacter() {
       // Меняем персонажа
       character.src = 'media/character_class.png';
 
-      // Убираем класс размытия и добавляем класс появления
-      screen.classList.remove('blur-out');
-      character.classList.remove('blur-out');
-      screen.classList.add('blur-in');
-      character.classList.add('blur-in');
-    }, 500); // Время совпадает с длительностью анимации blurOut
+      // Убираем класс сдвига и добавляем класс появления
+      screen.classList.remove('slide-out');
+      character.classList.remove('slide-out');
+      screen.classList.add('slide-in');
+      character.classList.add('slide-in');
+    }, 700); // Время совпадает с длительностью анимации slideOut
   } else {
     console.error("Элемент '#welcome-screen' или '.character' не найден!");
   }
