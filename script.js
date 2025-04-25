@@ -119,7 +119,10 @@ function showDialog() {
 
             // Добавляем обработчик окончания анимации
             carImage.addEventListener('animationend', () => {
-              // После завершения анимации переходим к следующему диалогу
+              // После завершения анимации меняем фон и персонажа
+              changeBackgroundAndCharacter();
+
+              // Переходим к следующему диалогу
               index++;
               if (index < dialogMessages.length) {
                 showDialog();
@@ -137,8 +140,17 @@ function showDialog() {
     }
   }, 50);
 
-  // Смена фона и персонажа после экрана с кнопкой "Поехали"
-if (index === 5) { // Индекс следующего диалога после "Поехали"
+  nextDialog.onclick = () => {
+    index++;
+    if (index < dialogMessages.length) {
+      showDialog();
+    }
+  };
+}
+
+// Функция для смены фона и персонажа
+function changeBackgroundAndCharacter() {
+  console.log("Смена фона и персонажа"); // Отладка
   const screen = document.querySelector('.screen'); // Получаем элемент экрана
   if (screen) {
     screen.style.backgroundImage = "url('media/background2.jpg')"; // Меняем фон
@@ -151,14 +163,9 @@ if (index === 5) { // Индекс следующего диалога посл�
   const character = document.querySelector('.character'); // Получаем элемент персонажа
   if (character) {
     character.src = 'media/character_class.png'; // Меняем изображение персонажа
+  } else {
+    console.error("Элемент '.character' не найден!");
   }
-}
-  nextDialog.onclick = () => {
-    index++;
-    if (index < dialogMessages.length) {
-      showDialog();
-    }
-  };
 }
   
   function showQuestion() {
