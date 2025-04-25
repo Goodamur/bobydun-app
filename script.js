@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const carButton = document.getElementById('car-button');
   const bgMusic = new Audio('media/music.mp3');
   bgMusic.loop = true;
+  bgMusic.volume = 0.5;
+
 
   const dialogMessages = [
     "Привет! Рад тебя видеть.",
