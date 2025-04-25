@@ -149,8 +149,12 @@ muteButton.onclick = () => {
       btn.textContent = answer.text;
       btn.className = 'answer';
       btn.onclick = () => {
+        // Добавление аудио-эффектов
         const sound = new Audio(answer.correct ? 'media/correct.mp3' : 'media/wrong.mp3');
         sound.play();
+        const feedback = document.createElement('span');
+        feedback.textContent = answer.correct ? '✅' : '❌';
+        btn.appendChild(feedback);
         score += answer.score;
         document.querySelectorAll('.answer').forEach(b => b.disabled = true);
         setTimeout(() => {
