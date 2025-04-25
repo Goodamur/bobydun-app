@@ -70,7 +70,7 @@ muteButton.onclick = () => {
     }, 150);
   };
 
- function showDialog() {
+function showDialog() {
   const fullText = dialogMessages[index];
   const words = fullText.split(' ');
   const lines = [];
@@ -104,7 +104,7 @@ muteButton.onclick = () => {
           nextDialog.classList.remove('show');
           // Показать кнопку "Поехали"
           carButton.classList.remove('hidden');
-         carButton.onclick = () => {
+          carButton.onclick = () => {
   // Скрываем текст кнопки
   carButton.innerHTML = '';
   carButton.style.background = 'none'; // Убираем фон кнопки
@@ -122,16 +122,27 @@ muteButton.onclick = () => {
     // После завершения анимации переходим к следующему диалогу
     index++;
     if (index < dialogMessages.length) {
-      showDialog();
-    }
-  }, { once: true });
-};
+                showDialog();
+              }
+            }, { once: true });
+          };
         } else if (index === dialogMessages.length - 1) {
           // Если это последний диалог, показываем кнопку "Начать тест"
           startTestButton.classList.remove('hidden');
         } else {
           // Для остальных диалогов показываем кнопку "Далее"
           nextDialog.classList.add('show');
+        }
+
+        // Смена фона и персонажа после экрана с кнопкой "Поехали"
+        if (index === 5) { // Индекс следующего диалога после "Поехали"
+          const screen = document.querySelector('.screen'); // Получаем элемент экрана
+          screen.style.backgroundImage = "url('media/background2.png')"; // Меняем фон
+
+          const character = document.querySelector('.character'); // Получаем элемент персонажа
+          if (character) {
+            character.src = 'media/character_class.png'; // Меняем изображение персонажа
+          }
         }
       }
     }
