@@ -150,17 +150,20 @@ function showDialog() {
 
 // Функция для смены фона и персонажа
 function changeBackgroundAndCharacter() {
-  console.log("Смена фона и персонажа"); // Отладка
-  const screen = document.querySelector('.screen'); // Получаем элемент экрана
+  console.log("Смена фона и персонажа"); // Для отладки
+
+  // Заменяем выбор элемента на более конкретный
+  const screen = document.getElementById('welcome-screen'); // Выбираем конкретный экран
   if (screen) {
     screen.style.backgroundImage = "url('media/background2.jpg')"; // Меняем фон
-    screen.style.backgroundSize = "cover"; // Убеждаемся, что фон растянут
+    screen.style.backgroundSize = "cover"; // Растягиваем фон
     screen.style.backgroundPosition = "center"; // Центрируем фон
   } else {
-    console.error("Элемент '.screen' не найден!");
+    console.error("Элемент '#welcome-screen' не найден!");
   }
 
-  const character = document.querySelector('.character'); // Получаем элемент персонажа
+  // Смена персонажа
+  const character = document.querySelector('.character'); // Находим персонажа
   if (character) {
     character.src = 'media/character_class.png'; // Меняем изображение персонажа
   } else {
