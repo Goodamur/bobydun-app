@@ -119,7 +119,28 @@ if (showCarButton) {
   // Назначаем один раз событие, чтобы не дублировалось при повторных вызовах showDialog
   if (!carButton.dataset.bound) {
     carButton.dataset.bound = 'true'; // чтобы не переназначать
-}
+    
+// Назначаем событие только один раз
+        if (!carButton.dataset.bound) {
+          carButton.dataset.bound = 'true';
+
+          carButton.onclick = () => {
+            carButton.classList.add('hidden');
+
+            const carImage = document.createElement('img');
+            carImage.src = 'media/car.png';
+            carImage.className = 'car-image';
+
+            welcomeScreen.appendChild(carImage);
+
+            carImage.addEventListener('animationend', () => {
+              welcomeScreen.classList.add('hidden');
+              testScreen.classList.remove('hidden');
+              index = 0;
+              showQuestion();
+            });
+          };
+        }
       } else if (index === dialogMessages.length - 1) {
         startTestButton.classList.remove('hidden');
       }
