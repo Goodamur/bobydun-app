@@ -457,11 +457,11 @@ body {
 
 /* Стили для кнопки "Начать тест" */
 #start-test {
-  border: 2px solid #ffffff; /* Тонкий белый контур */
+  border: 2px solid #000000; /* Чёрный контур */
   border-radius: 8px; /* Слегка закруглённые углы */
-  background: linear-gradient(145deg, #e6e6e6, #cfcfcf); /* Объёмный эффект с помощью градиента */
+  background: linear-gradient(145deg, #ffa500, #ff8c00); /* Оранжевый градиент */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); /* Тени для объёма */
-  color: #ffffff; /* Светлый текст */
+  color: #ffffa0; /* Светло-жёлтый текст */
   text-shadow: 1px 1px 2px #000000; /* Чёрная обводка текста */
   font-style: italic; /* Косой текст */
   font-size: 18px; /* Размер шрифта кнопки */
@@ -473,14 +473,14 @@ body {
 
 /* Эффект при наведении на кнопку */
 #start-test:hover {
-  background: linear-gradient(145deg, #cfcfcf, #e6e6e6); /* Инверсия градиента */
+  background: linear-gradient(145deg, #ff8c00, #ffa500); /* Инверсия градиента */
   box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), -6px -6px 12px rgba(255, 255, 255, 0.3); /* Усиление теней */
   transform: scale(1.05); /* Увеличение кнопки */
 }
 
 /* Эффект при нажатии */
 #start-test:active {
-  background: linear-gradient(145deg, #b8b8b8, #d9d9d9); /* Более тёмный градиент */
+  background: linear-gradient(145deg, #e07b00, #ff7f00); /* Более тёмный градиент */
   box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.3); /* Внутренние тени */
   transform: scale(0.98); /* Лёгкое уменьшение кнопки */
 }
