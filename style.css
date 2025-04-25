@@ -424,33 +424,34 @@ body {
   cursor: pointer;
 }
 
-/* Анимация размытия */
-.blur-out {
-  animation: blurOut 0.5s forwards;
+/* Анимация сдвига и исчезновения */
+.slide-out {
+  animation: slideOut 0.7s forwards ease-in-out;
 }
 
-@keyframes blurOut {
+@keyframes slideOut {
   from {
     opacity: 1;
-    filter: blur(0px);
+    transform: translateX(0);
   }
   to {
     opacity: 0;
-    filter: blur(10px);
+    transform: translateX(-100%);
   }
 }
 
-.blur-in {
-  animation: blurIn 0.5s forwards;
+/* Анимация сдвига и появления */
+.slide-in {
+  animation: slideIn 0.7s forwards ease-in-out;
 }
 
-@keyframes blurIn {
+@keyframes slideIn {
   from {
     opacity: 0;
-    filter: blur(10px);
+    transform: translateX(100%);
   }
   to {
     opacity: 1;
-    filter: blur(0px);
+    transform: translateX(0);
   }
 }
