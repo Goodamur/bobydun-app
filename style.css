@@ -227,7 +227,6 @@ body {
   }
 }
 
-/* Анимация движения вправо с потрясыванием */
 @keyframes move-right-and-shake {
   0% { transform: translateX(0) rotate(0); }
   10% { transform: translateX(10px) rotate(-2deg); }
@@ -239,12 +238,19 @@ body {
   70% { transform: translateX(70px) rotate(1deg); }
   80% { transform: translateX(80px) rotate(-1deg); }
   90% { transform: translateX(90px) rotate(1deg); }
-  100% { transform: translateX(120px) rotate(0); opacity: 0; }
+  100% { transform: translateX(200%) rotate(0); opacity: 0; } /* Уезжает и исчезает */
 }
 
-/* Применение анимации для изображения */
+/* Стиль для анимации машины */
 .car-animation {
-  animation: move-right-and-shake 1s ease forwards;
+  width: 100px; /* Размер машины */
+  height: auto;
+  animation: move-right-and-shake 1.5s ease forwards; /* Добавляем анимацию */
+}
+
+/* Скрытие кнопки */
+.car-button.hidden {
+  display: none; /* Полностью скрываем кнопку */
 }
 
 .loading-text {
