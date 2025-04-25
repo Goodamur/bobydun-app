@@ -4,7 +4,7 @@ const questions = [
     answers: [
       { text: "Игровая валюта", score: 0, correct: false },
       { text: "Бумажные деньги", score: 0, correct: false },
-      { text: "Цыфровая валюта", score: 1, correct: true },
+      { text: "Цифровая валюта", score: 1, correct: true },
       { text: "Ценные бумаги", score: 0, correct: false }
     ]
   },
@@ -17,9 +17,8 @@ const questions = [
       { text: "CZ Binance", score: 0, correct: false }
     ]
   },
-  {
     {
-    text: "Что правильно написанно про децентрализованную систему?",
+    text: "Что правильно написано про децентрализованную систему?",
     answers: [
       { text: "Система управления одним органом", score: 0, correct: false },
       { text: "Система быстрых фиатных переводов", score: 0, correct: false },
@@ -49,7 +48,7 @@ const questions = [
     text: "Что такое сид-фраза?",
     answers: [
       { text: "Кодовое слово для покупки", score: 0, correct: false },
-      { text: "Кодовые цыфры, для восстановления аккаунта на бирже", score: 0, correct: false },
+      { text: "Кодовые Цифры, для восстановления аккаунта на бирже", score: 0, correct: false },
       { text: "Набор слов, для восстановления кошелька", score: 1, correct: true },
       { text: "Код токена", score: 0, correct: false }
     ]
@@ -67,8 +66,8 @@ const questions = [
     text: "Что такое холодное хранение?",
     answers: [
       { text: "Онлайн-кошелёк", score: 0, correct: false },
-      { text: "Кошелек внутри биржы", score: 0, correct: false },
-      { text: "Структурное накоплениен активов", score: 0, correct: false },
+      { text: "Кошелёк внутри биржы", score: 0, correct: false },
+      { text: "Структурное накопление активов", score: 0, correct: false },
       { text: "Оффлайн-кошелёк", score: 1, correct: true }
     ]
   },
@@ -76,7 +75,7 @@ const questions = [
     text: "Что НЕ является биржей?",
     answers: [
       { text: "Binance", score: 0, correct: false },
-      { text: "ByBitBoks", score: 1, correct: true },
+      { text: "ByBetBox", score: 1, correct: true },
       { text: "PancakeSwap", score: 0, correct: false },
       { text: "KuCoin", score: 0, correct: false }
     ]
@@ -150,7 +149,7 @@ const questions = [
       { text: "Только начал", score: 1, correct: true },
       { text: "До года", score: 2, correct: true },
       { text: "Больше года", score: 3, correct: true },
-      { text: "больше 2х лет", score: 4, correct: true }
+      { text: "Больше 2-х лет", score: 4, correct: true }
     ]
   }
 ];
