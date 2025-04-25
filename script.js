@@ -114,7 +114,7 @@ muteButton.onclick = () => {
   const carImage = document.createElement('img');
   carImage.src = 'media/car.png';
   carImage.alt = 'car';
-  carImage.className = 'car-animation';
+  carImage.className = 'car-animation'; // Применяем анимацию
   carButton.appendChild(carImage);
 
   // Добавляем обработчик окончания анимации
