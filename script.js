@@ -114,16 +114,12 @@ function showDialog() {
       charIndex = 0;
     } else {
       clearInterval(interval);
-  
-if (showCarButton) {
-  nextDialog.classList.add('hidden');
-  carButton.classList.remove('hidden');
 
-  // Назначаем один раз событие, чтобы не дублировалось при повторных вызовах showDialog
-  if (!carButton.dataset.bound) {
-    carButton.dataset.bound = 'true'; // чтобы не переназначать
-    
-// Назначаем событие только один раз
+      if (showCarButton) {
+        nextDialog.classList.add('hidden');
+        carButton.classList.remove('hidden');
+
+        // Назначаем событие только один раз
         if (!carButton.dataset.bound) {
           carButton.dataset.bound = 'true';
 
@@ -150,6 +146,7 @@ if (showCarButton) {
     }
   }
 }, 50);
+
 
 nextDialog.onclick = () => {
   if (bgMusic.paused) {
