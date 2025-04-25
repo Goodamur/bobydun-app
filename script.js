@@ -261,49 +261,63 @@ function changeBackgroundAndCharacter() {
     dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
   }
 
- startTestButton.onclick = () => {
+startTestButton.onclick = () => {
   console.log("Кнопка 'Начать тест' нажата");
 
   // Добавляем анимацию размытия для экрана приветствия
   welcomeScreen.classList.add('blur-out');
   console.log("Анимация 'blur-out' добавлена для welcomeScreen");
 
+  // Резервный таймер для завершения анимации в случае сбоя
+  const animationTimeout = setTimeout(() => {
+    console.log("Резервный таймер: Анимация 'blur-out' завершена (таймер)");
+    transitionToTestScreen();
+  }, 500); // Длительность анимации blur-out
+
   // Ждём завершения анимации размытия
   welcomeScreen.addEventListener(
     'animationend',
     function handleBlurOut() {
-      console.log("Анимация 'blur-out' завершена");
-
-      // Скрываем экран приветствия
-      welcomeScreen.classList.add('hidden');
-      welcomeScreen.classList.remove('blur-out');
-      console.log("Экран приветствия скрыт");
-
-      // Показываем экран теста с анимацией появления
-      testScreen.classList.remove('hidden');
-      testScreen.classList.add('blur-in');
-      console.log("Экран теста показан с анимацией 'blur-in'");
-
-      // Убираем класс анимации после завершения
-      testScreen.addEventListener(
-        'animationend',
-        function handleBlurIn() {
-          testScreen.classList.remove('blur-in');
-          console.log("Класс 'blur-in' удалён с экрана теста");
-        },
-        { once: true }
-      );
-
-      // Сбрасываем индекс и показываем первый вопрос
-      index = 0;
-      console.log("Индекс вопросов сброшен, вызывается showQuestion()");
-      showQuestion();
+      console.log("Анимация 'blur-out' завершена (событие)");
+      clearTimeout(animationTimeout); // Очищаем резервный таймер
+      transitionToTestScreen();
 
       // Убираем слушатель анимации, чтобы избежать дублирования
       welcomeScreen.removeEventListener('animationend', handleBlurOut);
     },
     { once: true }
   );
+
+  function transitionToTestScreen() {
+    // Скрываем экран приветствия
+    welcomeScreen.classList.add('hidden');
+    welcomeScreen.classList.remove('blur-out');
+    console.log("Экран приветствия скрыт");
+
+    // Показываем экран теста с анимацией появления
+    testScreen.classList.remove('hidden');
+    testScreen.classList.add('blur-in');
+    console.log("Экран теста показан с анимацией 'blur-in'");
+
+    // Убираем класс анимации после завершения
+    testScreen.addEventListener(
+      'animationend',
+      function handleBlurIn() {
+        testScreen.classList.remove('blur-in');
+        console.log("Класс 'blur-in' удалён с экрана теста");
+      },
+      { once: true }
+    );
+
+    // Сбрасываем индекс и показываем первый вопрос
+    if (typeof questions !== 'undefined' && questions.length > 0) {
+      index = 0;
+      console.log("Индекс вопросов сброшен, вызывается showQuestion()");
+      showQuestion();
+    } else {
+      console.error("Массив 'questions' не определён или пустой!");
+    }
+  }
 };
   
 startCourseButton.onclick = () => {
