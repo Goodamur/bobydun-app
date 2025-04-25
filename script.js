@@ -262,13 +262,39 @@ function changeBackgroundAndCharacter() {
   }
 
   startTestButton.onclick = () => {
-    welcomeScreen.classList.add('hidden');
-    testScreen.classList.remove('hidden');
-    index = 0;
-    showQuestion();
-  };
+  // Добавляем анимацию размытия для экрана приветствия
+  welcomeScreen.classList.add('blur-out');
 
-  startCourseButton.onclick = () => {
-    alert('Переход к обучению...');
-  };
+  // Ждём завершения анимации
+  welcomeScreen.addEventListener(
+    'animationend',
+    () => {
+      // Скрываем экран приветствия
+      welcomeScreen.classList.add('hidden');
+      welcomeScreen.classList.remove('blur-out');
+
+      // Показываем экран теста с анимацией появления
+      testScreen.classList.remove('hidden');
+      testScreen.classList.add('blur-in');
+
+      // Убираем класс анимации после завершения
+      testScreen.addEventListener(
+        'animationend',
+        () => {
+          testScreen.classList.remove('blur-in');
+        },
+        { once: true }
+      );
+
+      // Сбрасываем индекс и показываем первый вопрос
+      index = 0;
+      showQuestion();
+    },
+    { once: true }
+  );
+};
+
+startCourseButton.onclick = () => {
+  alert('Переход к обучению...');
+};
 });
