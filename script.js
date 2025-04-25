@@ -70,50 +70,62 @@ muteButton.onclick = () => {
     }, 150);
   };
 
-  function showDialog() {
-    const fullText = dialogMessages[index];
-    const words = fullText.split(' ');
-    const lines = [];
-    for (let i = 0; i < words.length; i += 3) {
-      lines.push(words.slice(i, i + 3).join(' '));
-    }
-    dialogText.innerHTML = '';
-    nextDialog.classList.remove('show');
-    startTestButton.classList.add('hidden');
-    carButton.classList.add('hidden');
-    let lineIndex = 0;
-    let charIndex = 0;
-    let currentLine = lines[lineIndex];
-    const interval = setInterval(() => {
-      if (charIndex < currentLine.length) {
-        dialogText.innerHTML += currentLine[charIndex];
-        charIndex++;
+ function showDialog() {
+  const fullText = dialogMessages[index];
+  const words = fullText.split(' ');
+  const lines = [];
+  for (let i = 0; i < words.length; i += 3) {
+    lines.push(words.slice(i, i + 3).join(' '));
+  }
+  dialogText.innerHTML = '';
+  nextDialog.classList.remove('show');
+  startTestButton.classList.add('hidden');
+  carButton.classList.add('hidden');
+  let lineIndex = 0;
+  let charIndex = 0;
+  let currentLine = lines[lineIndex];
+
+  const interval = setInterval(() => {
+    if (charIndex < currentLine.length) {
+      dialogText.innerHTML += currentLine[charIndex];
+      charIndex++;
+    } else {
+      dialogText.innerHTML += '<br>';
+      lineIndex++;
+      if (lineIndex < lines.length) {
+        currentLine = lines[lineIndex];
+        charIndex = 0;
       } else {
-        dialogText.innerHTML += '<br>';
-        lineIndex++;
-        if (lineIndex < lines.length) {
-          currentLine = lines[lineIndex];
-          charIndex = 0;
+        clearInterval(interval);
+
+        // Проверка на текст "Нажми кнопку 'Поехали', если хочешь узнать все секреты"
+        if (fullText.includes("Нажми кнопку 'Поехали', если хочешь узнать все секреты")) {
+          carButton.classList.remove('hidden');
+          carButton.onclick = () => {
+            carButton.classList.add('animate');
+            carButton.addEventListener('animationend', () => {
+              carButton.classList.add('hidden');
+              welcomeScreen.classList.add('hidden');
+              testScreen.classList.remove('hidden');
+              index = 0;
+              showQuestion();
+            }, { once: true });
+          };
+        } else if (index === dialogMessages.length - 1) {
+          nextDialog.classList.add('show');
         } else {
-          clearInterval(interval);
-          if (index === dialogMessages.length - 1) {
-            carButton.classList.remove('hidden');
-            carButton.onclick = () => {
-              carButton.classList.add('animate');
-              carButton.addEventListener('animationend', () => {
-                carButton.classList.add('hidden');
-                welcomeScreen.classList.add('hidden');
-                testScreen.classList.remove('hidden');
-                index = 0;
-                showQuestion();
-              }, { once: true });
-            };
-          } else {
-            nextDialog.classList.add('show');
-          }
+          nextDialog.classList.add('show');
         }
       }
-    }, 50);
+    }
+  }, 50);
+  nextDialog.onclick = () => {
+    index++;
+    if (index < dialogMessages.length) {
+      showDialog();
+    }
+  };
+}
     nextDialog.onclick = () => {
       index++;
       if (index < dialogMessages.length) {
