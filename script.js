@@ -261,45 +261,48 @@ function changeBackgroundAndCharacter() {
     dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
   }
 
-  startTestButton.onclick = () => {
-  // Проверяем, виден ли экран приветствия
-  if (welcomeScreen.classList.contains('hidden')) {
-    console.error('Экран приветствия уже скрыт. Анимация не будет выполнена.');
-    return;
-  }
+ startTestButton.onclick = () => {
+  console.log("Кнопка 'Начать тест' нажата"); // Для отладки
 
   // Добавляем анимацию размытия для экрана приветствия
   welcomeScreen.classList.add('blur-out');
+  console.log("Анимация 'blur-out' добавлена для welcomeScreen");
 
   // Ждём завершения анимации размытия
   welcomeScreen.addEventListener(
     'animationend',
     () => {
+      console.log("Анимация 'blur-out' завершена");
+
       // Скрываем экран приветствия
       welcomeScreen.classList.add('hidden');
       welcomeScreen.classList.remove('blur-out');
+      console.log("Экран приветствия скрыт");
 
       // Показываем экран теста с анимацией появления
       testScreen.classList.remove('hidden');
       testScreen.classList.add('blur-in');
+      console.log("Экран теста показан с анимацией 'blur-in'");
 
       // Убираем класс анимации после завершения
       testScreen.addEventListener(
         'animationend',
         () => {
           testScreen.classList.remove('blur-in');
+          console.log("Анимация 'blur-in' завершена");
         },
         { once: true }
       );
 
       // Сбрасываем индекс и показываем первый вопрос
       index = 0;
+      console.log("Индекс вопросов сброшен, вызывается showQuestion()");
       showQuestion();
     },
     { once: true }
   );
 };
-
+  
 startCourseButton.onclick = () => {
   alert('Переход к обучению...');
 };
