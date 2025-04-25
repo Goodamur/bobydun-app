@@ -105,23 +105,23 @@ function showDialog() {
           // Показать кнопку "Поехали"
           carButton.classList.remove('hidden');
           carButton.onclick = () => {
-  // Скрываем текст кнопки
-  carButton.innerHTML = '';
-  carButton.style.background = 'none'; // Убираем фон кнопки
-  carButton.style.border = 'none'; // Убираем рамку кнопки
+            // Скрываем текст кнопки
+            carButton.innerHTML = '';
+            carButton.style.background = 'none'; // Убираем фон кнопки
+            carButton.style.border = 'none'; // Убираем рамку кнопки
 
-  // Добавляем изображение машины
-  const carImage = document.createElement('img');
-  carImage.src = 'media/car.png';
-  carImage.alt = 'car';
-  carImage.className = 'car-animation'; // Применяем анимацию
-  carButton.appendChild(carImage);
+            // Добавляем изображение машины
+            const carImage = document.createElement('img');
+            carImage.src = 'media/car.png';
+            carImage.alt = 'car';
+            carImage.className = 'car-animation'; // Применяем анимацию
+            carButton.appendChild(carImage);
 
-  // Добавляем обработчик окончания анимации
-  carImage.addEventListener('animationend', () => {
-    // После завершения анимации переходим к следующему диалогу
-    index++;
-    if (index < dialogMessages.length) {
+            // Добавляем обработчик окончания анимации
+            carImage.addEventListener('animationend', () => {
+              // После завершения анимации переходим к следующему диалогу
+              index++;
+              if (index < dialogMessages.length) {
                 showDialog();
               }
             }, { once: true });
@@ -133,20 +133,22 @@ function showDialog() {
           // Для остальных диалогов показываем кнопку "Далее"
           nextDialog.classList.add('show');
         }
-
-        // Смена фона и персонажа после экрана с кнопкой "Поехали"
-        if (index === 5) { // Индекс следующего диалога после "Поехали"
-          const screen = document.querySelector('.screen'); // Получаем элемент экрана
-          screen.style.backgroundImage = "url('media/background2.png')"; // Меняем фон
-
-          const character = document.querySelector('.character'); // Получаем элемент персонажа
-          if (character) {
-            character.src = 'media/character_class.png'; // Меняем изображение персонажа
-          }
-        }
       }
     }
   }, 50);
+
+  // Смена фона и персонажа после экрана с кнопкой "Поехали"
+  if (index === 5) { // Индекс следующего диалога после "Поехали"
+    const screen = document.querySelector('.screen'); // Получаем элемент экрана
+    if (screen) {
+      screen.style.backgroundImage = "url('media/background2.png')"; // Меняем фон
+    }
+
+    const character = document.querySelector('.character'); // Получаем элемент персонажа
+    if (character) {
+      character.src = 'media/character_class.png'; // Меняем изображение персонажа
+    }
+  }
 
   nextDialog.onclick = () => {
     index++;
@@ -155,7 +157,7 @@ function showDialog() {
     }
   };
 }
-
+  
   function showQuestion() {
     const q = questions[index];
     questionText.textContent = q.text;
