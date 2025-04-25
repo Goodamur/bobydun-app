@@ -454,3 +454,33 @@ body {
     filter: blur(0px);
   }
 }
+
+/* Стили для кнопки "Начать тест" */
+#start-test {
+  border: 2px solid #ffffff; /* Тонкий белый контур */
+  border-radius: 8px; /* Слегка закруглённые углы */
+  background: linear-gradient(145deg, #e6e6e6, #cfcfcf); /* Объёмный эффект с помощью градиента */
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); /* Тени для объёма */
+  color: #ffffff; /* Светлый текст */
+  text-shadow: 1px 1px 2px #000000; /* Чёрная обводка текста */
+  font-style: italic; /* Косой текст */
+  font-size: 18px; /* Размер шрифта кнопки */
+  font-weight: bold; /* Жирный текст */
+  padding: 10px 20px; /* Внутренние отступы */
+  cursor: pointer; /* Указатель при наведении */
+  transition: all 0.3s ease; /* Плавный переход эффектов */
+}
+
+/* Эффект при наведении на кнопку */
+#start-test:hover {
+  background: linear-gradient(145deg, #cfcfcf, #e6e6e6); /* Инверсия градиента */
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), -6px -6px 12px rgba(255, 255, 255, 0.3); /* Усиление теней */
+  transform: scale(1.05); /* Увеличение кнопки */
+}
+
+/* Эффект при нажатии */
+#start-test:active {
+  background: linear-gradient(145deg, #b8b8b8, #d9d9d9); /* Более тёмный градиент */
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.3); /* Внутренние тени */
+  transform: scale(0.98); /* Лёгкое уменьшение кнопки */
+}
