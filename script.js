@@ -18,22 +18,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const loadingText = document.getElementById('loading-text');
   const carButton = document.getElementById('car-button');
   const muteButton = document.getElementById('mute-button');
+  const muteIcon = document.getElementById('mute-icon');
   const bgMusic = new Audio('media/music.mp3');
   bgMusic.loop = true;
   bgMusic.volume = 0.2;
 
-  // Проверка наличия кнопки muteButton
-  if (muteButton) {
-    muteButton.onclick = () => {
-      if (bgMusic.muted) {
-        bgMusic.muted = false;
-        muteButton.textContent = '🔈';
-      } else {
-        bgMusic.muted = true;
-        muteButton.textContent = '🔇';
-      }
-    };
+muteButton.onclick = () => {
+  if (bgMusic.muted) {
+    bgMusic.muted = false;
+    muteIcon.src = 'media/sound-on.png';
+  } else {
+    bgMusic.muted = true;
+    muteIcon.src = 'media/sound-off.png';
   }
+};
 
   const dialogMessages = [
     "Привет! Рад тебя видеть.",
