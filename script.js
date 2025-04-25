@@ -119,10 +119,7 @@ muteButton.onclick = () => {
 
   // Добавляем обработчик окончания анимации
   carImage.addEventListener('animationend', () => {
-    // Удаляем машину и кнопку
-    carButton.style.display = 'none';
-
-    // Переходим к следующему диалогу
+    // После завершения анимации переходим к следующему диалогу
     index++;
     if (index < dialogMessages.length) {
       showDialog();
