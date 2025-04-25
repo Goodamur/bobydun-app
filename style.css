@@ -230,7 +230,7 @@ body {
 /* Анимация движения вправо с потрясыванием */
 @keyframes move-right-and-shake {
   0% {
-    transform: translateX(0) rotate(0);
+    transform: translateX(0) rotate(0); /* Начальное положение */
   }
   33% {
     transform: translateX(0) rotate(0); /* Остаётся на месте первые 1 секунду */
@@ -253,12 +253,8 @@ body {
   93% {
     transform: translateX(60px) rotate(-1deg);
   }
-  96% {
-    transform: translateX(200%) rotate(0); /* Уезжает вправо */
-  }
   100% {
-    transform: translateX(200%) rotate(0);
-    opacity: 0;
+    transform: translateX(120vw) rotate(0); /* Заезжает за границу экрана вправо */
   }
 }
 
@@ -267,11 +263,6 @@ body {
   width: 100px; /* Размер машины */
   height: auto;
   animation: move-right-and-shake 3s ease forwards; /* Общее время анимации 3 секунды */
-}
-
-/* Скрытие кнопки */
-.car-button.hidden {
-  display: none;
 }
 
 .loading-text {
