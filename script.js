@@ -262,7 +262,7 @@ function changeBackgroundAndCharacter() {
   }
 
  startTestButton.onclick = () => {
-  console.log("Кнопка 'Начать тест' нажата"); // Для отладки
+  console.log("Кнопка 'Начать тест' нажата");
 
   // Добавляем анимацию размытия для экрана приветствия
   welcomeScreen.classList.add('blur-out');
@@ -271,7 +271,7 @@ function changeBackgroundAndCharacter() {
   // Ждём завершения анимации размытия
   welcomeScreen.addEventListener(
     'animationend',
-    () => {
+    function handleBlurOut() {
       console.log("Анимация 'blur-out' завершена");
 
       // Скрываем экран приветствия
@@ -287,9 +287,9 @@ function changeBackgroundAndCharacter() {
       // Убираем класс анимации после завершения
       testScreen.addEventListener(
         'animationend',
-        () => {
+        function handleBlurIn() {
           testScreen.classList.remove('blur-in');
-          console.log("Анимация 'blur-in' завершена");
+          console.log("Класс 'blur-in' удалён с экрана теста");
         },
         { once: true }
       );
@@ -298,6 +298,9 @@ function changeBackgroundAndCharacter() {
       index = 0;
       console.log("Индекс вопросов сброшен, вызывается showQuestion()");
       showQuestion();
+
+      // Убираем слушатель анимации, чтобы избежать дублирования
+      welcomeScreen.removeEventListener('animationend', handleBlurOut);
     },
     { once: true }
   );
