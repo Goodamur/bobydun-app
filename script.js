@@ -126,13 +126,6 @@ muteButton.onclick = () => {
     }
   };
 }
-    nextDialog.onclick = () => {
-      index++;
-      if (index < dialogMessages.length) {
-        showDialog();
-      }
-    };
-  }
 
   function showQuestion() {
     const q = questions[index];
