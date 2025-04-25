@@ -59,15 +59,43 @@ muteButton.onclick = () => {
     loadingText.classList.add('hidden');
   }, 3000);
 
+  // Обновлённый обработчик для кнопки "Start"
   startButton.onclick = () => {
     startButton.disabled = true;
     startButton.classList.add('pressed');
-    setTimeout(() => {
-      bgMusic.play().catch((err) => console.error("Ошибка воспроизведения музыки:", err));
-      loadingScreen.classList.add('hidden');
-      welcomeScreen.classList.remove('hidden');
-      showDialog();
-    }, 150);
+
+    // Добавляем анимацию Slide and Fade
+    loadingScreen.classList.add('slide-out'); // Анимация исчезновения экрана загрузки
+
+    // Ждём завершения анимации
+    loadingScreen.addEventListener(
+      'animationend',
+      () => {
+        // Скрываем экран загрузки
+        loadingScreen.classList.add('hidden');
+        loadingScreen.classList.remove('slide-out');
+
+        // Переход к экрану приветствия
+        welcomeScreen.classList.remove('hidden');
+        welcomeScreen.classList.add('slide-in'); // Анимация появления экрана приветствия
+
+        // Убираем класс анимации после завершения
+        welcomeScreen.addEventListener(
+          'animationend',
+          () => {
+            welcomeScreen.classList.remove('slide-in');
+          },
+          { once: true }
+        );
+
+        // Запускаем музыку
+        bgMusic.play().catch((err) => console.error("Ошибка воспроизведения музыки:", err));
+
+        // Показываем первый диалог
+        showDialog();
+      },
+      { once: true }
+    );
   };
 
 function showDialog() {
