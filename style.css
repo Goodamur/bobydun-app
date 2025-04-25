@@ -423,3 +423,34 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
+
+/* Анимация размытия */
+.blur-out {
+  animation: blurOut 0.5s forwards;
+}
+
+@keyframes blurOut {
+  from {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+.blur-in {
+  animation: blurIn 0.5s forwards;
+}
+
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
