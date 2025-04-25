@@ -202,7 +202,7 @@ body {
   border: 2px solid #000;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.4s;
+  transition: transform 3.4s;
 }
 
 .car-button.hidden {
