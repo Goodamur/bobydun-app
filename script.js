@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const carButton = document.getElementById('car-button');
   const bgMusic = new Audio('media/music.mp3');
   bgMusic.loop = true;
-  bgMusic.volume = 0.5;
+  bgMusic.volume = 0.2;
 
 
   const dialogMessages = [
