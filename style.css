@@ -171,27 +171,16 @@ body {
   color: #000;
   border: 2px solid #000;
   font-weight: bold;
-  font-size: 16px;
   cursor: pointer;
-  opacity: 0;
   transition: transform 0.4s;
-  z-index: 5;
 }
 
-.car-button:not(.hidden) {
-  opacity: 1;
-  visibility: visible;
+.car-button.hidden {
+  display: none;
 }
 
-.car-image {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  width: 120px;
-  height: auto;
-  transform: translateX(-50%);
+.car-button.animate {
   animation: driveAway 1.2s ease-out forwards;
-  z-index: 10;
 }
 
 @keyframes driveAway {
