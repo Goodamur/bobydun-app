@@ -64,6 +64,16 @@ startButton.onclick = () => {
   startButton.disabled = true; // Отключаем кнопку после нажатия
   startButton.classList.add('pressed'); // Добавляем класс для анимации
 
+  // Попытка воспроизведения музыки
+  bgMusic.play()
+    .then(() => {
+      console.log("Музыка успешно запущена");
+    })
+    .catch((err) => {
+      console.error("Ошибка воспроизведения музыки:", err);
+      alert("Не удалось воспроизвести музыку. Пожалуйста, проверьте настройки браузера.");
+    });
+
   // Добавляем анимацию Slide and Fade для экрана загрузки
   loadingScreen.classList.add('slide-out');
 
