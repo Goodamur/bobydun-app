@@ -344,8 +344,6 @@ function changeBackgroundAndCharacter() {
   
   // Проверяем наличие welcomeScreen перед использованием
 if (welcomeScreen) {
-  console.error("Элемент 'welcome-screen' не найден!");
-  return;
   welcomeScreen.classList.add('blur-out');
   console.log("Анимация 'blur-out' добавлена для welcomeScreen");
 
@@ -354,7 +352,7 @@ if (welcomeScreen) {
     console.log("Резервный таймер: Анимация 'blur-out' завершена (таймер)");
     transitionToTestScreen();
   }, 500); // Длительность анимации blur-out
-
+ }
   // Ждём завершения анимации размытия
   welcomeScreen.addEventListener(
     'animationend',
@@ -367,7 +365,7 @@ if (welcomeScreen) {
       welcomeScreen.removeEventListener('animationend', handleBlurOut);
     },
     { once: true }
-  );
+   );
 
 // Функция перехода к экрану теста
 function transitionToTestScreen() {
