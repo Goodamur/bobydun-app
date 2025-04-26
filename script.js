@@ -60,7 +60,7 @@ muteButton.onclick = () => {
   }, 3000);
 
   // Обновлённый обработчик для кнопки "Start"
- startButton.onclick = () => {
+startButton.onclick = () => {
   startButton.disabled = true; // Отключаем кнопку после нажатия
   startButton.classList.add('pressed'); // Добавляем класс для анимации
 
@@ -75,29 +75,52 @@ muteButton.onclick = () => {
       loadingScreen.classList.add('hidden');
       loadingScreen.classList.remove('slide-out');
 
-      // Переход к экрану приветствия
-      welcomeScreen.classList.remove('hidden');
-      welcomeScreen.classList.add('slide-in');
+      // Переход к экрану выбора языка
+      const languageScreen = document.getElementById('language-screen');
+      languageScreen.classList.remove('hidden');
+      languageScreen.classList.add('slide-in');
 
       // Убираем класс анимации после завершения
-      welcomeScreen.addEventListener(
+      languageScreen.addEventListener(
         'animationend',
         () => {
-          welcomeScreen.classList.remove('slide-in');
+          languageScreen.classList.remove('slide-in');
         },
         { once: true }
       );
-
-      // Запускаем музыку
-      bgMusic.play().catch((err) => console.error("Ошибка воспроизведения музыки:", err));
-
-      // Показываем первый диалог
-      showDialog();
     },
     { once: true }
   );
 };
 
+// Обработчики выбора языка
+document.getElementById('language-en').onclick = () => {
+  console.log("Язык выбран: English");
+  transitionToWelcomeScreen();
+};
+
+document.getElementById('language-ru').onclick = () => {
+  console.log("Язык выбран: Русский");
+  transitionToWelcomeScreen();
+};
+
+// Функция перехода на экран приветствия
+function transitionToWelcomeScreen() {
+  const languageScreen = document.getElementById('language-screen');
+  languageScreen.classList.add('hidden');
+
+  // Переход к экрану приветствия
+  welcomeScreen.classList.remove('hidden');
+  welcomeScreen.classList.add('slide-in');
+  welcomeScreen.addEventListener(
+    'animationend',
+    () => {
+      welcomeScreen.classList.remove('slide-in');
+      showDialog(); // Показываем первый диалог
+    },
+    { once: true }
+  );
+}
 function showDialog() {
   const fullText = dialogMessages[index];
   const words = fullText.split(' ');
