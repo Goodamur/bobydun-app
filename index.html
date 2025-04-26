@@ -3,55 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bob Dun Interactive App">
   <title>Bob Dun</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@1,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="path/to/favicon.ico" />
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
- <button id="mute-button" class="mute-toggle">
-  <img id="mute-icon" src="media/sound-on.png" alt="Mute Icon">
-</button>
-  <!-- Loading Screen -->
-<div id="loading-screen" class="screen">
-  <div class="loading-container">
-    <img src="media/logo.png" alt="Bob Dun Logo" class="logo">
-    <p id="loading-text" class="loading-text">Loading...</p> 
-   <button id="start-button" class="nav-button hidden-button">
-  <img src="media/startButton.png" alt="Start">
-</button>
-  </div>
-</div>
+  <button id="mute-button" class="mute-toggle">
+    <img id="mute-icon" src="media/sound-on.png" alt="Mute Icon">
+  </button>
 
-<!-- Language Selection Screen -->
-<div id="language-screen" class="screen hidden">
-  <h2>Language:</h2>
-  <button class="language-button" data-lang="ru">
-  <img src="media/LanguageButton(Ru).png" alt="Русский">
-</button>
-<button class="language-button" data-lang="en">
-  <img src="media/LanguageButton(En).png" alt="English">
-</button>
-<button class="language-button" data-lang="ua">
-  <img src="media/LanguageButton(Ua).png" alt="Українська">
-</button>
-</div>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="screen">
+    <div class="loading-container">
+      <img src="media/logo.png" alt="Bob Dun Logo" class="logo">
+      <p id="loading-text" class="loading-text">Loading...</p> 
+      <button id="start-button" class="nav-button hidden-button">
+        <img src="media/startButton.png" alt="Start Button">
+      </button>
+    </div>
+  </div>
+
+  <!-- Language Selection Screen -->
+  <div id="language-screen" class="screen hidden">
+    <h2>Language:</h2>
+    <button class="language-button" data-lang="ru">
+      <img src="media/LanguageButton(Ru).png" alt="Русский">
+    </button>
+    <button class="language-button" data-lang="en">
+      <img src="media/LanguageButton(En).png" alt="English">
+    </button>
+    <button class="language-button" data-lang="ua">
+      <img src="media/LanguageButton(Ua).png" alt="Українська">
+    </button>
+  </div>
   
   <!-- Welcome Screen -->
-<div id="welcome-screen" class="screen hidden">
-  <img src="media/character.png" alt="Boby Dun" class="character">
-  <div class="dialog-box">
-    <p id="dialog-text" class="soft-outline-text"></p>
-  </div>
-
- <button id="car-button" class="car-button hidden">
-  <img src="media/carButton.png" alt="Поехали">
-</button>
-  <button id="next-dialog" class="nav-button">Далее</button>
-  <button id="start-test" class="nav-button hidden">
-    <img src="media/startTestButton.png" alt="Начать тест">
-  </button>
-</div> 
+  <div id="welcome-screen" class="screen hidden">
+    <img src="media/character.png" alt="Boby Dun" class="character">
+    <div id="dialog-box" class="dialog-box">
+      <p id="dialog-text" class="soft-outline-text"></p>
+    </div>
+    <button id="car-button" class="car-button hidden">
+      <img src="media/carButton.png" alt="Поехали">
+    </button>
+    <button id="next-dialog" class="nav-button">Далее</button>
+    <button id="start-test" class="nav-button hidden">
+      <img src="media/startTestButton.png" alt="Начать тест">
+    </button>
+  </div> 
   
   <!-- Test Screen -->
   <div id="test-screen" class="screen hidden">
@@ -62,23 +64,20 @@
     </div>
   </div>
 
- <!-- Result Screen -->
-<div id="result-screen" class="screen hidden">
-  <img src="media/character_happy.png" alt="Happy Boby" class="character">
-  <div id="result-box" class="result-box">
-    <p id="result-text" class="soft-outline-text"></p>
-    <div id="dialog-box" class="dialog-box"></div>
-    <button id="nextButton">Поехали</button>
-    <button id="start-course">Начать обучение</button>
-  </div> <!-- ← закрытие result-box -->
-</div> <!-- ← закрытие result-screen -->
+  <!-- Result Screen -->
+  <div id="result-screen" class="screen hidden">
+    <img src="media/character_happy.png" alt="Happy Boby" class="character">
+    <div id="result-box" class="result-box">
+      <p id="result-text" class="soft-outline-text"></p>
+      <div id="result-dialog-box" class="dialog-box"></div> <!-- Изменен id -->
+      <button id="nextButton">Поехали</button>
+      <button id="start-course">Начать обучение</button>
+    </div>
+  </div>
 
-<link rel="icon" href="path/to/favicon.ico" />
-  
-<!-- Подключение скрипта -->
-<script src="translations.js"></script>
-<script src="script.js"></script>
-<script src="questions.js"></script>  
+  <!-- Подключение скриптов -->
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+  <script src="questions.js"></script>  
 </body>
 </html>
-
