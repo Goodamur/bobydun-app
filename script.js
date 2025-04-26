@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Обработчик для кнопки "Начать тест"
-  if (startTestButton) {
+ if (startTestButton) {
   startTestButton.onclick = () => {
     console.log("Кнопка 'Начать тест' нажата");
 
@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
 } else {
   console.error("Элемент с id 'start-test' не найден в DOM!");
 }
+  
   // Функция для изменения языка
   function setLanguage(lang) {
     if (!translations[lang]) {
