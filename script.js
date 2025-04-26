@@ -344,6 +344,8 @@ function changeBackgroundAndCharacter() {
   
   // Проверяем наличие welcomeScreen перед использованием
 if (welcomeScreen) {
+  console.error("Элемент 'welcome-screen' не найден!");
+  return;
   welcomeScreen.classList.add('blur-out');
   console.log("Анимация 'blur-out' добавлена для welcomeScreen");
 
@@ -366,9 +368,6 @@ if (welcomeScreen) {
     },
     { once: true }
   );
-} else {
-  console.error("Элемент 'welcomeScreen' не найден!");
-}
 
 // Функция перехода к экрану теста
 function transitionToTestScreen() {
