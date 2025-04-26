@@ -79,37 +79,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Обработчик для кнопки "Начать тест"
   if (startTestButton) {
-    startTestButton.onclick = () => {
-      console.log("Кнопка 'Начать тест' нажата");
+  startTestButton.onclick = () => {
+    console.log("Кнопка 'Начать тест' нажата");
 
-      // Добавляем анимацию размытия для экрана приветствия
-      welcomeScreen.classList.add('blur-out');
-      console.log("Анимация 'blur-out' добавлена для welcomeScreen");
+    // Добавляем анимацию размытия для экрана приветствия
+    welcomeScreen.classList.add('blur-out');
+    console.log("Анимация 'blur-out' добавлена для welcomeScreen");
 
-      // Резервный таймер для завершения анимации в случае сбоя
-      const animationTimeout = setTimeout(() => {
-        console.log("Резервный таймер: Анимация 'blur-out' завершена (таймер)");
+    // Резервный таймер для завершения анимации в случае сбоя
+    const animationTimeout = setTimeout(() => {
+      console.log("Резервный таймер: Анимация 'blur-out' завершена (таймер)");
+      transitionToTestScreen();
+    }, 500); // Длительность анимации blur-out
+
+    // Ждём завершения анимации размытия
+    welcomeScreen.addEventListener(
+      'animationend',
+      function handleBlurOut() {
+        console.log("Анимация 'blur-out' завершена (событие)");
+        clearTimeout(animationTimeout); // Очищаем резервный таймер
         transitionToTestScreen();
-      }, 500); // Длительность анимации blur-out
 
-      // Ждём завершения анимации размытия
-      welcomeScreen.addEventListener(
-        'animationend',
-        function handleBlurOut() {
-          console.log("Анимация 'blur-out' завершена (событие)");
-          clearTimeout(animationTimeout); // Очищаем резервный таймер
-          transitionToTestScreen();
-
-          // Убираем слушатель анимации, чтобы избежать дублирования
-          welcomeScreen.removeEventListener('animationend', handleBlurOut);
-        },
-        { once: true }
-      );
-    };
-  } else {
-    console.error("Элемент с id 'start-test' не найден в DOM!");
-  }
-
+        // Убираем слушатель анимации, чтобы избежать дублирования
+        welcomeScreen.removeEventListener('animationend', handleBlurOut);
+      },
+      { once: true }
+    );
+  };
+} else {
+  console.error("Элемент с id 'start-test' не найден в DOM!");
+}
   // Функция для изменения языка
   function setLanguage(lang) {
     if (!translations[lang]) {
