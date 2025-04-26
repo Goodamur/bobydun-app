@@ -342,9 +342,6 @@ function changeBackgroundAndCharacter() {
     dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
   }
 
-startTestButton.onclick = () => {
-  console.log("Кнопка 'Начать тест' нажата");
-
   // Добавляем анимацию размытия для экрана приветствия
   welcomeScreen.classList.add('blur-out');
   console.log("Анимация 'blur-out' добавлена для welcomeScreen");
