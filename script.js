@@ -36,33 +36,30 @@ document.addEventListener('DOMContentLoaded', function () {
   }, 3000);
 
   // Обновлённый обработчик для кнопки "Start"
- if (startButton) {
-  startButton.onclick = () => {
-    startButton.disabled = true;
-    startButton.classList.add('pressed');
+  if (startButton) {
+    startButton.onclick = () => {
+      startButton.disabled = true;
+      startButton.classList.add('pressed');
 
-    // Попытка воспроизведения музыки
-    bgMusic.play()
-      .then(() => {
-        console.log("Музыка успешно запущена");
-      })
-      .catch((err) => {
-        console.error("Ошибка воспроизведения музыки:", err);
-        alert("Не удалось воспроизвести музыку. Пожалуйста, проверьте настройки браузера.");
-      });
+      // Попытка воспроизведения музыки
+      bgMusic.play()
+        .then(() => {
+          console.log("Музыка успешно запущена");
+        })
+        .catch((err) => {
+          console.error("Ошибка воспроизведения музыки:", err);
+          alert("Не удалось воспроизвести музыку. Пожалуйста, проверьте настройки браузера.");
+        });
 
-    // Добавляем анимацию Slide and Fade для экрана загрузки
-    loadingScreen.classList.add('slide-out');
+      // Добавляем анимацию Slide and Fade для экрана загрузки
+      if (loadingScreen) {
+        loadingScreen.classList.add('slide-out');
+        loadingScreen.addEventListener('animationend', () => {
+          loadingScreen.classList.add('hidden');
+          loadingScreen.classList.remove('slide-out');
 
-    // Ждём завершения анимации
-    if (loadingScreen) {
-      loadingScreen.classList.add('slide-out');
-      loadingScreen.addEventListener('animationend', () => {
-        loadingScreen.classList.add('hidden');
-        loadingScreen.classList.remove('slide-out');
-        
-        // Переход к экрану выбора языка
-       const languageScreen = document.getElementById('language-screen');
+          // Переход к экрану выбора языка
+          const languageScreen = document.getElementById('language-screen');
           if (languageScreen) {
             languageScreen.classList.remove('hidden');
             languageScreen.classList.add('slide-in');
@@ -149,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   });
 });
-}); 
   
   // Показываем экран с кнопкой "Start" через 3 секунды
   setTimeout(() => {
