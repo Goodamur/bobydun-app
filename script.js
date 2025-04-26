@@ -342,7 +342,6 @@ function changeBackgroundAndCharacter() {
     dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
   }
   
-  // Добавляем анимацию размытия для экрана приветствия
   // Проверяем наличие welcomeScreen перед использованием
 if (welcomeScreen) {
   welcomeScreen.classList.add('blur-out');
@@ -408,13 +407,4 @@ function transitionToTestScreen() {
   } else {
     console.error("Массив 'questions' не определён или пустой!");
   }
-}
-
-// Проверяем наличие startCourseButton перед использованием
-if (startCourseButton) {
-  startCourseButton.onclick = () => {
-    alert("Переход к обучению...");
-  };
-} else {
-  console.error("Элемент с id 'start-course' не найден в DOM!");
 }
