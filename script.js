@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function ()=> {
   let currentLanguage = 'ru'; // Язык по умолчанию
   let index = 0;
   let score = 0;
 
-  const startButton = document.getElementById('start-button');
+   const startButton = document.getElementById('start-button');
   const loadingScreen = document.getElementById('loading-screen');
   const welcomeScreen = document.getElementById('welcome-screen');
   const testScreen = document.getElementById('test-screen');
@@ -91,39 +91,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Функция обновления текста на экране
 function updateTextContent() {
-  const translation = translations[currentLanguage];
-  if (!translation) {
-    console.error(`Переводы для языка ${currentLanguage} не найдены!`);
-    return;
-  }
-
-  // Пример для заголовков и кнопок
-  document.getElementById('welcome-text').textContent = translation.welcome || 'Добро пожаловать!';
-  document.getElementById('start-test').textContent = translation.startTest || 'Начать тест';
-  document.getElementById('language-title').textContent = translation.chooseLanguage || 'Выберите язык';
-
-  // Обновление диалогов
-  if (typeof dialogMessages !== 'undefined') {
-    dialogMessages = translation.dialogMessages || []; // Обновляем массив диалогов
-  }
-}
-
-// Делегирование событий для кнопок выбора языка
-document.querySelectorAll('.language-button').forEach(button => {
-  button.onclick = () => {
-    const lang = button.dataset.lang; // Получаем язык из атрибута data-lang
-    if (!lang) {
-      console.error('Атрибут data-lang отсутствует у кнопки!');
+    const translation = translations[currentLanguage];
+    if (!translation) {
+      console.error(`Переводы для языка ${currentLanguage} не найдены!`);
       return;
     }
 
-    // Устанавливаем язык и обновляем интерфейс
-    setLanguage(lang);
-    console.log(`Язык выбран: ${translations[lang]?.welcome ?? 'неизвестный язык'}`);
+    const welcomeText = document.getElementById('welcome-text');
+    const startTest = document.getElementById('start-test');
+    const languageTitle = document.getElementById('language-title');
 
-    // Переход на экран приветствия
-    transitionToWelcomeScreen();
-  };
+    if (welcomeText) {
+      welcomeText.textContent = translation.welcome || 'Добро пожаловать!';
+    }
+
+    if (startTest) {
+      startTest.textContent = translation.startTest || 'Начать тест';
+    }
+
+    if (languageTitle) {
+      languageTitle.textContent = translation.chooseLanguage || 'Выберите язык';
+    }
+
+    if (typeof dialogMessages !== 'undefined') {
+      dialogMessages = translation.dialogMessages || [];
+    }
+  }
+  
+// Делегирование событий для кнопок выбора языка
+ document.querySelectorAll('.language-button').forEach(button => {
+    button.onclick = () => {
+      const lang = button.dataset.lang;
+      if (!lang) {
+        console.error("Атрибут data-lang отсутствует у кнопки!");
+        return;
+      }
+      setLanguage(lang);
+    };
+  });
 });
 
 // Обработчик DOMContentLoaded
