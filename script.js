@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  let currentLanguage = 'ru'; // Язык по умолчанию
   let index = 0;
   let score = 0;
 
@@ -35,9 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }, 3000);
 
   // Обновлённый обработчик для кнопки "Start"
+ if (startButton) {
   startButton.onclick = () => {
-    startButton.disabled = true; // Отключаем кнопку после нажатия
-    startButton.classList.add('pressed'); // Добавляем класс для анимации
+    startButton.disabled = true;
+    startButton.classList.add('pressed');
 
     // Попытка воспроизведения музыки
     bgMusic.play()
@@ -53,38 +55,30 @@ document.addEventListener('DOMContentLoaded', function () {
     loadingScreen.classList.add('slide-out');
 
     // Ждём завершения анимации
-    loadingScreen.addEventListener(
-      'animationend',
-      () => {
-        // Скрываем экран загрузки
+    if (loadingScreen) {
+      loadingScreen.classList.add('slide-out');
+      loadingScreen.addEventListener('animationend', () => {
         loadingScreen.classList.add('hidden');
         loadingScreen.classList.remove('slide-out');
-
+        
         // Переход к экрану выбора языка
-        const languageScreen = document.getElementById('language-screen');
-        languageScreen.classList.remove('hidden');
-        languageScreen.classList.add('slide-in');
-
-        // Убираем класс анимации после завершения
-        languageScreen.addEventListener(
-          'animationend',
-          () => {
-            languageScreen.classList.remove('slide-in');
-          },
-          { once: true }
-        );
-      },
-      { once: true }
-    );
-  };
+       const languageScreen = document.getElementById('language-screen');
+          if (languageScreen) {
+            languageScreen.classList.remove('hidden');
+            languageScreen.classList.add('slide-in');
+          }
+        }, { once: true });
+      }
+    };
+  }
 
   // Обработчик кнопки "Mute"
-  muteButton.onclick = () => {
-    bgMusic.muted = !bgMusic.muted;
-    muteIcon.src = bgMusic.muted ? 'media/sound-off.png' : 'media/sound-on.png';
-  };
-
-  let currentLanguage = 'ru'; // Язык по умолчанию
+ if (muteButton) {
+    muteButton.onclick = () => {
+      bgMusic.muted = !bgMusic.muted;
+      muteIcon.src = bgMusic.muted ? 'media/sound-off.png' : 'media/sound-on.png';
+    };
+  }
 
   // Функция для изменения языка
  function setLanguage(lang) {
@@ -100,14 +94,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Функция обновления текста на экране
 function updateTextContent() {
+  const translation = translations[currentLanguage];
+  if (!translation) {
+    console.error(`Переводы для языка ${currentLanguage} не найдены!`);
+    return;
+  }
+
   // Пример для заголовков и кнопок
-  document.getElementById('welcome-text').textContent = translations[currentLanguage].welcome;
-  document.getElementById('start-test').textContent = translations[currentLanguage].startTest;
-  document.getElementById('language-title').textContent = translations[currentLanguage].chooseLanguage;
+  document.getElementById('welcome-text').textContent = translation.welcome || 'Добро пожаловать!';
+  document.getElementById('start-test').textContent = translation.startTest || 'Начать тест';
+  document.getElementById('language-title').textContent = translation.chooseLanguage || 'Выберите язык';
 
   // Обновление диалогов
   if (typeof dialogMessages !== 'undefined') {
-    dialogMessages = translations[currentLanguage].dialogMessages; // Обновляем массив диалогов
+    dialogMessages = translation.dialogMessages || []; // Обновляем массив диалогов
   }
 }
 
@@ -128,12 +128,6 @@ document.querySelectorAll('.language-button').forEach(button => {
     transitionToWelcomeScreen();
   };
 });
-
-// Обработчик кнопки "Mute"
-muteButton.onclick = () => {
-  bgMusic.muted = !bgMusic.muted;
-  muteIcon.src = bgMusic.muted ? 'media/sound-off.png' : 'media/sound-on.png';
-};
 
 // Обработчик DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -176,16 +170,20 @@ function transitionToWelcomeScreen() {
   languageScreen.classList.add('hidden');
 
   // Переход к экрану приветствия
-  welcomeScreen.classList.remove('hidden');
-  welcomeScreen.classList.add('slide-in');
-  welcomeScreen.addEventListener(
-    'animationend',
-    () => {
-      welcomeScreen.classList.remove('slide-in');
-      showDialog(); // Показываем первый диалог
-    },
-    { once: true }
-  );
+  if (welcomeScreen) {
+    welcomeScreen.classList.remove('hidden');
+    welcomeScreen.classList.add('slide-in');
+    welcomeScreen.addEventListener(
+      'animationend',
+      () => {
+        welcomeScreen.classList.remove('slide-in');
+        showDialog(); // Показываем первый диалог
+      },
+      { once: true }
+    );
+  } else {
+    console.error("Элемент 'welcome-screen' не найден!");
+  }
 }
   
 function showDialog() {
