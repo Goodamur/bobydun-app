@@ -23,58 +23,75 @@ document.addEventListener('DOMContentLoaded', function () {
   bgMusic.loop = true;
   bgMusic.volume = 0.2;
 
+  // Показываем кнопку "Start" через 3 секунды
+  setTimeout(() => {
+    if (startButton) {
+      startButton.classList.remove('hidden-button'); // Убираем скрытие
+      startButton.classList.add('show-button'); // Показываем кнопку
+    }
+    if (loadingText) {
+      loadingText.classList.add('hidden'); // Скрываем текст загрузки
+    }
+  }, 3000);
+
   // Обновлённый обработчик для кнопки "Start"
-startButton.onclick = () => {
-  startButton.disabled = true; // Отключаем кнопку после нажатия
-  startButton.classList.add('pressed'); // Добавляем класс для анимации
+  startButton.onclick = () => {
+    startButton.disabled = true; // Отключаем кнопку после нажатия
+    startButton.classList.add('pressed'); // Добавляем класс для анимации
 
-  // Попытка воспроизведения музыки
-  bgMusic.play()
-    .then(() => {
-      console.log("Музыка успешно запущена");
-    })
-    .catch((err) => {
-      console.error("Ошибка воспроизведения музыки:", err);
-      alert("Не удалось воспроизвести музыку. Пожалуйста, проверьте настройки браузера.");
-    });
+    // Попытка воспроизведения музыки
+    bgMusic.play()
+      .then(() => {
+        console.log("Музыка успешно запущена");
+      })
+      .catch((err) => {
+        console.error("Ошибка воспроизведения музыки:", err);
+        alert("Не удалось воспроизвести музыку. Пожалуйста, проверьте настройки браузера.");
+      });
 
-  // Добавляем анимацию Slide and Fade для экрана загрузки
-  loadingScreen.classList.add('slide-out');
+    // Добавляем анимацию Slide and Fade для экрана загрузки
+    loadingScreen.classList.add('slide-out');
 
-  // Ждём завершения анимации
-  loadingScreen.addEventListener(
-    'animationend',
-    () => {
-      // Скрываем экран загрузки
-      loadingScreen.classList.add('hidden');
-      loadingScreen.classList.remove('slide-out');
+    // Ждём завершения анимации
+    loadingScreen.addEventListener(
+      'animationend',
+      () => {
+        // Скрываем экран загрузки
+        loadingScreen.classList.add('hidden');
+        loadingScreen.classList.remove('slide-out');
 
-      // Переход к экрану выбора языка
-      const languageScreen = document.getElementById('language-screen');
-      languageScreen.classList.remove('hidden');
-      languageScreen.classList.add('slide-in');
+        // Переход к экрану выбора языка
+        const languageScreen = document.getElementById('language-screen');
+        languageScreen.classList.remove('hidden');
+        languageScreen.classList.add('slide-in');
 
-      // Убираем класс анимации после завершения
-      languageScreen.addEventListener(
-        'animationend',
-        () => {
-          languageScreen.classList.remove('slide-in');
-        },
-        { once: true }
-      );
-    },
-    { once: true }
-  );
-};
+        // Убираем класс анимации после завершения
+        languageScreen.addEventListener(
+          'animationend',
+          () => {
+            languageScreen.classList.remove('slide-in');
+          },
+          { once: true }
+        );
+      },
+      { once: true }
+    );
+  };
 
-let currentLanguage = 'ru'; // Язык по умолчанию
+  // Обработчик кнопки "Mute"
+  muteButton.onclick = () => {
+    bgMusic.muted = !bgMusic.muted;
+    muteIcon.src = bgMusic.muted ? 'media/sound-off.png' : 'media/sound-on.png';
+  };
 
-// Функция для изменения языка
-function setLanguage(lang) {
-  currentLanguage = lang;
-  localStorage.setItem('language', lang); // Сохраняем выбор в localStorage
-  updateTextContent(); // Обновляем текст на экране
-}
+  let currentLanguage = 'ru'; // Язык по умолчанию
+
+  // Функция для изменения языка
+  function setLanguage(lang) {
+    currentLanguage = lang;
+    localStorage.setItem('language', lang); // Сохраняем выбор в localStorage
+    updateTextContent(); // Обновляем текст на экране
+  }
 
 // Функция обновления текста на экране
 function updateTextContent() {
