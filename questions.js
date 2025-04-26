@@ -144,7 +144,7 @@ const questions = [
     ]
   },
    {
-    text: "Сколько ты изучаешь/торгуе на крипторынке?",
+    text: "Сколько ты изучаешь/торгуешь на крипторынке?",
     answers: [
       { text: "Только начал", score: 1, correct: true },
       { text: "До года", score: 2, correct: true },
