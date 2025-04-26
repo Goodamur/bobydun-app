@@ -87,11 +87,16 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentLanguage = 'ru'; // Язык по умолчанию
 
   // Функция для изменения языка
-  function setLanguage(lang) {
-    currentLanguage = lang;
-    localStorage.setItem('language', lang); // Сохраняем выбор в localStorage
-    updateTextContent(); // Обновляем текст на экране
+ function setLanguage(lang) {
+  if (!translations[lang]) {
+    console.error(`Переводы для языка ${lang} не найдены!`);
+    return;
   }
+
+  currentLanguage = lang;
+  localStorage.setItem('language', lang); // Сохраняем выбор в localStorage
+  updateTextContent(); // Обновляем текст на экране
+}
 
 // Функция обновления текста на экране
 function updateTextContent() {
@@ -110,8 +115,16 @@ function updateTextContent() {
 document.querySelectorAll('.language-button').forEach(button => {
   button.onclick = () => {
     const lang = button.dataset.lang; // Получаем язык из атрибута data-lang
+    if (!lang) {
+      console.error('Атрибут data-lang отсутствует у кнопки!');
+      return;
+    }
+
+    // Устанавливаем язык и обновляем интерфейс
     setLanguage(lang);
-    console.log(`Язык выбран: ${translations[lang].welcome}`);
+    console.log(`Язык выбран: ${translations[lang]?.welcome ?? 'неизвестный язык'}`);
+
+    // Переход на экран приветствия
     transitionToWelcomeScreen();
   };
 });
@@ -141,6 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // Функция перехода на экран приветствия
 function transitionToWelcomeScreen() {
   const languageScreen = document.getElementById('language-screen');
+  if (!languageScreen) {
+    console.error("Элемент 'language-screen' не найден!");
+    return;
+  }
+
   languageScreen.classList.add('hidden');
 
   // Переход к экрану приветствия
