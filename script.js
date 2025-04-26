@@ -24,6 +24,17 @@ document.addEventListener('DOMContentLoaded', function () {
   bgMusic.loop = true;
   bgMusic.volume = 0.2;
 
+  const savedLanguage = localStorage.getItem('language');
+  if (savedLanguage && translations[savedLanguage]) {
+    setLanguage(savedLanguage);
+  } else {
+    setLanguage('en'); // Язык по умолчанию
+  }
+
+document.querySelectorAll('.language-button').forEach(button => {
+  button.onclick = () => setLanguage(button.dataset.lang);
+});
+  
   // Показываем кнопку "Start" через 3 секунды
   setTimeout(() => {
     if (startButton) {
