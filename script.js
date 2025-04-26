@@ -124,16 +124,16 @@ document.addEventListener('DOMContentLoaded', function () {
 }
   
   // Функция для изменения языка
-  function setLanguage(lang) {
-    if (!translations[lang]) {
-      console.error(`Переводы для языка ${lang} не найдены!`);
-      return;
-    }
-
-    currentLanguage = lang;
-    localStorage.setItem('language', lang); // Сохраняем выбор в localStorage
-    updateTextContent(); // Обновляем текст на экране
+function setLanguage(lang) {
+  if (!translations[lang]) {
+    console.error(`Переводы для языка ${lang} не найдены!`);
+    lang = 'en'; // Установить язык по умолчанию
   }
+
+  currentLanguage = lang;
+  localStorage.setItem('language', lang); // Сохраняем выбор в localStorage
+  updateTextContent(); // Обновляем текст на экране
+}
 
 document.querySelectorAll('.language-button').forEach(button => {
   button.onclick = () => {
