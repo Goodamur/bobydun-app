@@ -407,4 +407,4 @@ startTestButton.onclick = () => {
 startCourseButton.onclick = () => {
   alert('Переход к обучению...');
 };
-});
+
