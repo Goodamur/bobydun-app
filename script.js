@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
       muteIcon.src = bgMusic.muted ? 'media/sound-off.png' : 'media/sound-on.png';
     };
   }
-
+  
   // Обработчик для кнопки "Начать тест"
  if (startTestButton) {
   startTestButton.onclick = () => {
@@ -341,7 +341,7 @@ function changeBackgroundAndCharacter() {
     resultText.textContent = `Ты набрал ${score} баллов. ${level}`;
     dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
   }
-
+  
   // Добавляем анимацию размытия для экрана приветствия
   welcomeScreen.classList.add('blur-out');
   console.log("Анимация 'blur-out' добавлена для welcomeScreen");
@@ -398,7 +398,11 @@ function changeBackgroundAndCharacter() {
   }
 };
   
-startCourseButton.onclick = () => {
-  alert('Переход к обучению...');
-};
-
+if (startCourseButton) {
+    startCourseButton.onclick = () => {
+      alert("Переход к обучению...");
+    };
+  } else {
+    console.error("Элемент с id 'start-course' не найден в DOM!");
+  }
+});
