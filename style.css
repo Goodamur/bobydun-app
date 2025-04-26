@@ -115,6 +115,28 @@ body {
   pointer-events: none;
 }
 
+/* Стили для кнопки "Start" */
+#start-button {
+  display: inline-block; /* Кнопка занимает место только под содержимое */
+  background: none; /* Убираем фон кнопки */
+  border: none; /* Убираем рамку кнопки */
+  padding: 0; /* Убираем внутренние отступы */
+  cursor: pointer; /* Указываем курсор для клика */
+  transition: transform 0.1s ease-in-out; /* Анимация нажатия */
+}
+
+/* Стили для изображения внутри кнопки */
+#start-button img {
+  width: 200px; /* Подгоните размеры под ваши нужды */
+  height: auto; /* Сохраняем пропорции изображения */
+  display: block; /* Убираем лишние отступы */
+}
+
+/* Анимация нажатия кнопки */
+#start-button.pressed {
+  transform: scale(0.95); /* Уменьшаем кнопку при нажатии */
+}
+
 /* Объёмная кнопка с градиентом */
 .fancy-button {
   position: relative;
