@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const startButton = document.getElementById('start-button');
   const loadingScreen = document.getElementById('loading-screen');
   const welcomeScreen = document.getElementById('welcome-screen');
+  const LanguageButton = document.getElementById('language-button');
   const testScreen = document.getElementById('test-screen');
   const resultScreen = document.getElementById('result-screen');
   const dialogText = document.getElementById('dialog-text');
@@ -71,6 +72,11 @@ document.addEventListener('DOMContentLoaded', function () {
             languageScreen.classList.remove('hidden');
             languageScreen.classList.add('slide-in');
           }
+          const welcomeScreen = document.getElementById('welcome-screen');
+          if (welcomeScreen) {
+            welcomeScreen.classList.remove('hidden'); // Показать экран приветствия
+            welcomeScreen.classList.add('slide-in');
+          }
         }, { once: true });
       }
     };
@@ -130,7 +136,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 document.querySelectorAll('.language-button').forEach(button => {
-  button.onclick = () => setLanguage(button.dataset.lang);
+  button.onclick = () => {
+    setLanguage(button.dataset.lang);
+    transitionToWelcomeScreen(); // Добавьте переход на экран приветствия
+  };
 });
   
   // Функция обновления текста на экране
