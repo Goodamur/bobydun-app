@@ -68,10 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     };
   }
-});
 
   // Обработчик кнопки "Mute"
- if (muteButton) {
+  if (muteButton) {
     muteButton.onclick = () => {
       bgMusic.muted = !bgMusic.muted;
       muteIcon.src = bgMusic.muted ? 'media/sound-off.png' : 'media/sound-on.png';
@@ -79,19 +78,19 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Функция для изменения языка
- function setLanguage(lang) {
-  if (!translations[lang]) {
-    console.error(`Переводы для языка ${lang} не найдены!`);
-    return;
+  function setLanguage(lang) {
+    if (!translations[lang]) {
+      console.error(`Переводы для языка ${lang} не найдены!`);
+      return;
+    }
+
+    currentLanguage = lang;
+    localStorage.setItem('language', lang); // Сохраняем выбор в localStorage
+    updateTextContent(); // Обновляем текст на экране
   }
 
-  currentLanguage = lang;
-  localStorage.setItem('language', lang); // Сохраняем выбор в localStorage
-  updateTextContent(); // Обновляем текст на экране
-}
-
-// Функция обновления текста на экране
-function updateTextContent() {
+  // Функция обновления текста на экране
+  function updateTextContent() {
     const translation = translations[currentLanguage];
     if (!translation) {
       console.error(`Переводы для языка ${currentLanguage} не найдены!`);
@@ -118,9 +117,9 @@ function updateTextContent() {
       dialogMessages = translation.dialogMessages || [];
     }
   }
-  
-// Делегирование событий для кнопок выбора языка
- document.querySelectorAll('.language-button').forEach(button => {
+
+  // Делегирование событий для кнопок выбора языка
+  document.querySelectorAll('.language-button').forEach(button => {
     button.onclick = () => {
       const lang = button.dataset.lang;
       if (!lang) {
