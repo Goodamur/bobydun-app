@@ -370,10 +370,8 @@ if (welcomeScreen) {
 // Функция перехода к экрану теста
 function transitionToTestScreen() {
   if (!welcomeScreen || !testScreen) {
-    console.error(
-      "'welcomeScreen' или 'testScreen' не найдены! Невозможно выполнить переход."
-    );
-    return;
+    console.error("Критическая ошибка: один из экранов (welcomeScreen или testScreen) не найден!");
+    return; // Завершаем выполнение, если элементы не найдены
   }
 
   // Скрываем экран приветствия
