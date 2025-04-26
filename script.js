@@ -104,6 +104,11 @@ startButton.onclick = () => {
 };
 
 // Обработчики выбора языка
+document.getElementById('language-ua').onclick = () => {
+  console.log("Язык выбран: Українська");
+  transitionToWelcomeScreen();
+};
+  
 document.getElementById('language-en').onclick = () => {
   console.log("Язык выбран: English");
   transitionToWelcomeScreen();
