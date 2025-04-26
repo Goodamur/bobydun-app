@@ -60,43 +60,43 @@ muteButton.onclick = () => {
   }, 3000);
 
   // Обновлённый обработчик для кнопки "Start"
-  startButton.onclick = () => {
-    startButton.disabled = true;
-    startButton.classList.add('pressed');
+ startButton.onclick = () => {
+  startButton.disabled = true; // Отключаем кнопку после нажатия
+  startButton.classList.add('pressed'); // Добавляем класс для анимации
 
-    // Добавляем анимацию Slide and Fade
-    loadingScreen.classList.add('slide-out'); // Анимация исчезновения экрана загрузки
+  // Добавляем анимацию Slide and Fade для экрана загрузки
+  loadingScreen.classList.add('slide-out');
 
-    // Ждём завершения анимации
-    loadingScreen.addEventListener(
-      'animationend',
-      () => {
-        // Скрываем экран загрузки
-        loadingScreen.classList.add('hidden');
-        loadingScreen.classList.remove('slide-out');
+  // Ждём завершения анимации
+  loadingScreen.addEventListener(
+    'animationend',
+    () => {
+      // Скрываем экран загрузки
+      loadingScreen.classList.add('hidden');
+      loadingScreen.classList.remove('slide-out');
 
-        // Переход к экрану приветствия
-        welcomeScreen.classList.remove('hidden');
-        welcomeScreen.classList.add('slide-in'); // Анимация появления экрана приветствия
+      // Переход к экрану приветствия
+      welcomeScreen.classList.remove('hidden');
+      welcomeScreen.classList.add('slide-in');
 
-        // Убираем класс анимации после завершения
-        welcomeScreen.addEventListener(
-          'animationend',
-          () => {
-            welcomeScreen.classList.remove('slide-in');
-          },
-          { once: true }
-        );
+      // Убираем класс анимации после завершения
+      welcomeScreen.addEventListener(
+        'animationend',
+        () => {
+          welcomeScreen.classList.remove('slide-in');
+        },
+        { once: true }
+      );
 
-        // Запускаем музыку
-        bgMusic.play().catch((err) => console.error("Ошибка воспроизведения музыки:", err));
+      // Запускаем музыку
+      bgMusic.play().catch((err) => console.error("Ошибка воспроизведения музыки:", err));
 
-        // Показываем первый диалог
-        showDialog();
-      },
-      { once: true }
-    );
-  };
+      // Показываем первый диалог
+      showDialog();
+    },
+    { once: true }
+  );
+};
 
 function showDialog() {
   const fullText = dialogMessages[index];
