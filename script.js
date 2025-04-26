@@ -139,6 +139,7 @@ muteButton.onclick = () => {
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.language-button').forEach(button => {
     button.onclick = () => {
+      console.log('Кнопка выбора языка нажата');
       const lang = button.dataset.lang; // Получаем язык из атрибута data-lang
       if (!lang) {
         console.error('Атрибут data-lang отсутствует у кнопки!');
@@ -147,11 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Устанавливаем язык и обновляем интерфейс
       setLanguage(lang);
-      console.log(`Язык выбран: ${translations[lang]?.welcome ?? 'неизвестный язык'}`);
+      console.log(`Выбранный язык: ${translations[lang]?.welcome ?? 'неизвестный язык'}`);
 
-  updateTextContent(); // Обновляем текст при загрузке страницы
-};
+      // Переход на экран приветствия
+      transitionToWelcomeScreen();
+    };
   });
+});
 }); 
   
   // Показываем экран с кнопкой "Start" через 3 секунды
