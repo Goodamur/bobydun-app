@@ -31,10 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setLanguage('en'); // Язык по умолчанию
   }
 
-document.querySelectorAll('.language-button').forEach(button => {
-  button.onclick = () => setLanguage(button.dataset.lang);
-});
-  
   // Показываем кнопку "Start" через 3 секунды
   setTimeout(() => {
     if (startButton) {
@@ -133,6 +129,10 @@ document.querySelectorAll('.language-button').forEach(button => {
     updateTextContent(); // Обновляем текст на экране
   }
 
+document.querySelectorAll('.language-button').forEach(button => {
+  button.onclick = () => setLanguage(button.dataset.lang);
+});
+  
   // Функция обновления текста на экране
   function updateTextContent() {
     const translation = translations[currentLanguage];
