@@ -395,7 +395,6 @@ function changeBackgroundAndCharacter() {
     } else {
       console.error("Массив 'questions' не определён или пустой!");
     }
-  }
 };
   
 if (startCourseButton) {
@@ -404,5 +403,4 @@ if (startCourseButton) {
     };
   } else {
     console.error("Элемент с id 'start-course' не найден в DOM!");
-  }
-});
+};
