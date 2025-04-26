@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function ()=> {
+document.addEventListener('DOMContentLoaded', function () {
   let currentLanguage = 'ru'; // Язык по умолчанию
   let index = 0;
   let score = 0;
 
-   const startButton = document.getElementById('start-button');
+  const startButton = document.getElementById('start-button');
   const loadingScreen = document.getElementById('loading-screen');
   const welcomeScreen = document.getElementById('welcome-screen');
   const testScreen = document.getElementById('test-screen');
@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function ()=> {
       }
     };
   }
+});
 
   // Обработчик кнопки "Mute"
  if (muteButton) {
