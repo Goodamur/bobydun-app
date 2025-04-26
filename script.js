@@ -137,12 +137,23 @@ muteButton.onclick = () => {
 
 // Обработчик DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  const savedLanguage = localStorage.getItem('language');
-  if (savedLanguage) {
-    currentLanguage = savedLanguage;
-  }
-  updateTextContent(); // Обновляем текст при загрузке страницы
+  document.querySelectorAll('.language-button').forEach(button => {
+    button.onclick = () => {
+      const lang = button.dataset.lang; // Получаем язык из атрибута data-lang
+      if (!lang) {
+        console.error('Атрибут data-lang отсутствует у кнопки!');
+        return;
+      }
 
+      // Устанавливаем язык и обновляем интерфейс
+      setLanguage(lang);
+      console.log(`Язык выбран: ${translations[lang]?.welcome ?? 'неизвестный язык'}`);
+
+  updateTextContent(); // Обновляем текст при загрузке страницы
+};
+  });
+}); 
+  
   // Показываем экран с кнопкой "Start" через 3 секунды
   setTimeout(() => {
     startButton.classList.remove('hidden-button');
