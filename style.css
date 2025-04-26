@@ -78,6 +78,33 @@ body {
     0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Стили для экрана выбора языка */
+#language-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5; /* Фон экрана */
+  text-align: center;
+}
+
+/* Стили для кнопок выбора языка */
+.language-button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border: 2px solid #000;
+  background-color: #fff;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.language-button:hover {
+  background-color: #ddd;
+  transform: scale(1.1);
+}
+
 .dialog-line {
   display: block;
   opacity: 0;
