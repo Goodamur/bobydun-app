@@ -23,22 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
   bgMusic.loop = true;
   bgMusic.volume = 0.2;
 
-muteButton.onclick = () => {
-  if (bgMusic.muted) {
-    bgMusic.muted = false;
-    muteIcon.src = 'media/sound-on.png';
-  } else {
-    bgMusic.muted = true;
-    muteIcon.src = 'media/sound-off.png';
-  }
-};
-
-   setTimeout(() => {
-    startButton.classList.remove('hidden-button');
-    startButton.classList.add('show-button');
-    loadingText.classList.add('hidden');
-  }, 3000);
-
   // Обновлённый обработчик для кнопки "Start"
 startButton.onclick = () => {
   startButton.disabled = true; // Отключаем кнопку после нажатия
@@ -83,21 +67,59 @@ startButton.onclick = () => {
   );
 };
 
-// Обработчики выбора языка
-document.getElementById('language-ua').onclick = () => {
-  console.log("Язык выбран: Українська");
-  transitionToWelcomeScreen();
-};
-  
-document.getElementById('language-en').onclick = () => {
-  console.log("Язык выбран: English");
-  transitionToWelcomeScreen();
+let currentLanguage = 'ru'; // Язык по умолчанию
+
+// Функция для изменения языка
+function setLanguage(lang) {
+  currentLanguage = lang;
+  localStorage.setItem('language', lang); // Сохраняем выбор в localStorage
+  updateTextContent(); // Обновляем текст на экране
+}
+
+// Функция обновления текста на экране
+function updateTextContent() {
+  // Пример для заголовков и кнопок
+  document.getElementById('welcome-text').textContent = translations[currentLanguage].welcome;
+  document.getElementById('start-test').textContent = translations[currentLanguage].startTest;
+  document.getElementById('language-title').textContent = translations[currentLanguage].chooseLanguage;
+
+  // Обновление диалогов
+  if (typeof dialogMessages !== 'undefined') {
+    dialogMessages = translations[currentLanguage].dialogMessages; // Обновляем массив диалогов
+  }
+}
+
+// Делегирование событий для кнопок выбора языка
+document.querySelectorAll('.language-button').forEach(button => {
+  button.onclick = () => {
+    const lang = button.dataset.lang; // Получаем язык из атрибута data-lang
+    setLanguage(lang);
+    console.log(`Язык выбран: ${translations[lang].welcome}`);
+    transitionToWelcomeScreen();
+  };
+});
+
+// Обработчик кнопки "Mute"
+muteButton.onclick = () => {
+  bgMusic.muted = !bgMusic.muted;
+  muteIcon.src = bgMusic.muted ? 'media/sound-off.png' : 'media/sound-on.png';
 };
 
-document.getElementById('language-ru').onclick = () => {
-  console.log("Язык выбран: Русский");
-  transitionToWelcomeScreen();
-};
+// Обработчик DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  const savedLanguage = localStorage.getItem('language');
+  if (savedLanguage) {
+    currentLanguage = savedLanguage;
+  }
+  updateTextContent(); // Обновляем текст при загрузке страницы
+
+  // Показываем экран с кнопкой "Start" через 3 секунды
+  setTimeout(() => {
+    startButton.classList.remove('hidden-button');
+    startButton.classList.add('show-button');
+    loadingText.classList.add('hidden');
+  }, 3000);
+});
 
 // Функция перехода на экран приветствия
 function transitionToWelcomeScreen() {
@@ -116,6 +138,7 @@ function transitionToWelcomeScreen() {
     { once: true }
   );
 }
+  
 function showDialog() {
   const fullText = dialogMessages[index];
   const words = fullText.split(' ');
