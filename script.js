@@ -131,35 +131,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// Обработчик DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.language-button').forEach(button => {
-    button.onclick = () => {
-      console.log('Кнопка выбора языка нажата');
-      const lang = button.dataset.lang; // Получаем язык из атрибута data-lang
-      if (!lang) {
-        console.error('Атрибут data-lang отсутствует у кнопки!');
-        return;
-      }
-
-      // Устанавливаем язык и обновляем интерфейс
-      setLanguage(lang);
-      console.log(`Выбранный язык: ${translations[lang]?.welcome ?? 'неизвестный язык'}`);
-
-      // Переход на экран приветствия
-      transitionToWelcomeScreen();
-    };
-  });
-});
-  
-  // Показываем экран с кнопкой "Start" через 3 секунды
-  setTimeout(() => {
-    startButton.classList.remove('hidden-button');
-    startButton.classList.add('show-button');
-    loadingText.classList.add('hidden');
-  }, 3000);
-});
-
 // Функция перехода на экран приветствия
 function transitionToWelcomeScreen() {
   const languageScreen = document.getElementById('language-screen');
