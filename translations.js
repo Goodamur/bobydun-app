@@ -3,15 +3,15 @@ const translations = {
     welcome: "Welcome!",
     chooseLanguage: "Choose your language",
     dialogMessages: [
-      "Hey there! Awesome to see you!"
-      "My name’s Bob Dun, but you can just call me Boby."
-      "I'll be your sidekick and guide through the world of crypto."
-      "Stick with me and you’ll learn how to invest and trade safely."
-      "Hit the 'Let's Go' button if you're ready to uncover all the secrets!"
-      "AWESOME! You're doing great! 💥"
-      "Glad you're all set for this adventure!"
-      "Now, I'll ask you a few quick questions to figure out your level."
-      "There'll be just a few test questions to help us find the best starting point for you."
+      "Hey there! Awesome to see you!",
+      "My name’s Bob Dun, but you can just call me Boby.",
+      "I'll be your sidekick and guide through the world of crypto.",
+      "Stick with me and you’ll learn how to invest and trade safely.",
+      "Hit the 'Let's Go' button if you're ready to uncover all the secrets!",
+      "AWESOME! You're doing great! 💥",
+      "Glad you're all set for this adventure!",
+      "Now, I'll ask you a few quick questions to figure out your level.",
+      "There'll be just a few test questions to help us find the best starting point for you.",
       "Ready? Smash that 'Take the Test' button!"
 
     ],
@@ -80,15 +80,15 @@ const translations = {
     welcome: "Ласкаво просимо!",
     chooseLanguage: "Оберіть мову",
     dialogMessages: [
-      "Привіт! Рад тебе бачити!"
-      "Мене звати Bob Dun, але можеш просто Boby."
-      "Я буду твоїм помічником і гідом у світі криптовалюти."
-      "Разом зі мною ти навчишся безпечно інвестувати та торгувати."
-      "Тисни кнопку 'Поїхали', якщо хочеш дізнатися всі секрети!"
-      "КРУТО! Ти молодець! 💥"
-      "Радий, що ти готовий до пригод!"
-      "А зараз я задам тобі кілька запитань, щоб зрозуміти твій рівень."
-      "Буде всього кілька тестових питань, які допоможуть визначити, з чого нам почати."
+      "Привіт! Рад тебе бачити!",
+      "Мене звати Bob Dun, але можеш просто Boby.",
+      "Я буду твоїм помічником і гідом у світі криптовалюти.",
+      "Разом зі мною ти навчишся безпечно інвестувати та торгувати.",
+      "Тисни кнопку 'Поїхали', якщо хочеш дізнатися всі секрети!",
+      "КРУТО! Ти молодець! 💥",
+      "Радий, що ти готовий до пригод!",
+      "А зараз я задам тобі кілька запитань, щоб зрозуміти твій рівень.",
+      "Буде всього кілька тестових питань, які допоможуть визначити, з чого нам почати.",
       "Готовий? Жми 'Пройти тест'!"
     ],
     resultDialogs: {
