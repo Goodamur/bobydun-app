@@ -343,6 +343,8 @@ function changeBackgroundAndCharacter() {
   }
   
   // Добавляем анимацию размытия для экрана приветствия
+  // Проверяем наличие welcomeScreen перед использованием
+if (welcomeScreen) {
   welcomeScreen.classList.add('blur-out');
   console.log("Анимация 'blur-out' добавлена для welcomeScreen");
 
@@ -365,42 +367,54 @@ function changeBackgroundAndCharacter() {
     },
     { once: true }
   );
+} else {
+  console.error("Элемент 'welcomeScreen' не найден!");
+}
 
-  function transitionToTestScreen() {
-    // Скрываем экран приветствия
-    welcomeScreen.classList.add('hidden');
-    welcomeScreen.classList.remove('blur-out');
-    console.log("Экран приветствия скрыт");
-
-    // Показываем экран теста с анимацией появления
-    testScreen.classList.remove('hidden');
-    testScreen.classList.add('blur-in');
-    console.log("Экран теста показан с анимацией 'blur-in'");
-
-    // Убираем класс анимации после завершения
-    testScreen.addEventListener(
-      'animationend',
-      function handleBlurIn() {
-        testScreen.classList.remove('blur-in');
-        console.log("Класс 'blur-in' удалён с экрана теста");
-      },
-      { once: true }
+// Функция перехода к экрану теста
+function transitionToTestScreen() {
+  if (!welcomeScreen || !testScreen) {
+    console.error(
+      "'welcomeScreen' или 'testScreen' не найдены! Невозможно выполнить переход."
     );
+    return;
+  }
 
-    // Сбрасываем индекс и показываем первый вопрос
-    if (typeof questions !== 'undefined' && questions.length > 0) {
-      index = 0;
-      console.log("Индекс вопросов сброшен, вызывается showQuestion()");
-      showQuestion();
-    } else {
-      console.error("Массив 'questions' не определён или пустой!");
-    }
-};
-  
-if (startCourseButton) {
-    startCourseButton.onclick = () => {
-      alert("Переход к обучению...");
-    };
+  // Скрываем экран приветствия
+  welcomeScreen.classList.add('hidden');
+  welcomeScreen.classList.remove('blur-out');
+  console.log("Экран приветствия скрыт");
+
+  // Показываем экран теста с анимацией появления
+  testScreen.classList.remove('hidden');
+  testScreen.classList.add('blur-in');
+  console.log("Экран теста показан с анимацией 'blur-in'");
+
+  // Убираем класс анимации после завершения
+  testScreen.addEventListener(
+    'animationend',
+    function handleBlurIn() {
+      testScreen.classList.remove('blur-in');
+      console.log("Класс 'blur-in' удалён с экрана теста");
+    },
+    { once: true }
+  );
+
+  // Сбрасываем индекс и показываем первый вопрос
+  if (typeof questions !== 'undefined' && questions.length > 0) {
+    index = 0;
+    console.log("Индекс вопросов сброшен, вызывается showQuestion()");
+    showQuestion();
   } else {
-    console.error("Элемент с id 'start-course' не найден в DOM!");
-};
+    console.error("Массив 'questions' не определён или пустой!");
+  }
+}
+
+// Проверяем наличие startCourseButton перед использованием
+if (startCourseButton) {
+  startCourseButton.onclick = () => {
+    alert("Переход к обучению...");
+  };
+} else {
+  console.error("Элемент с id 'start-course' не найден в DOM!");
+}
