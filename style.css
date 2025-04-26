@@ -212,42 +212,34 @@ body {
   border-right: 2px solid #fff689;
 }
 
-/* Стиль для кнопки "Поехали" */
-.car-button {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 15px 30px;
-  border-radius: 50%; /* Круглая форма */
-  background: linear-gradient(to top, #FFA500, #FFD700); /* Градиент: снизу ярко-оранжевый, сверху жёлтый */
-  color: #3e1f00; /* Тёмный цвет текста */
-  font-weight: bold;
-  font-size: 18px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Объёмный эффект текста */
-  border: 2px solid #000; /* Чёрная рамка */
-  box-shadow: 
-    inset 0 4px 6px rgba(255, 255, 255, 0.6), /* Внутренний светлый блик */
-    inset 0 -4px 6px rgba(0, 0, 0, 0.2), /* Внутренняя тень */
-    0 8px 12px rgba(0, 0, 0, 0.4); /* Внешняя тень */
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+/* Стили для кнопки "Поехали" */
+#car-button {
+  display: inline-block; /* Кнопка занимает место только под содержимое */
+  background: none; /* Убираем фон кнопки */
+  border: none; /* Убираем рамку кнопки */
+  padding: 0; /* Убираем внутренние отступы */
+  cursor: pointer; /* Указываем курсор для клика */
+  transition: transform 0.1s ease-in-out; /* Анимация нажатия */
 }
 
-/* Эффект нажатия */
-.car-button:active {
-  transform: scale(0.95); /* Лёгкое уменьшение */
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.3), /* Внутренний светлый блик уменьшается */
-    0 4px 6px rgba(0, 0, 0, 0.4); /* Внешняя тень становится менее заметной */
+/* Стили для изображения внутри кнопки */
+#car-button img {
+  width: 150px; /* Размер кнопки (можно подогнать под дизайн) */
+  height: auto; /* Сохраняем пропорции изображения */
+  display: block; /* Убираем лишние отступы */
+}
+
+/* Анимация нажатия кнопки */
+#car-button.pressed {
+  transform: scale(0.95); /* Уменьшаем кнопку при нажатии */
 }
 
 /* Скрытие кнопки */
-.car-button.hidden {
+#car-button.hidden {
   display: none;
 }
 
-.car-button.animate {
+#car-button.animate {
   animation: driveAway 1.2s ease-out forwards;
 }
 
