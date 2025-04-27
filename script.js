@@ -153,8 +153,14 @@ function updateStartTestButtonImage() {
     imgSrc = 'media/startTestButton(Ua).png';
     imgAlt = "Почати тест";
   }
+  img.onload = () => {
+    startTestButton.classList.remove('hidden');
+  };
   img.src = imgSrc;
   img.alt = imgAlt;
+  if (img.complete) {
+    startTestButton.classList.remove('hidden');
+  }
 }
 
 // Показ диалога
@@ -166,7 +172,6 @@ function showDialog() {
   for (let i = 0; i < words.length; i += 3) lines.push(words.slice(i, i + 3).join(' '));
   dialogText.innerHTML = '';
   nextDialog.classList.remove('show');
-  startTestButton.classList.add('hidden');
   carButton.classList.add('hidden');
   let lineIndex = 0, charIndex = 0, currentLine = lines[lineIndex];
   const interval = setInterval(() => {
@@ -215,9 +220,8 @@ function showDialog() {
             }, { once: true });
           };
         } 
-        else if (index === dialogMessages.length - 1) {
+           else if (index === dialogMessages.length - 1) {
              updateStartTestButtonImage();
-             startTestButton.classList.remove('hidden');
            } else {
           nextDialog.classList.add('show');
         }
