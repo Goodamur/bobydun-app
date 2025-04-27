@@ -82,16 +82,6 @@ let dialogText, nextDialog, startTestButton, questionText, answersDiv, resultTex
       if (index < dialogMessages.length) showDialog();
     };
   }
-
-  // Кнопка "Начать тест"
-  if (startTestButton) {
-    startTestButton.onclick = () => {
-      welcomeScreen.classList.add('blur-out');
-      setTimeout(() => {
-        transitionToTestScreen();
-      }, 500);
-    };
-  }
 }
 
 document.addEventListener('DOMContentLoaded', init);
@@ -114,22 +104,9 @@ function setLanguage(lang) {
     showResult();
   }
   // если открыт welcomeScreen и кнопка "Начать тест" уже показана — обнови её картинку
-  if (!welcomeScreen.classList.contains('hidden') && !startTestButton.classList.contains('hidden')) {
-    let img = startTestButton.querySelector('img');
-    if (img) {
-      let imgSrc = 'media/startTestButton.png';
-      let imgAlt = 'Начать тест';
-      if (currentLanguage === 'en') {
-        imgSrc = 'media/startTestButton(En).png';
-        imgAlt = "Start Test";
-      } else if (currentLanguage === 'ua') {
-        imgSrc = 'media/startTestButton(Ua).png';
-        imgAlt = "Почати тест";
-      }
-      img.src = imgSrc;
-      img.alt = imgAlt;
-    }
-  }
+ if (!welcomeScreen.classList.contains('hidden')) {
+  updateStartTestButtonImage();
+ }
 }
 
 // Обновление текста
@@ -140,7 +117,6 @@ function updateTextContent() {
   if (welcomeEl) welcomeEl.textContent = '';
   // Остальная локализация
   document.getElementById('language-title').textContent = translation.chooseLanguage || 'Выберите язык';
-  if (startTestButton) startTestButton.textContent = translation.startTest || 'Начать тест';
 }
 
 // Переход на экран приветствия
@@ -152,6 +128,23 @@ function transitionToWelcomeScreen() {
     welcomeScreen.classList.remove('slide-in');
     showDialog();
   }, { once: true });
+}
+
+function updateStartTestButtonImage() {
+  if (!startTestButton) return;
+  let img = startTestButton.querySelector('img');
+  if (!img) return;
+  let imgSrc = 'media/startTestButton.png';
+  let imgAlt = 'Начать тест';
+  if (currentLanguage === 'en') {
+    imgSrc = 'media/startTestButton(En).png';
+    imgAlt = "Start Test";
+  } else if (currentLanguage === 'ua') {
+    imgSrc = 'media/startTestButton(Ua).png';
+    imgAlt = "Почати тест";
+  }
+  img.src = imgSrc;
+  img.alt = imgAlt;
 }
 
 // Показ диалога
@@ -212,24 +205,11 @@ function showDialog() {
               if (index < dialogMessages.length) showDialog();
             }, { once: true });
           };
-        } else if (index === dialogMessages.length - 1) {
-          // Вот тут меняем картинку!
-          let img = startTestButton.querySelector('img');
-          if (img) {
-            let imgSrc = 'media/startTestButton.png';
-            let imgAlt = 'Начать тест';
-            if (currentLanguage === 'en') {
-              imgSrc = 'media/startTestButton(En).png';
-              imgAlt = "Start Test";
-            } else if (currentLanguage === 'ua') {
-              imgSrc = 'media/startTestButton(Ua).png';
-              imgAlt = "Почати тест";
-            }
-            img.src = imgSrc;
-            img.alt = imgAlt;
-          }
-          startTestButton.classList.remove('hidden');
-        } else {
+        } 
+        else if (index === dialogMessages.length - 1) {
+             updateStartTestButtonImage();
+             startTestButton.classList.remove('hidden');
+           } else {
           nextDialog.classList.add('show');
         }
       }
