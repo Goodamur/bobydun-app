@@ -26,34 +26,35 @@
     </div>
   </div>
 
-  <!-- Language Selection Screen -->
-  <div id="language-screen" class="screen hidden">
-    <h2>Language:</h2>
-    <button class="language-button" data-lang="ru">
-      <img src="media/LanguageButton(Ru).png" alt="Русский">
-    </button>
-    <button class="language-button" data-lang="en">
-      <img src="media/LanguageButton(En).png" alt="English">
-    </button>
-    <button class="language-button" data-lang="ua">
-      <img src="media/LanguageButton(Ua).png" alt="Українська">
-    </button>
+ <!-- Language Selection Screen -->
+<div id="language-screen" class="screen hidden">
+  <h2 id="language-title">Language:</h2>
+  <button class="language-button" data-lang="ru">
+    <img src="media/LanguageButton(Ru).png" alt="Русский">
+  </button>
+  <button class="language-button" data-lang="en">
+    <img src="media/LanguageButton(En).png" alt="English">
+  </button>
+  <button class="language-button" data-lang="ua">
+    <img src="media/LanguageButton(Ua).png" alt="Українська">
+  </button>
+</div>
+
+<!-- Welcome Screen -->
+<div id="welcome-screen" class="screen hidden">
+  <img src="media/character.png" alt="Boby Dun" class="character">
+  <h2 id="welcome-text"></h2> <!-- Добавлено! -->
+  <div id="dialog-box" class="dialog-box">
+    <p id="dialog-text" class="soft-outline-text"></p>
   </div>
-  
-  <!-- Welcome Screen -->
-  <div id="welcome-screen" class="screen hidden">
-    <img src="media/character.png" alt="Boby Dun" class="character">
-    <div id="dialog-box" class="dialog-box">
-      <p id="dialog-text" class="soft-outline-text"></p>
-    </div>
-    <button id="car-button" class="car-button hidden">
-      <img src="media/carButton.png" alt="Поехали">
-    </button>
-    <button id="next-dialog" class="nav-button">Далее</button>
-    <button id="start-test" class="nav-button hidden">
-      <img src="media/startTestButton.png" alt="Начать тест">
-    </button>
-  </div> 
+  <button id="car-button" class="car-button hidden">
+    <img src="media/carButton.png" alt="Поехали">
+  </button>
+  <button id="next-dialog" class="nav-button">Далее</button>
+  <button id="start-test" class="nav-button hidden">
+    <img src="media/startTestButton.png" alt="Начать тест">
+  </button>
+</div>
   
   <!-- Test Screen -->
   <div id="test-screen" class="screen hidden">
@@ -77,7 +78,7 @@
 
   <!-- Подключение скриптов -->
   <script src="translations.js"></script>
-  <script src="script.js"></script>
-  <script src="questions.js"></script>  
+<script src="questions.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
