@@ -93,7 +93,6 @@ let dialogText, nextDialog, startTestButton, questionText, answersDiv, resultTex
       }, 500);
     };
   }
-}
 
 document.addEventListener('DOMContentLoaded', init);
 
