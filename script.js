@@ -3,7 +3,7 @@ let currentLanguage = 'ru';
 let index = 0;
 let score = 0;
 let dialogMessages = [];
-let resultDialogs = {};
+let resultText, resultDialogBox;
 let bgMusic;
 
 let startButton, loadingScreen, languageScreen, welcomeScreen, testScreen, resultScreen;
@@ -24,6 +24,7 @@ let dialogText, nextDialog, startTestButton, questionText, answersDiv, resultTex
   questionText = document.getElementById('question-text');
   answersDiv = document.getElementById('answers');
   resultText = document.getElementById('result-text');
+  resultDialogBox = document.getElementById('result-dialog-box');
   dialogBox = document.getElementById('dialog-box');
   startCourseButton = document.getElementById('start-course');
   carButton = document.getElementById('car-button');
@@ -297,9 +298,9 @@ function showResult() {
 
   // Показываем диалоги на нужном языке
   // (dialogBox — это твой контейнер в разметке для resultDialogs)
-  dialogBox.innerHTML = translation.resultDialogs[levelKey]
-    .map(dialog => `<p class="dialog-bubble">${dialog}</p>`)
-    .join('');
+  resultDialogBox.innerHTML = translation.resultDialogs[levelKey]
+  .map(dialog => `<p class="dialog-bubble">${dialog}</p>`)
+  .join('');
 }
 
 // Фон и персонаж
