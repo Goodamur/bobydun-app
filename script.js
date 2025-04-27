@@ -147,17 +147,6 @@ function updateStartTestButtonImage() {
   img.alt = imgAlt;
 }
 
-// ... внутри showDialog:
-else if (index === dialogMessages.length - 1) {
-  updateStartTestButtonImage();
-  startTestButton.classList.remove('hidden');
-}
-
-// ... внутри setLanguage:
-if (!welcomeScreen.classList.contains('hidden')) {
-  updateStartTestButtonImage();
-}
-
 // Показ диалога
 function showDialog() {
   let fullText = dialogMessages[index];
@@ -181,8 +170,11 @@ function showDialog() {
         currentLine = lines[lineIndex]; charIndex = 0;
       } else {
         clearInterval(interval);
-
-        // --- Исправленная проверка ---
+       else if (index === dialogMessages.length - 1) {
+       updateStartTestButtonImage();
+       startTestButton.classList.remove('hidden');
+       }
+       
         const trigger = translations[currentLanguage].carButtonTrigger;
         if (fullText.includes(trigger)) {
           nextDialog.classList.remove('show');
