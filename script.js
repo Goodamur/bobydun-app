@@ -115,6 +115,10 @@ function updateTextContent() {
   // Если welcome-text есть, очищаем его (или вовсе не трогаем)
   let welcomeEl = document.getElementById('welcome-text');
   if (welcomeEl) welcomeEl.textContent = '';
+  let nextDialogBtn = document.getElementById('next-dialog');
+  if (nextDialogBtn && translation.nextButton) {
+    nextDialogBtn.textContent = translation.nextButton;
+  }
   // Остальная локализация
   document.getElementById('language-title').textContent = translation.chooseLanguage || 'Выберите язык';
 }
