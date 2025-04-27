@@ -278,22 +278,27 @@ function showQuestion() {
 function showResult() {
   testScreen.classList.add('hidden');
   resultScreen.classList.remove('hidden');
-  let level = '';
+  let translation = translations[currentLanguage];
+  let levelKey = '';
   let dialogBlock = [];
   if (score <= 5) {
-    level = "Новичок";
-    dialogBlock = resultDialogs.new;
+    levelKey = "new";
+    dialogBlock = translation.resultDialogs.new;
   } else if (score <= 10) {
-    level = "Уверенный пользователь";
-    dialogBlock = resultDialogs.low;
+    levelKey = "low";
+    dialogBlock = translation.resultDialogs.low;
   } else if (score <= 15) {
-    level = "Осознанный";
-    dialogBlock = resultDialogs.mid;
+    levelKey = "mid";
+    dialogBlock = translation.resultDialogs.mid;
   } else {
-    level = "Гений крипты";
-    dialogBlock = resultDialogs.high;
+    levelKey = "high";
+    dialogBlock = translation.resultDialogs.high;
   }
-  resultText.textContent = `Ты набрал ${score} баллов. ${level}`;
+
+  // Формируем текст результата с переводом
+  let level = translation.resultLevels[levelKey];
+  let scoreText = translation.resultScoreText.replace("{score}", score);
+  resultText.textContent = `${scoreText} ${level}`;
   dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
 }
 
