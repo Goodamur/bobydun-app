@@ -84,16 +84,6 @@ let dialogText, nextDialog, startTestButton, questionText, answersDiv, resultTex
   }
 }
 
- // Кнопка "Начать тест"
-  if (startTestButton) {
-    startTestButton.onclick = () => {
-      welcomeScreen.classList.add('blur-out');
-      setTimeout(() => {
-        transitionToTestScreen();
-      }, 500);
-    };
-  }
-
 document.addEventListener('DOMContentLoaded', init);
 
 // Меняем язык
@@ -155,11 +145,23 @@ function updateStartTestButtonImage() {
   }
   img.onload = () => {
     startTestButton.classList.remove('hidden');
+    startTestButton.onclick = () => {
+      welcomeScreen.classList.add('blur-out');
+      setTimeout(() => {
+        transitionToTestScreen();
+      }, 500);
+    };
   };
   img.src = imgSrc;
   img.alt = imgAlt;
   if (img.complete) {
     startTestButton.classList.remove('hidden');
+    startTestButton.onclick = () => {
+      welcomeScreen.classList.add('blur-out');
+      setTimeout(() => {
+        transitionToTestScreen();
+      }, 500);
+    };
   }
 }
 
