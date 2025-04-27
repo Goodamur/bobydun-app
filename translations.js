@@ -1,6 +1,5 @@
 const translations = {
   en: {
-    welcome: "Welcome!",
     chooseLanguage: "Choose your language",
     carButtonTrigger: "Let's Go",
     dialogMessages: [
@@ -40,7 +39,6 @@ const translations = {
     }
   },
   ru: {
-    welcome: "Добро пожаловать!",
     chooseLanguage: "Выберите язык",
     carButtonTrigger: "Поехали",
     dialogMessages: [
@@ -79,7 +77,6 @@ const translations = {
     }
   },
   ua: {
-    welcome: "Ласкаво просимо!",
     chooseLanguage: "Оберіть мову",
     carButtonTrigger: "Поїхали",
     dialogMessages: [
