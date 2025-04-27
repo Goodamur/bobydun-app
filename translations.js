@@ -7,7 +7,7 @@ const translations = {
       "My name’s Bob Dun, but you can just call me Boby.",
       "I'll be your sidekick and guide through the world of crypto.",
       "Stick with me and you’ll learn how to invest and trade safely.",
-      "Hit the 'Let's Go' button if you're ready to uncover all the secrets!",
+      "Tap the 'Let's Go' button if you're ready to uncover all the secrets!",
       "AWESOME! You're doing great! 💥",
       "Glad you're all set for this adventure!",
       "Now, I'll ask you a few quick questions to figure out your level.",
