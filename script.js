@@ -274,32 +274,32 @@ function showQuestion() {
   });
 }
 
-// Показ результатов
 function showResult() {
   testScreen.classList.add('hidden');
   resultScreen.classList.remove('hidden');
   let translation = translations[currentLanguage];
   let levelKey = '';
-  let dialogBlock = [];
   if (score <= 5) {
     levelKey = "new";
-    dialogBlock = translation.resultDialogs.new;
   } else if (score <= 10) {
     levelKey = "low";
-    dialogBlock = translation.resultDialogs.low;
   } else if (score <= 15) {
     levelKey = "mid";
-    dialogBlock = translation.resultDialogs.mid;
   } else {
     levelKey = "high";
-    dialogBlock = translation.resultDialogs.high;
   }
 
-  // Формируем текст результата с переводом
-  let level = translation.resultLevels[levelKey];
+  // Текст с результатом (баллы + уровень)
   let scoreText = translation.resultScoreText.replace("{score}", score);
-  resultText.textContent = `${scoreText} ${level}`;
-  dialogBox.innerHTML = dialogBlock.map(dialog => `<p class="dialog-bubble">${dialog}</p>`).join('');
+
+  // Показываем очки и уровень (если хочешь уровень — добавь: + translation.resultLevels[levelKey])
+  resultText.textContent = scoreText + " " + translation.resultLevels[levelKey];
+
+  // Показываем диалоги на нужном языке
+  // (dialogBox — это твой контейнер в разметке для resultDialogs)
+  dialogBox.innerHTML = translation.resultDialogs[levelKey]
+    .map(dialog => `<p class="dialog-bubble">${dialog}</p>`)
+    .join('');
 }
 
 // Фон и персонаж
