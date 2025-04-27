@@ -16,6 +16,13 @@ const translations = {
 
     ],
     nextButton: "Next",
+    resultScoreText: "You scored {score} points.",
+    resultLevels: {
+      new: "Beginner",
+      low: "Confident user",
+      mid: "Almost a pro",
+      high: "Crypto Genius"
+    },
     resultDialogs: {
       new: [
         "You're just getting started.\nThat's awesome!",
@@ -55,6 +62,13 @@ const translations = {
       "Готов? Жми 'Начать тест'!"
     ],
     nextButton: "Далее",
+    resultScoreText: "Ты набрал {score} баллов.",
+    resultLevels: {
+      new: "Новичок",
+      low: "Уверенный пользователь",
+      mid: "Почти профи",
+      high: "Гений крипты"
+    },
     resultDialogs: {
       new: [
         "Ты только начинаешь.\nЭто отлично!",
@@ -94,6 +108,13 @@ const translations = {
       "Готовий? Жми 'Пройти тест'!"
     ],
     nextButton: "Далі",
+    resultScoreText: "Ти набрав {score} балів.",
+    resultLevels: {
+      new: "Початківець",
+      low: "Впевнений користувач",
+      mid: "Майже профі",
+      high: "Геній крипти"
+    },
     resultDialogs: {
       new: [
         "Ти тільки починаєш.\nЦе круто!", 
