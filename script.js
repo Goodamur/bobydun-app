@@ -149,19 +149,35 @@ function showDialog() {
         currentLine = lines[lineIndex]; charIndex = 0;
       } else {
         clearInterval(interval);
-        // Проверка на "Поехали"
-        if (fullText.includes("Поехали")) {
+
+        // --- Исправленная проверка ---
+        const trigger = translations[currentLanguage].carButtonTrigger;
+        if (fullText.includes(trigger)) {
           nextDialog.classList.remove('show');
           carButton.classList.remove('hidden');
+          carButton.innerHTML = ''; // Очистим кнопку
+
+          // Выбор картинки по языку
+          let carButtonImgSrc = "media/carButton.png";
+          if (currentLanguage === "en") carButtonImgSrc = "media/carButton(En).png";
+          if (currentLanguage === "ua") carButtonImgSrc = "media/carButton(Ua).png";
+
+          const carImg = document.createElement('img');
+          carImg.src = carButtonImgSrc;
+          carImg.alt = trigger;
+          carButton.appendChild(carImg);
+
           carButton.onclick = () => {
             carButton.innerHTML = '';
             carButton.style.background = 'none';
             carButton.style.border = 'none';
+
             const carImage = document.createElement('img');
             carImage.src = 'media/car.png';
             carImage.alt = 'car';
             carImage.className = 'car-animation';
             carButton.appendChild(carImage);
+
             carImage.addEventListener('animationend', () => {
               changeBackgroundAndCharacter();
               index++;
