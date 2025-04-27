@@ -4,7 +4,6 @@ let index = 0;
 let score = 0;
 let dialogMessages = [];
 let resultDialogs = {};
-let questions = []; // Подразумевается, что массив вопросов подключён
 let bgMusic;
 
 let startButton, loadingScreen, languageScreen, welcomeScreen, testScreen, resultScreen;
