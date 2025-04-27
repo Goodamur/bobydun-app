@@ -15,6 +15,7 @@ const translations = {
       "Ready? Smash that 'Take the Test' button!"
 
     ],
+    nextButton: "Next",
     resultDialogs: {
       new: [
         "You're just getting started.\nThat's awesome!",
@@ -53,6 +54,7 @@ const translations = {
       "Всего будет несколько тестовых вопросов, которые помогут определить с чего нам начать.",
       "Готов? Жми 'Начать тест'!"
     ],
+    nextButton: "Далее",
     resultDialogs: {
       new: [
         "Ты только начинаешь.\nЭто отлично!",
@@ -91,6 +93,7 @@ const translations = {
       "Буде всього кілька тестових питань, які допоможуть визначити, з чого нам почати.",
       "Готовий? Жми 'Пройти тест'!"
     ],
+    nextButton: "Далі",
     resultDialogs: {
       new: [
         "Ти тільки починаєш.\nЦе круто!", 
