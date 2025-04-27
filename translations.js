@@ -2,6 +2,7 @@ const translations = {
   en: {
     welcome: "Welcome!",
     chooseLanguage: "Choose your language",
+    carButtonTrigger: "Let's Go",
     dialogMessages: [
       "Hey there! Awesome to see you!",
       "My name’s Bob Dun, but you can just call me Boby.",
@@ -41,6 +42,7 @@ const translations = {
   ru: {
     welcome: "Добро пожаловать!",
     chooseLanguage: "Выберите язык",
+    carButtonTrigger: "Поехали",
     dialogMessages: [
       "Привет! Рад тебя видеть.",
       "Меня зовут Bob Dun, но можно просто Boby",
@@ -79,6 +81,7 @@ const translations = {
   ua: {
     welcome: "Ласкаво просимо!",
     chooseLanguage: "Оберіть мову",
+    carButtonTrigger: "Поїхали",
     dialogMessages: [
       "Привіт! Рад тебе бачити!",
       "Мене звати Bob Dun, але можеш просто Boby.",
