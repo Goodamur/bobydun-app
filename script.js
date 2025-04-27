@@ -3,11 +3,10 @@ let currentLanguage = 'ru';
 let index = 0;
 let score = 0;
 let dialogMessages = [];
-let resultText, resultDialogBox;
 let bgMusic;
 
 let startButton, loadingScreen, languageScreen, welcomeScreen, testScreen, resultScreen;
-let dialogText, nextDialog, startTestButton, questionText, answersDiv, resultText, dialogBox, startCourseButton, carButton, muteButton, muteIcon;
+let dialogText, nextDialog, startTestButton, questionText, resultDialogBox, answersDiv, resultText, dialogBox, startCourseButton, carButton, muteButton, muteIcon;
 
 
  function init() {
