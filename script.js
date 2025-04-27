@@ -113,6 +113,23 @@ function setLanguage(lang) {
   if (!resultScreen.classList.contains('hidden')) {
     showResult();
   }
+  // если открыт welcomeScreen и кнопка "Начать тест" уже показана — обнови её картинку
+  if (!welcomeScreen.classList.contains('hidden') && !startTestButton.classList.contains('hidden')) {
+    let img = startTestButton.querySelector('img');
+    if (img) {
+      let imgSrc = 'media/startTestButton.png';
+      let imgAlt = 'Начать тест';
+      if (currentLanguage === 'en') {
+        imgSrc = 'media/startTestButton(En).png';
+        imgAlt = "Start Test";
+      } else if (currentLanguage === 'ua') {
+        imgSrc = 'media/startTestButton(Ua).png';
+        imgAlt = "Почати тест";
+      }
+      img.src = imgSrc;
+      img.alt = imgAlt;
+    }
+  }
 }
 
 // Обновление текста
