@@ -110,7 +110,10 @@ function setLanguage(lang) {
 // Обновление текста
 function updateTextContent() {
   let translation = translations[currentLanguage];
-  document.getElementById('welcome-text').textContent = translation.welcome || 'Добро пожаловать!';
+  // Если welcome-text есть, очищаем его (или вовсе не трогаем)
+  let welcomeEl = document.getElementById('welcome-text');
+  if (welcomeEl) welcomeEl.textContent = '';
+  // Остальная локализация
   document.getElementById('language-title').textContent = translation.chooseLanguage || 'Выберите язык';
   if (startTestButton) startTestButton.textContent = translation.startTest || 'Начать тест';
 }
