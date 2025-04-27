@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
  // Объявляем переменные глобально
 let currentLanguage = 'ru';
 let index = 0;
