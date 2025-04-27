@@ -222,11 +222,11 @@ function transitionToTestScreen() {
 // Показ вопросов
 function showQuestion() {
   const q = questions[index];
-  questionText.textContent = q.text;
+  questionText.textContent = q.text[currentLanguage]; // исправлено!
   answersDiv.innerHTML = '';
   q.answers.forEach(answer => {
     const btn = document.createElement('button');
-    btn.textContent = answer.text;
+    btn.textContent = answer.text[currentLanguage]; // исправлено!
     btn.className = 'answer';
     btn.onclick = () => {
       const sound = new Audio(answer.correct ? 'media/correct.mp3' : 'media/wrong.mp3');
