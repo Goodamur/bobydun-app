@@ -138,20 +138,6 @@ function showDialog() {
   for (let i = 0; i < words.length; i += 3) lines.push(words.slice(i, i + 3).join(' '));
   dialogText.innerHTML = '';
   nextDialog.classList.remove('show');
-  let img = startTestButton.querySelector('img');
-  if (img) {
-  let imgSrc = 'media/startTestButton.png';
-  let imgAlt = 'Начать тест';
-  if (currentLanguage === 'en') {
-    imgSrc = 'media/startTestButton(En).png';
-    imgAlt = "Start Test";
-  } else if (currentLanguage === 'ua') {
-    imgSrc = 'media/startTestButton(Ua).png';
-    imgAlt = "Почати тест";
-  }
-  img.src = imgSrc;
-  img.alt = imgAlt;
-}
   startTestButton.classList.add('hidden');
   carButton.classList.add('hidden');
   let lineIndex = 0, charIndex = 0, currentLine = lines[lineIndex];
@@ -202,6 +188,21 @@ function showDialog() {
             }, { once: true });
           };
         } else if (index === dialogMessages.length - 1) {
+          // Вот тут меняем картинку!
+          let img = startTestButton.querySelector('img');
+          if (img) {
+            let imgSrc = 'media/startTestButton.png';
+            let imgAlt = 'Начать тест';
+            if (currentLanguage === 'en') {
+              imgSrc = 'media/startTestButton(En).png';
+              imgAlt = "Start Test";
+            } else if (currentLanguage === 'ua') {
+              imgSrc = 'media/startTestButton(Ua).png';
+              imgAlt = "Почати тест";
+            }
+            img.src = imgSrc;
+            img.alt = imgAlt;
+          }
           startTestButton.classList.remove('hidden');
         } else {
           nextDialog.classList.add('show');
