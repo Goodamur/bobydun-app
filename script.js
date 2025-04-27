@@ -170,10 +170,6 @@ function showDialog() {
         currentLine = lines[lineIndex]; charIndex = 0;
       } else {
         clearInterval(interval);
-       else if (index === dialogMessages.length - 1) {
-       updateStartTestButtonImage();
-       startTestButton.classList.remove('hidden');
-       }
        
         const trigger = translations[currentLanguage].carButtonTrigger;
         if (fullText.includes(trigger)) {
