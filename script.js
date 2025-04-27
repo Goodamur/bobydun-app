@@ -220,8 +220,9 @@ function showDialog() {
   }, 50);
 }
 
-// Переход к тесту
 function transitionToTestScreen() {
+  index = 0;          // всегда начинаем тест с первого вопроса!
+  score = 0;          // сбрасываем очки
   welcomeScreen.classList.add('hidden');
   testScreen.classList.remove('hidden');
   showQuestion();
