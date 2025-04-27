@@ -68,7 +68,7 @@ const questions = [
     text: {
       ru: "Что такое сид-фраза?",
       en: "What is a seed phrase?",
-      ua: "Що таке сид-фраза?",
+      ua: "Що таке сід-фраза?",
     },
     answers: [
       { text: { ru: "Кодовое слово для покупки", en: "A password for purchases", ua: "Кодове слово для покупки" }, score: 0, correct: false },
