@@ -105,6 +105,14 @@ function setLanguage(lang) {
   dialogMessages = translation.dialogMessages || [];
   resultDialogs = translation.resultDialogs || {};
   updateTextContent();
+  // если тест сейчас открыт — обнови вопрос на нужном языке
+  if (!testScreen.classList.contains('hidden')) {
+    showQuestion();
+  }
+  // если открыт resultScreen — тоже можно обновить результат
+  if (!resultScreen.classList.contains('hidden')) {
+    showResult();
+  }
 }
 
 // Обновление текста
