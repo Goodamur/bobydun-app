@@ -120,6 +120,10 @@ function updateTextContent() {
   if (nextDialogBtn && translation.nextButton) {
     nextDialogBtn.textContent = translation.nextButton;
   }
+let skipDialogBtn = document.getElementById('skip-dialog');
+if (skipDialogBtn && translation.skip) {
+  skipDialogBtn.textContent = translation.skip;
+}
   // Остальная локализация
   document.getElementById('language-title').textContent = translation.chooseLanguage || 'Выберите язык';
 }
