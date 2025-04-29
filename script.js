@@ -4,6 +4,7 @@ let index = 0;
 let score = 0;
 let dialogMessages = [];
 let bgMusic;
+let dialogInterval = null;
 
 let startButton, loadingScreen, languageScreen, welcomeScreen, dialogScreen, testScreen, resultScreen;
 let dialogText, nextDialog, skipDialogButton, startTestButton, questionText, resultDialogBox, answersDiv, resultText, dialogBox, startCourseButton, carButton, muteButton, muteIcon;
@@ -190,6 +191,10 @@ function updateStartTestButtonImage() {
 
 // Показ диалога
 function showDialog() {
+ if (dialogInterval) {
+    clearInterval(dialogInterval);
+    dialogInterval = null;
+  }
   let fullText = dialogMessages[index];
   if (!fullText) return;
   let words = fullText.split(' ');
@@ -208,8 +213,9 @@ function showDialog() {
       lineIndex++;
       if (lineIndex < lines.length) {
         currentLine = lines[lineIndex]; charIndex = 0;
-      } else {
-        clearInterval(interval);
+        } else {
+        clearInterval(dialogInterval);
+        dialogInterval = null;
        
         const trigger = translations[currentLanguage].carButtonTrigger;
         if (fullText.includes(trigger)) {
