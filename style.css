@@ -453,19 +453,17 @@ body {
   bottom: 32px;
   z-index: 50;
   min-width: 110px;
-  padding: 16px 20px;
-  font-size: 22px;
-  font-family: inherit;
-  font-weight: 700;
-  border-radius: 12px;
-  background: #f5f5f5;
-  color: #252525;
-  border: 2px solid #e0e0e0;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  background: transparent;
+  border: 2px solid black;
+  border-radius: 8px;
   cursor: pointer;
   opacity: 0;
+  transition: opacity 0.5s ease;
   pointer-events: none;
-  transition: opacity 0.25s;
 }
 .back-button.show {
   opacity: 1;
@@ -483,7 +481,6 @@ body {
     font-size: 16px;
   }
 }
-
 /* Кнопка "Далее" */
 #next-dialog {
   position: absolute;
