@@ -463,7 +463,6 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
-  z-index: 50;
 }
 .back-button.show {
   opacity: 1;
