@@ -451,7 +451,6 @@ body {
   position: absolute;
   left: 20px;
   bottom: 20px;
-  z-index: 50;
   min-width: 110px;
   padding: 10px 16px;
   font-size: 16px;
@@ -464,6 +463,7 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
+  z-index: 50;
 }
 .back-button.show {
   opacity: 1;
