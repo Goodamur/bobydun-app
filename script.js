@@ -5,7 +5,7 @@ let score = 0;
 let dialogMessages = [];
 let bgMusic;
 
-let startButton, loadingScreen, languageScreen, welcomeScreen, testScreen, resultScreen;
+let startButton, loadingScreen, languageScreen, welcomeScreen, dialogScreen, testScreen, resultScreen;
 let dialogText, nextDialog, skipDialogButton, startTestButton, questionText, resultDialogBox, answersDiv, resultText, dialogBox, startCourseButton, carButton, muteButton, muteIcon;
 
 
