@@ -88,14 +88,12 @@ let dialogText, nextDialog, skipDialogButton, startTestButton, questionText, res
 // Кнопка "Пропустить" в диалоге
 if (skipDialogButton) {
   skipDialogButton.onclick = () => {
-    // Найти индекс нужной фразы в dialogMessages для текущего языка
+    // Скрываем кнопку "Пропустить"
+    skipDialogButton.style.display = "none";
+    // Находим нужную фразу и продолжаем диалог
     const skipText = translations[currentLanguage].introAfterSkip;
     index = dialogMessages.findIndex(msg => msg.trim() === skipText.trim());
-    if (index === -1) {
-      // Если не нашли — fallback на последний/предпоследний диалог или первый вопрос
-      index = dialogMessages.length - 1;
-    }
-    // Запускаем стандартный механизм диалога
+    if (index === -1) index = dialogMessages.length - 1;
     showDialog();
   };
  }
