@@ -449,8 +449,8 @@ body {
 
 .back-button {
   position: fixed;
-  left: 32px;
-  bottom: 32px;
+  left: 20px;
+  bottom: 20px;
   z-index: 50;
   min-width: 110px;
   padding: 10px 16px;
