@@ -15,6 +15,7 @@ let dialogText, nextDialog, skipDialogButton, startTestButton, questionText, res
   loadingScreen = document.getElementById('loading-screen');
   languageScreen = document.getElementById('language-screen');
   welcomeScreen = document.getElementById('welcome-screen');
+  dialogScreen = document.getElementById('dialog-screen');
   testScreen = document.getElementById('test-screen');
   resultScreen = document.getElementById('result-screen');
   dialogText = document.getElementById('dialog-text');
