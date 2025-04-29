@@ -16,6 +16,8 @@ const translations = {
 
     ],
     nextButton: "Next",
+    skip: "Skip",
+    introAfterSkip: "Now, I'll ask you a few quick questions to figure out your level.",
     resultScoreText: "You scored {score} points.",
     resultLevels: {
       new: "Beginner",
@@ -62,6 +64,8 @@ const translations = {
       "Готов? Жми 'Начать тест'!"
     ],
     nextButton: "Далее",
+    skip: "Пропустить",
+    introAfterSkip: "А сейчас я задам тебе пару вопросов, чтобы понять твой уровень.",
     resultScoreText: "Ты набрал {score} баллов.",
     resultLevels: {
       new: "Новичок",
@@ -108,6 +112,8 @@ const translations = {
       "Готовий? Натискай 'Пройти тест'!"
     ],
     nextButton: "Далі",
+    skip: "Пропустити",
+    introAfterSkip: "А зараз я задам тобі кілька запитань, щоб зрозуміти твій рівень.",
     resultScoreText: "Ти набрав {score} балів.",
     resultLevels: {
       new: "Початківець",
