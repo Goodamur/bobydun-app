@@ -191,71 +191,74 @@ function updateStartTestButtonImage() {
 
 // Показ диалога
 function showDialog() {
- if (dialogInterval) {
+  if (dialogInterval) {
     clearInterval(dialogInterval);
     dialogInterval = null;
   }
   let fullText = dialogMessages[index];
   if (!fullText) return;
+
   let words = fullText.split(' ');
   let lines = [];
-  for (let i = 0; i < words.length; i += 3) lines.push(words.slice(i, i + 3).join(' '));
+  for (let i = 0; i < words.length; i += 3)
+    lines.push(words.slice(i, i + 3).join(' '));
   dialogText.innerHTML = '';
   nextDialog.classList.remove('show');
   carButton.classList.add('hidden');
-  let lineIndex = 0, charIndex = 0, currentLine = lines[lineIndex];
-  const interval = setInterval(() => {
-    if (charIndex < currentLine.length) {
-      dialogText.innerHTML += currentLine[charIndex];
-      charIndex++;
+
+  let lineIndex = 0, charIndex = 0;
+  let displayLines = Array(lines.length).fill(''); // Массив для постепенного вывода строк
+
+  function renderText() {
+    // Формируем html из массива строк, разделяя <br>
+    dialogText.innerHTML = displayLines.map(line => line).join('<br>');
+  }
+
+  dialogInterval = setInterval(() => {
+    if (lineIndex < lines.length) {
+      if (charIndex < lines[lineIndex].length) {
+        displayLines[lineIndex] += lines[lineIndex][charIndex];
+        charIndex++;
+        renderText();
+      } else {
+        lineIndex++;
+        charIndex = 0;
+      }
     } else {
-      dialogText.innerHTML += '<br>';
-      lineIndex++;
-      if (lineIndex < lines.length) {
-        currentLine = lines[lineIndex]; charIndex = 0;
-        } else {
-        clearInterval(dialogInterval);
-        dialogInterval = null;
-       
-        const trigger = translations[currentLanguage].carButtonTrigger;
-        if (fullText.includes(trigger)) {
-          nextDialog.classList.remove('show');
-          carButton.classList.remove('hidden');
-          carButton.innerHTML = ''; // Очистим кнопку
-
-          // Выбор картинки по языку
-          let carButtonImgSrc = "media/carButton.png";
-          if (currentLanguage === "en") carButtonImgSrc = "media/carButton(En).png";
-          if (currentLanguage === "ua") carButtonImgSrc = "media/carButton(Ua).png";
-
-          const carImg = document.createElement('img');
-          carImg.src = carButtonImgSrc;
-          carImg.alt = trigger;
-          carButton.appendChild(carImg);
-
-          carButton.onclick = () => {
-            carButton.innerHTML = '';
-            carButton.style.background = 'none';
-            carButton.style.border = 'none';
-
-            const carImage = document.createElement('img');
-            carImage.src = 'media/car.png';
-            carImage.alt = 'car';
-            carImage.className = 'car-animation';
-            carButton.appendChild(carImage);
-
-            carImage.addEventListener('animationend', () => {
-              changeBackgroundAndCharacter();
-              index++;
-              if (index < dialogMessages.length) showDialog();
-            }, { once: true });
-          };
-        } 
-           else if (index === dialogMessages.length - 1) {
-             updateStartTestButtonImage();
-           } else {
-          nextDialog.classList.add('show');
-        }
+      clearInterval(dialogInterval);
+      dialogInterval = null;
+      // ... остальной код, как раньше
+      const trigger = translations[currentLanguage].carButtonTrigger;
+      if (fullText.includes(trigger)) {
+        nextDialog.classList.remove('show');
+        carButton.classList.remove('hidden');
+        carButton.innerHTML = ''; // Очистим кнопку
+        let carButtonImgSrc = "media/carButton.png";
+        if (currentLanguage === "en") carButtonImgSrc = "media/carButton(En).png";
+        if (currentLanguage === "ua") carButtonImgSrc = "media/carButton(Ua).png";
+        const carImg = document.createElement('img');
+        carImg.src = carButtonImgSrc;
+        carImg.alt = trigger;
+        carButton.appendChild(carImg);
+        carButton.onclick = () => {
+          carButton.innerHTML = '';
+          carButton.style.background = 'none';
+          carButton.style.border = 'none';
+          const carImage = document.createElement('img');
+          carImage.src = 'media/car.png';
+          carImage.alt = 'car';
+          carImage.className = 'car-animation';
+          carButton.appendChild(carImage);
+          carImage.addEventListener('animationend', () => {
+            changeBackgroundAndCharacter();
+            index++;
+            if (index < dialogMessages.length) showDialog();
+          }, { once: true });
+        };
+      } else if (index === dialogMessages.length - 1) {
+        updateStartTestButtonImage();
+      } else {
+        nextDialog.classList.add('show');
       }
     }
   }, 50);
