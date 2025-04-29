@@ -448,7 +448,7 @@ body {
 }
 
 .back-button {
-  position: fixed;
+  position: absolute;
   left: 20px;
   bottom: 20px;
   z-index: 50;
