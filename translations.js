@@ -16,6 +16,7 @@ const translations = {
 
     ],
     nextButton: "Next",
+    backButton: "Back",
     skip: "Skip",
     introAfterSkip: "Now, I'll ask you a few quick questions to figure out your level.",
     resultScoreText: "You scored {score} points.",
@@ -64,6 +65,7 @@ const translations = {
       "Готов? Жми 'Начать тест'!"
     ],
     nextButton: "Далее",
+    backButton: "Назад",
     skip: "Пропустить",
     introAfterSkip: "А сейчас я задам тебе пару вопросов, чтобы понять твой уровень.",
     resultScoreText: "Ты набрал {score} баллов.",
@@ -112,6 +114,7 @@ const translations = {
       "Готовий? Натискай 'Пройти тест'!"
     ],
     nextButton: "Далі",
+    backButton: "Назад",
     skip: "Пропустити",
     introAfterSkip: "А зараз я задам тобі кілька запитань, щоб зрозуміти твій рівень.",
     resultScoreText: "Ти набрав {score} балів.",
