@@ -275,6 +275,16 @@ function showDialog() {
         updateStartTestButtonImage();
       } else {
         nextDialog.classList.add('show');
+       let prevDialogButton = document.getElementById('prev-dialog');
+        if (prevDialogButton) {
+          if (index > 0) {
+            prevDialogButton.classList.add('show');
+            prevDialogButton.disabled = false;
+          } else {
+            prevDialogButton.classList.remove('show');
+            prevDialogButton.disabled = true;
+          }
+        }
       }
     }
   }, 50);
