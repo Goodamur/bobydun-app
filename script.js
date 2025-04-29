@@ -83,6 +83,22 @@ let dialogText, nextDialog, skipDialogButton, startTestButton, questionText, res
       if (index < dialogMessages.length) showDialog();
     };
   }
+  
+// Кнопка "Пропустить" в диалоге
+if (skipDialogButton) {
+  skipDialogButton.onclick = () => {
+    // Сначала скрываем текущий экран, если нужно (например, welcomeScreen)
+    welcomeScreen.classList.add('hidden');
+    // Показываем экран с диалогом
+    dialogScreen.classList.remove('hidden');
+    // Показываем нужную фразу на выбранном языке
+    dialogText.textContent = translations[currentLanguage].introAfterSkip;
+    // Скрываем обе кнопки, если это нужно
+    nextDialog.style.display = "none";
+    skipDialogButton.style.display = "none";
+    // (Не делаем переход к тесту)
+  };
+ } 
 }
 
 document.addEventListener('DOMContentLoaded', init);
