@@ -451,8 +451,8 @@ body {
   position: absolute;
   left: 20px;
   bottom: 20px;
-  min-width: 110px;
   padding: 10px 16px;
+  min-width: 110px;
   font-size: 16px;
   font-weight: bold;
   color: black;
@@ -463,6 +463,7 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
+  z-index: 51;
 }
 .back-button.show {
   opacity: 1;
@@ -496,6 +497,7 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none; /* чтобы не кликабельно, пока не показана */
+  z-index: 51;
 }
 
 /* Класс для показа */
