@@ -7,7 +7,7 @@ let bgMusic;
 let dialogInterval = null;
 
 let startButton, loadingScreen, languageScreen, welcomeScreen, dialogScreen, testScreen, resultScreen;
-let dialogText, nextDialog, skipDialogButton, startTestButton, questionText, resultDialogBox, answersDiv, resultText, dialogBox, startCourseButton, carButton, muteButton, muteIcon;
+let dialogText, nextDialog, prevDialogButton, skipDialogButton, startTestButton, questionText, resultDialogBox, answersDiv, resultText, dialogBox, startCourseButton, carButton, muteButton, muteIcon;
 
 
  function init() {
@@ -21,6 +21,7 @@ let dialogText, nextDialog, skipDialogButton, startTestButton, questionText, res
   resultScreen = document.getElementById('result-screen');
   dialogText = document.getElementById('dialog-text');
   skipDialogButton = document.getElementById('skip-dialog');
+  prevDialogButton = document.getElementById('prev-dialog');
   nextDialog = document.getElementById('next-dialog');
   startTestButton = document.getElementById('start-test');
   questionText = document.getElementById('question-text');
@@ -85,6 +86,17 @@ let dialogText, nextDialog, skipDialogButton, startTestButton, questionText, res
       if (index < dialogMessages.length) showDialog();
     };
   }
+
+  // Кнопка "Назад" в диалоге
+  if (prevDialogButton) {
+  prevDialogButton.onclick = () => {
+    // Возвращаемся на предыдущий диалог, если это возможно
+    if (index > 0) {
+      index--;
+      showDialog();
+    }
+  };
+}
   
 // Кнопка "Пропустить" в диалоге
 if (skipDialogButton) {
@@ -135,10 +147,14 @@ function updateTextContent() {
   if (nextDialogBtn && translation.nextButton) {
     nextDialogBtn.textContent = translation.nextButton;
   }
-let skipDialogBtn = document.getElementById('skip-dialog');
-if (skipDialogBtn && translation.skip) {
-  skipDialogBtn.textContent = translation.skip;
-}
+  let prevDialogBtn = document.getElementById('prev-dialog');
+  if (prevDialogBtn && translation.backButton) {
+    prevDialogBtn.textContent = translation.backButton;
+  }
+  let skipDialogBtn = document.getElementById('skip-dialog');
+  if (skipDialogBtn && translation.skip) {
+    skipDialogBtn.textContent = translation.skip;
+  }
   // Остальная локализация
   document.getElementById('language-title').textContent = translation.chooseLanguage || 'Выберите язык';
 }
