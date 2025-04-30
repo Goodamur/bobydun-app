@@ -519,6 +519,37 @@ body {
   pointer-events: auto;
 }
 
+.nav-buttons-bar {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 100; /* если нужно */
+}
+.nav-buttons-bar > button {
+  pointer-events: auto;
+}
+
+.back-button {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  /* ...остальные стили... */
+}
+#next-dialog {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  /* ... */
+}
+.skip-button {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  /* ... */
+}
+
 .nav-button {
   padding: 10px 20px;
   margin-top: 20px;
