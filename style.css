@@ -399,7 +399,7 @@ body {
   align-items: center; /* чтобы кнопки были по центру */
 }
 
-}.answers .answer {
+.answers .answer {
   display: block;
   margin: 10px auto;
   padding: 10px 18px;
