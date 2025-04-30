@@ -439,7 +439,7 @@ body {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 10px 16px;
+  padding: 6px 10px;
   font-size: 16px;
   font-weight: bold;
   color: black;
@@ -457,7 +457,7 @@ body {
   position: absolute;
   left: 20px;
   bottom: 20px;
-  padding: 10px 16px;
+  padding: 6px 10px;
   font-size: 16px;
   font-weight: bold;
   color: black;
@@ -481,14 +481,14 @@ body {
   .back-button {
     left: 10px;
     bottom: 10px;
-    min-width: 80px;
+    min-width: 0px;
     padding: 10px 12px;
     font-size: 16px;
   }
   #next-dialog {
     right: 10px;
     bottom: 10px;
-    min-width: 80px;
+    min-width: 0px;
     padding: 10px 12px;
     font-size: 16px;
   }
@@ -499,7 +499,7 @@ body {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  padding: 10px 16px;
+  padding: 6px 10px;
   font-size: 16px;
   font-weight: bold;
   color: black;
