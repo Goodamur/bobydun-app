@@ -542,26 +542,32 @@ body {
 
 .nav-buttons-bar {
   position: absolute;
-  left: 0; right: 0; bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   pointer-events: none;
-  z-index: 100; /* если нужно */
+  z-index: 100;
 }
 .nav-buttons-bar > button {
   pointer-events: auto;
-}
-
-.nav-button {
-  padding: 10px 20px;
-  margin-top: 20px;
-  font-size: 1em;
-  background-color: #ff9900;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
+  position: absolute;
+  bottom: 20px;
+  padding: 6px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  background: transparent;
+  border: 2px solid black;
+  border-radius: 8px;
   cursor: pointer;
+  transition: opacity 0.5s, background 0.3s;
+  min-width: 0;
+  opacity: 1;
+  z-index: 101;
 }
-
+.back-button   { left: 20px;  }
+.skip-button   { left: 50%; transform: translateX(-
 /* Анимация размытия */
 .blur-out {
   animation: blurOut 0.5s forwards;
