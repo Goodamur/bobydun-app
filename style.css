@@ -482,14 +482,14 @@ body {
     left: 10px;
     bottom: 10px;
     min-width: 0px;
-    padding: 10px 12px;
+    padding: 6px 10px;
     font-size: 16px;
   }
   #next-dialog {
     right: 10px;
     bottom: 10px;
     min-width: 0px;
-    padding: 10px 12px;
+    padding: 6px 10px;
     font-size: 16px;
   }
 }
@@ -530,18 +530,6 @@ body {
   pointer-events: auto;
 }
 
-.back-button {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  /* ...остальные стили... */
-}
-#next-dialog {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  /* ... */
-}
 .skip-button {
   position: absolute;
   left: 50%;
