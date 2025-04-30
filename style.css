@@ -395,7 +395,7 @@ body {
 .answers {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   align-items: center;
 }
 
@@ -409,7 +409,7 @@ body {
   border: 1px solid #333;
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18), 0 1.5px 5px 0 rgba(0,0,0,0.10);
   border-radius: 15px;
-  font-size: 0,65em;
+  font-size: 0,75em;
   font-style: italic;
   font-family: 'Fira Sans', 'Arial', 'Segoe UI', 'Tahoma', 'Geneva', sans-serif;
   font-weight: 600;
