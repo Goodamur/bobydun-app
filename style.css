@@ -392,22 +392,32 @@ body {
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18), 0 1.5px 5px 0 rgba(0,0,0,0.10);
 }
 
-.answers .answer {
+}.answers .answer {
   display: block;
   margin: 10px auto;
-  padding: 10px;
+  padding: 10px 18px;
   width: 100%;
   max-width: 200px;
-  background: #f0f0f0;
-  border: none;
+  background: rgba(255,255,255,0.12); /* прозрачный фон */
+  border: 1px solid #333;             /* тонкий контур */
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18), 0 1.5px 5px 0 rgba(0,0,0,0.10); /* тень */
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, box-shadow 0.3s;
+  
+  /* стиль текста */
+  font-size: 1.2em;
+  font-style: italic;
+  font-family: 'Fira Sans', 'Arial', sans-serif;
+  font-weight: 600;
+  color: #222;
+  letter-spacing: 0.5px;
 }
 
 .answers .answer:hover {
-  background: #007BFF;
-  color: #fff;
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.22), 0 2px 7px 0 rgba(0,0,0,0.14);
+  color: #007BFF;
 }
 
 .btn {
