@@ -382,7 +382,8 @@ body {
 }
 
 .question-box, .result-box {
-  background: rgba(255, 255, 255, 0.9);
+  background: url('media/background_test.png') no-repeat center center;
+  background-size: cover;
   padding: 20px;
   border-radius: 10px;
   width: 80%;
