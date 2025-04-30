@@ -434,25 +434,6 @@ body {
   max-width: 300px;
 } */
 
-#skip-dialog {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 6px 10px;
-  font-size: 16px;
-  font-weight: bold;
-  color: black;
-  background: transparent;
-  border: 2px solid black;
-  border-radius: 8px;
-  cursor: pointer;
-  opacity: 1; /* Сразу видима */
-  transition: opacity 0.5s ease;
-  pointer-events: auto;
-  z-index: 10; /* Чтобы не перекрывалась другими элементами */
-}
-
 .back-button {
   position: absolute;
   left: 20px;
@@ -469,36 +450,16 @@ body {
   transition: opacity 0.5s ease;
   pointer-events: none;
   z-index: 51;
+  min-width: 0;
 }
 .back-button.show {
   opacity: 1;
   pointer-events: auto;
 }
-.back-button:active {
-  background: #e0e0e0;
-}
-@media (max-width: 600px) {
-  .back-button {
-    left: 10px;
-    bottom: 10px;
-    min-width: 0px;
-    padding: 6px 10px;
-    font-size: 16px;
-  }
-  #next-dialog {
-    right: 10px;
-    bottom: 10px;
-    min-width: 0px;
-    padding: 6px 10px;
-    font-size: 16px;
-  }
-}
-
-/* Кнопка "Далее" */
 #next-dialog {
   position: absolute;
-  bottom: 20px;
   right: 20px;
+  bottom: 20px;
   padding: 6px 10px;
   font-size: 16px;
   font-weight: bold;
@@ -509,14 +470,54 @@ body {
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.5s ease;
-  pointer-events: none; /* чтобы не кликабельно, пока не показана */
+  pointer-events: none;
   z-index: 51;
+  min-width: 0;
 }
-
-/* Класс для показа */
 #next-dialog.show {
   opacity: 1;
   pointer-events: auto;
+}
+.skip-button {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  background: transparent;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: auto;
+  z-index: 10;
+  min-width: 0;
+}
+@media (max-width: 600px) {
+  .back-button {
+    left: 10px;
+    bottom: 10px;
+    padding: 6px 10px;
+    font-size: 16px;
+    min-width: 0;
+  }
+  #next-dialog {
+    right: 10px;
+    bottom: 10px;
+    padding: 6px 10px;
+    font-size: 16px;
+    min-width: 0;
+  }
+  .skip-button {
+    bottom: 10px;
+    padding: 6px 10px;
+    font-size: 16px;
+    min-width: 0;
+  }
 }
 
 .nav-buttons-bar {
@@ -528,14 +529,6 @@ body {
 }
 .nav-buttons-bar > button {
   pointer-events: auto;
-}
-
-.skip-button {
-  position: absolute;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
-  /* ... */
 }
 
 .nav-button {
