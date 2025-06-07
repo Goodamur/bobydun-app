@@ -6,8 +6,8 @@ let dialogMessages = [];
 let bgMusic;
 let dialogInterval = null;
 
-let startButton, loadingScreen, languageScreen, welcomeScreen, dialogScreen, testScreen, resultScreen;
-let dialogText, nextDialog, prevDialogButton, skipDialogButton, startTestButton, questionText, resultDialogBox, answersDiv, resultText, dialogBox, startCourseButton, carButton, muteButton, muteIcon;
+let startButton, loadingScreen, languageScreen, welcomeScreen, testScreen, resultScreen;
+let dialogText, nextDialog, prevDialogButton, skipDialogButton, startTestButton, questionText, resultDialogBox, answersDiv, resultText, dialogBox, carButton, muteButton, muteIcon;
 
 
  function init() {
@@ -16,7 +16,6 @@ let dialogText, nextDialog, prevDialogButton, skipDialogButton, startTestButton,
   loadingScreen = document.getElementById('loading-screen');
   languageScreen = document.getElementById('language-screen');
   welcomeScreen = document.getElementById('welcome-screen');
-  dialogScreen = document.getElementById('dialog-screen');
   testScreen = document.getElementById('test-screen');
   resultScreen = document.getElementById('result-screen');
   dialogText = document.getElementById('dialog-text');
@@ -29,7 +28,6 @@ let dialogText, nextDialog, prevDialogButton, skipDialogButton, startTestButton,
   resultText = document.getElementById('result-text');
   resultDialogBox = document.getElementById('result-dialog-box');
   dialogBox = document.getElementById('dialog-box');
-  startCourseButton = document.getElementById('start-course');
   carButton = document.getElementById('car-button');
   muteButton = document.getElementById('mute-button');
   muteIcon = document.getElementById('mute-icon');
